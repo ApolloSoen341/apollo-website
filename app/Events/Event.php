@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace apollo\Events;
 
 abstract class Event
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace apollo\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

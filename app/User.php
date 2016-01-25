@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace apollo;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

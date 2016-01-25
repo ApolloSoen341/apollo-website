@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace apollo\Http\Controllers\Auth;
 
-use App\User;
+use apollo\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use apollo\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
