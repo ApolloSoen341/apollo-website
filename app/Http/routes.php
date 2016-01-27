@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', 'CourseController@display');
-Route::get('/course_registration', 'CourseController@registration');
-Route::post('/course_register', ['as' => 'course_register', 'uses' => 'CourseController@register']);
+Route::get('/', function () {
+    return view('welcome');
+});
 
 /*
 |--------------------------------------------------------------------------
