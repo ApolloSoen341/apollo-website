@@ -11,6 +11,13 @@ class Course extends Model
     */
     public $timestamps = false;
 
+    /**
+    * This will hide the following fields when getting a query result
+    */
+    protected $hidden = [
+    	'faculty_id'
+    ];
+
     public function faculty()
     {
     	return $this->hasOne('apollo\\Faculty', 'id', 'faculty_id');
