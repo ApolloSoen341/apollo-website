@@ -57,10 +57,12 @@ class CourseController extends Controller
         $course->save();
 
         // Pre-requisite is id 1 in RequisiteType table
-        Requisite::addRequisites($course->id, $input['prerequisites'], 1);
+        if(isset($input['prerequisites']))
+            Requisite::addRequisites($course->id, $input['prerequisites'], 1);
 
         // Co-requisite is id 2 in RequisiteType table
-        Requisite::addRequisites($course->id, $input['corequisites'], 2);
+        if(isset($input['corequisites']))
+            Requisite::addRequisites($course->id, $input['corequisites'], 2);
     }
 
     /**

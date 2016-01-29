@@ -20,6 +20,6 @@ class Course extends Model
 
     public function faculty()
     {
-    	return $this->hasOne('apollo\\Faculty', 'id', 'faculty_id');
+    	return $this->hasOne('apollo\\Models\\Faculty', 'id', 'faculty_id');
     }
 }

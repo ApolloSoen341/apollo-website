@@ -16,7 +16,7 @@ Route::resource('course', 'CourseController');
 Route::resource('faculty', 'FacultyController');
 
 // RESTful api urls
-/*Route::group(['prefix' => 'rest/api/v1', 'namespace' => 'RESTful'], function() {
+/*Route::group(['prefix' => 'api/v1', 'namespace' => 'RESTful'], function() {
 	//Route::resource('course', 'CourseRESTful');
 });*/
 
