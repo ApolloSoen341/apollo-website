@@ -12,10 +12,10 @@ class FacultySeeder extends Seeder
     public function run()
     {
         DB::table('faculties')->insert([
-            'title' => 'Engineering Core'
+            'name' => 'Engineering Core'
         ]);
         DB::table('faculties')->insert([
-            'title' => 'Software Engineering Core'
+            'name' => 'Software Engineering Core'
         ]);
     }
 }

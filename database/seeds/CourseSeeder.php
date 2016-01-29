@@ -12,12 +12,12 @@ class CourseSeeder extends Seeder
     public function run()
     {
         DB::table('courses')->insert([
-            'title' => 'Software Process',
+            'name' => 'Software Process',
             'description' => 'A class that teaches you how to develop software with a team.',
             'faculty_id' => 2
         ]);
         DB::table('courses')->insert([
-            'title' => 'Technical Writing',
+            'name' => 'Technical Writing',
             'description' => 'Teaches you how to write things.',
             'faculty_id' => 1
         ]);

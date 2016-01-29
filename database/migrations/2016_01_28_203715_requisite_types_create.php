@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class FacultiesTableCreate extends Migration
+class RequisiteTypesCreate extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class FacultiesTableCreate extends Migration
      */
     public function up()
     {
-        Schema::create('faculties', function (Blueprint $table) {
-            $table->increments('id')->unsigned();
-            $table->string('title');
+        Schema::create('requisite_types', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('type')->unique();
         });
     }
 
@@ -25,6 +25,6 @@ class FacultiesTableCreate extends Migration
      */
     public function down()
     {
-        Schema::drop('faculties');
+        Schema::drop('requisite_types');
     }
 }
