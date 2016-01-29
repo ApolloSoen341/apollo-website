@@ -11,9 +11,14 @@
 |
 */
 
-Route::get('/', 'CourseController@display');
-Route::get('/course_registration', 'CourseController@registration');
-Route::post('/course_register', ['as' => 'course_register', 'uses' => 'CourseController@register']);
+Route::get('/', 'HomeController@index');
+Route::resource('course', 'CourseController');
+Route::resource('faculty', 'FacultyController');
+
+// RESTful api urls
+/*Route::group(['prefix' => 'rest/api/v1', 'namespace' => 'RESTful'], function() {
+	//Route::resource('course', 'CourseRESTful');
+});*/
 
 /*
 |--------------------------------------------------------------------------

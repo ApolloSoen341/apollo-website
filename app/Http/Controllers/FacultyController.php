@@ -7,12 +7,9 @@ use Illuminate\Http\Request;
 use apollo\Http\Requests;
 use apollo\Http\Controllers\Controller;
 
-use apollo\Models\Course;
 use apollo\Models\Faculty;
-use apollo\Models\Requisite;
-use apollo\Models\RequisiteType;
 
-class CourseController extends Controller
+class FacultyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,9 +18,9 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::all();
+        $faculties = Faculty::all();
 
-        return response()->json($courses);
+        return response()->json($faculties);
     }
 
     /**
@@ -33,10 +30,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        $faculties = Faculty::all();
-        $courses = Course::all();
-
-        return view('course.create', compact('courses', 'faculties'));
+        return view('faculty.create');
     }
 
     /**
@@ -49,18 +43,18 @@ class CourseController extends Controller
     {
         $input = $request->input();
 
-        $course = new Course;
-        $course->name = $input['course_name'];
-        $course->credits = $input['course_credits'];
-        $course->description = $input['course_description'];
-        $course->faculty_id = $input['faculty_id'];
-        $course->save();
+        $faculty = new Faculty;
 
-        // Pre-requisite is id 1 in RequisiteType table
-        Requisite::addRequisites($course->id, $input['prerequisites'], 1);
+        $faculty->name = $input['faculty_name'];
 
-        // Co-requisite is id 2 in RequisiteType table
-        Requisite::addRequisites($course->id, $input['corequisites'], 2);
+        if($faculty->save())
+        {
+            return redirect()->route('faculty.index');
+        }
+        else
+        {
+            return 'The data did not save';
+        }
     }
 
     /**

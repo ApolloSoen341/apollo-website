@@ -1,6 +1,6 @@
 <?php
 
-namespace apollo;
+namespace apollo\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

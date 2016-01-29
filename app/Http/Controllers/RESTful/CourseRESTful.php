@@ -1,18 +1,14 @@
 <?php
 
-namespace apollo\Http\Controllers;
+namespace apollo\Http\Controllers\RESTful;
 
 use Illuminate\Http\Request;
 
 use apollo\Http\Requests;
 use apollo\Http\Controllers\Controller;
+use apollo\Course;
 
-use apollo\Models\Course;
-use apollo\Models\Faculty;
-use apollo\Models\Requisite;
-use apollo\Models\RequisiteType;
-
-class CourseController extends Controller
+class CourseRESTful extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,9 +17,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::all();
-
-        return response()->json($courses);
+        return 'hello world';
     }
 
     /**
@@ -33,10 +27,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        $faculties = Faculty::all();
-        $courses = Course::all();
-
-        return view('course.create', compact('courses', 'faculties'));
+        //
     }
 
     /**
@@ -47,20 +38,7 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->input();
-
-        $course = new Course;
-        $course->name = $input['course_name'];
-        $course->credits = $input['course_credits'];
-        $course->description = $input['course_description'];
-        $course->faculty_id = $input['faculty_id'];
-        $course->save();
-
-        // Pre-requisite is id 1 in RequisiteType table
-        Requisite::addRequisites($course->id, $input['prerequisites'], 1);
-
-        // Co-requisite is id 2 in RequisiteType table
-        Requisite::addRequisites($course->id, $input['corequisites'], 2);
+        //
     }
 
     /**
@@ -71,7 +49,9 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        //
+        $course = Course::with('faculty')->where('id', '=', $id)->get();
+
+        return response()->json($course);
     }
 
     /**
