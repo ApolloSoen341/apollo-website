@@ -23,8 +23,8 @@ class CourseController extends Controller
     {
         $courses = Course::with('faculty', 'prerequisites', 'corequisites')->get();
 
-//        return view('course.index', compact('courses'));
-        return response()->json($courses);
+        return view('course.index', compact('courses'));
+//        return response()->json($courses);
     }
 
     /**
