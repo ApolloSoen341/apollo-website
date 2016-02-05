@@ -11,8 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(FacultySeeder::class);
-        // $this->call(CourseSeeder::class);
+        if(env('APP_ENV') == 'local')
+        {
+            $this->call(FacultySeeder::class);
+            $this->call(CourseSeeder::class);
+        }
         $this->call(RequisiteTypeSeeder::class);
     }
 }
