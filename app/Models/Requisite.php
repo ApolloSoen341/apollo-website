@@ -7,8 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class Requisite extends Model
 {
     public $timestamps = false;
-
     public $increment = false;
+
+	public function requisite()
+	{
+		return $this->hasOne('apollo\\Models\\Course', 'id', 'course_requisite_id');
+	}
+
+	public function type()
+	{
+		return $this->hasOne('apollo\\Models\\RequisiteType', 'id', 'requisite_type_id');
+	}
 
     public static function addRequisites($course_id, $array, $type)
     {

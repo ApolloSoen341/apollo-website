@@ -21,8 +21,9 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::all();
+        $courses = Course::with('faculty', 'prerequisites', 'corequisites')->get();
 
+//        return view('course.index', compact('courses'));
         return response()->json($courses);
     }
 
@@ -73,7 +74,9 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        //
+        $courses = Course::with('faculty', 'prerequisites', 'corequisites')->where('id', $id)->first();
+
+        return response()->json($courses);
     }
 
     /**
@@ -84,7 +87,9 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $course = Course::where('id', '=', $id)->first();
+
+        return view('course.edit', compact('course'));
     }
 
     /**
@@ -107,6 +112,9 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        Course::destroy($id);
+
+        return 'success';
     }
 }
