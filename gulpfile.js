@@ -1,5 +1,7 @@
 var elixir = require('laravel-elixir');
 
+require('laravel-elixir-angular');
+
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -12,5 +14,11 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss');
+    //mix.sass('app.scss');
+
+
+	// Angular mix recipe.
+	// @params: (string: input path, string: output path, string: compiled file name)
+
+	mix.angular('resources/assets/angular/', 'public/js', 'app.js');
 });
