@@ -1,13 +1,10 @@
 /**
  * Created by fbouc_000 on 2/6/2016.
  */
-var app = angular.module('StarterApp', [], function($interpolateProvider){
-    $interpolateProvider.startSymbol('<%');
-    $interpolateProvider.endSymbol('%>');
-});
+var app = angular.module('StarterApp', []);
 
 app.controller('AppCtrl', ['$scope',
     function ($scope) {
-        $scope.test = 'test'
+        $scope.test = 'Francis is the best'
         $scope.true = true;
     }]);
