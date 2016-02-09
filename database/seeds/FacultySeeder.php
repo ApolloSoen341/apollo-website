@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use apollo\Models\Faculty;
+
 class FacultySeeder extends Seeder
 {
     /**
@@ -11,10 +13,11 @@ class FacultySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('faculties')->insert([
+        Faculty::firstOrCreate([
             'name' => 'Engineering Core'
         ]);
-        DB::table('faculties')->insert([
+
+        Faculty::firstOrCreate([
             'name' => 'Software Engineering Core'
         ]);
     }
