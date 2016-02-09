@@ -1,47 +1,70 @@
 <!DOCTYPE html>
 <html ng-app="StarterApp">
     <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-        <script src="\resources\views\app.js"></script>
-        <title>Laravel</title>
+<!--        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>-->
+        <title>Apollo</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
-        <style>
-            html, body {
-                height: 100%;
-            }
+        <!-- Angular Material style sheet -->
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+        <!-- Angular Material requires Angular.js Libraries -->
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
+        <!--
+        Your HTML content here
+        -->
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
 
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
+        <script>
+            /**
+             * Created by fbouc_000 on 2/6/2016.
+             */
+            var app = angular
+                .module('StarterApp', ['ngMaterial'])
 
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
+                .config(function($mdThemingProvider, $mdIconProvider){
 
-            .title {
-                font-size: 96px;
-            }
-        </style>
+                    $mdThemingProvider.theme('default')
+                        .primaryPalette('blue')
+                        .accentPalette('yellow');
+                });
+
+            app.controller('AppCtrl', ['$scope',
+                function ($scope) {
+                    $scope.test = 'Francis is the best'
+                    $scope.true = true;
+                }]);
+        </script>
+        <!-- Angular Material Library -->
+        <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
     </head>
     <body ng-controller="AppCtrl">
-        <div class="container">
-            <div class="content">
-                <div class="title">Laravel 5 </div>
-                <h1>{{test}}</h1>
+    <div class="container">
+        <div class="content">
+            <!-- Put content here -->
+
+            <div ng-cloak>
+                <md-content>
+                    <br>
+                    <md-toolbar>
+                        <div class="md-toolbar-tools">
+                            <md-button class="md-icon-button" aria-label="Settings">
+                            </md-button>
+                            <h2>
+                                <span>Toolbar with Icon Buttons</span>
+                            </h2>
+                            <span flex></span>
+                            <md-button class="md-icon-button" aria-label="Favorite">
+                            </md-button>
+                            <md-button class="md-icon-button" aria-label="More">
+                                <md-icon class="menu"></md-icon>
+                            </md-button>
+                        </div>
+                    </md-toolbar>
+
             </div>
         </div>
     </body>
