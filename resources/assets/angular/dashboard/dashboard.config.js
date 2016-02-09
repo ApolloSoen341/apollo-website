@@ -1,9 +1,9 @@
-app.config(['$routeProvider',
-	function($routeProvider) {
-		$routeProvider.
-		when('/', {
-			templateUrl: 'dashboard.html',
-			controller: 'DashboardController'
+app.config(['$stateProvider',
+	function($stateProvider) {
+		$stateProvider
+			.state('dashboard', {
+				templateUrl: 'dashboard.html', // whats this?
+				url: 'components/dashboard/dashboard.html'
 		});
 	}]
 );

@@ -16,9 +16,17 @@ require('laravel-elixir-angular');
 elixir(function(mix) {
     //mix.sass('app.scss');
 
+	mix.scripts([
+		"app.js",
+		"dashboard/dashboard.config.js",
+		"dashboard/dashboard.controller.js"
+	], "public/js/app.js", "resources/assets/angular");
+
+	mix.copy('resources/assets/angular/**/*.html', 'public/components');
+
 
 	// Angular mix recipe.
 	// @params: (string: input path, string: output path, string: compiled file name)
 
-	mix.angular('resources/assets/angular/', 'public/js', 'app.js');
+	//mix.angular('resources/assets/angular/', 'public/js', 'app.js');
 });

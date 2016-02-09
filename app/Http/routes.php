@@ -11,14 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
 // RESTful api urls
 Route::group(['prefix' => 'api/v1', 'namespace' => 'REST'], function() {
 	Route::resource('course', 'CourseController');
 });
+
+Route::any(
+	'{all}',
+	function(){return view('index');}
+)->where('all', '.*');
 
 /*
 |--------------------------------------------------------------------------
