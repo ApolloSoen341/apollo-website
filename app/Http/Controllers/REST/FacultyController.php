@@ -55,7 +55,9 @@ class FacultyController extends Controller
      */
     public function show($id)
     {
-        //
+        $faculty = Faculty::find($id);
+
+        return response()->json($faculty);
     }
 
     /**
@@ -78,6 +80,8 @@ class FacultyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Faculty::destroy($id);
+
+        return response('', 200);
     }
 }
