@@ -13,6 +13,6 @@ var app = angular
 
 app.controller('AppCtrl', ['$scope',
     function ($scope) {
-        $scope.test = 'Francis is the best'
+        $scope.test = 'Francis is the best';
         $scope.true = true;
     }]);

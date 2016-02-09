@@ -42,29 +42,18 @@
         <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
     </head>
     <body ng-controller="AppCtrl">
-    <div class="container">
-        <div class="content">
-            <!-- Put content here -->
 
-            <div ng-cloak>
-                <md-content>
-                    <br>
-                    <md-toolbar>
-                        <div class="md-toolbar-tools">
-                            <md-button class="md-icon-button" aria-label="Settings">
-                            </md-button>
-                            <h2>
-                                <span>Toolbar with Icon Buttons</span>
-                            </h2>
-                            <span flex></span>
-                            <md-button class="md-icon-button" aria-label="Favorite">
-                            </md-button>
-                            <md-button class="md-icon-button" aria-label="More">
-                                <md-icon class="menu"></md-icon>
-                            </md-button>
-                        </div>
-                    </md-toolbar>
+    <md-toolbar layout="row">
+        <div class="md-toolbar-tools">
+            Apollo
+        </div>
 
+
+    </md-toolbar>
+        <div class="container">
+            <div class="content">
+                <div class="title">Laravel 5 </div>
+                <h1>{{test}}</h1>
             </div>
         </div>
     </body>
