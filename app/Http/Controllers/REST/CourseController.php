@@ -85,6 +85,6 @@ class CourseController extends Controller
     {
         Course::destroy($id);
 
-        return response();
+        return response('', 200);
     }
 }
