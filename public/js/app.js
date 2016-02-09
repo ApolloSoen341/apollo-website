@@ -1,8 +1,5 @@
-/**
- * Created by fbouc_000 on 2/6/2016.
- */
 var app = angular
-    .module('StarterApp', ['ngMaterial'])
+    .module('StarterApp', ['ngMaterial', 'ngRoute'])
 
     .config(function($mdThemingProvider, $mdIconProvider){
 

@@ -1,3 +1,9 @@
-/**
- * Created by matthew on 08/02/16.
- */
+app.config(['$routeProvider',
+	function($routeProvider) {
+		$routeProvider.
+		when('/', {
+			templateUrl: 'dashboard.html',
+			controller: 'DashboardController'
+		});
+	}]
+);

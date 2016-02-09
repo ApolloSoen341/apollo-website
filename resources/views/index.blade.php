@@ -17,8 +17,36 @@
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 
-        <script src="/js/app.js"></script>
+
+        <script>
+            var app = angular
+                    .module('StarterApp', ['ngMaterial', 'ngRoute'])
+
+                    .config(function($mdThemingProvider, $mdIconProvider){
+
+                        $mdThemingProvider.theme('default')
+                                .primaryPalette('blue')
+                                .accentPalette('yellow');
+                    });
+
+            app.controller('AppCtrl', ['$scope',
+                function ($scope) {
+                    $scope.test = 'Francis is the best';
+                    $scope.true = true;
+                }]);
+
+            app.config(['$routeProvider',
+                function($routeProvider) {
+                    $routeProvider.
+                    when('/', {
+                        templateUrl: '/resources/assests/angular/dashboard/dashboard.html',
+                        controller: 'DashboardController'
+                    });
+                }]
+            );
+        </script>
         <!-- Angular Material Library -->
         <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
     </head>
@@ -35,9 +63,7 @@
 
 
         <div class="content">
-                <div class="title">Laravel 5 </div>
-                <h1></h1>
-            </div>
+
         </div>
     </body>
 </html>
