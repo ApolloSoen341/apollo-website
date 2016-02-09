@@ -42,28 +42,22 @@
         <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
     </head>
     <body ng-controller="AppCtrl">
+    <md-toolbar layout="row">
+        <div class="md-toolbar-tools">
+            <md-button>
+                <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
+            </md-button>
+            <h1>Apollo</h1>
+        </div>
+
+
+    </md-toolbar>
     <div class="container">
         <div class="content">
             <!-- Put content here -->
+            
 
             <div ng-cloak>
-                <md-content>
-                    <br>
-                    <md-toolbar>
-                        <div class="md-toolbar-tools">
-                            <md-button class="md-icon-button" aria-label="Settings">
-                            </md-button>
-                            <h2>
-                                <span>Toolbar with Icon Buttons</span>
-                            </h2>
-                            <span flex></span>
-                            <md-button class="md-icon-button" aria-label="Favorite">
-                            </md-button>
-                            <md-button class="md-icon-button" aria-label="More">
-                                <md-icon class="menu"></md-icon>
-                            </md-button>
-                        </div>
-                    </md-toolbar>
 
             </div>
         </div>
