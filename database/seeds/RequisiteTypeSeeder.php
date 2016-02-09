@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-use apollo\Models\Requisite;
+use apollo\Models\RequisiteType;
 
 class RequisiteTypeSeeder extends Seeder
 {
@@ -13,11 +13,11 @@ class RequisiteTypeSeeder extends Seeder
      */
     public function run()
     {
-        Requisite::firstOrCreate([
+        RequisiteType::firstOrCreate([
             'type' => 'Pre-requisite'
         ]);
 
-        Requisite::firstOrCreate([
+        RequisiteType::firstOrCreate([
             'type' => 'Co-requisite'
         ]);
     }
