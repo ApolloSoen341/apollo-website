@@ -37,14 +37,9 @@ class FacultyController extends Controller
 
         $faculty->name = $input['faculty_name'];
 
-        if($faculty->save())
-        {
-            return redirect()->route('faculty.index');
-        }
-        else
-        {
-            return 'The data did not save';
-        }
+        $faculty->save();
+
+        return response()->json($faculty);
     }
 
     /**
@@ -69,7 +64,15 @@ class FacultyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->input();
+
+        $faculty = Faculty::find($id);
+
+        $faculty->name = $input['faculty_name'];
+
+        $faculty->save();
+
+        return response()->json($faculty);
     }
 
     /**

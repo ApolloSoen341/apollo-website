@@ -48,6 +48,8 @@ class CourseController extends Controller
         // Co-requisite is id 2 in RequisiteType table
         if(isset($input['corequisites']))
             Requisite::addRequisites($course->id, $input['corequisites'], 2);
+
+        return response()->json($course);
     }
 
     /**
@@ -72,7 +74,31 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // TODO: make the update function. This has to update the record id.
+        $input = $request->input();
+
+        $course = Course::find($id);
+
+        if($course != null)
+        {
+            $course->name = $input['course_name'];
+            $course->credits = $input['course_credits'];
+            $course->description = $input['course_description'];
+            $course->faculty_id = $input['faculty_id'];
+            $course->save();
+
+            Requisite::where('course_id', $id)->delete();
+            // Pre-requisite is id 1 in RequisiteType table
+            if(isset($input['prerequisites']))
+                Requisite::addRequisites($course->id, $input['prerequisites'], 1);
+
+            // Co-requisite is id 2 in RequisiteType table
+            if(isset($input['corequisites']))
+                Requisite::addRequisites($course->id, $input['corequisites'], 2);
+
+            return response()->json($course);
+        }
+
+        return response('', 304);
     }
 
     /**
