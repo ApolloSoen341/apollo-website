@@ -38,6 +38,13 @@
         </style>
     </head>
     <body ng-controller="AppCtrl">
+    <md-toolbar layout="row">
+        <div class="md-toolbar-tools">
+            Apollo
+        </div>
+
+
+    </md-toolbar>
         <div class="container">
             <div class="content">
                 <div class="title">Laravel 5 </div>
