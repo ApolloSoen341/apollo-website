@@ -7,6 +7,6 @@ var app = angular.module('StarterApp', ['ngMaterial']);
 app.controller('CourseController', ['$scope', '$http',
 	function ($scope, $http) {
 		$scope.test = 'Francis forgot that semicolon though... ->';
-		$scope.true = true;
+
 	}]
 );

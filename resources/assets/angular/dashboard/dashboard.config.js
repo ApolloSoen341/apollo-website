@@ -1,9 +1,12 @@
-app.config(['$routeProvider',
-	function($routeProvider) {
-		$routeProvider.
-		when('/', {
-			templateUrl: 'dashboard.html',
-			controller: 'DashboardController'
+(function () {
+	angular.module("StarterApp").config(function ($stateProvider) {
+		$stateProvider
+
+		.state('dashboard', {
+			url: "/dashboard",
+			templateUrl: "..\\angular\\dashboard\\dashboard.html",
+			controller: "DashboardController"
 		});
-	}]
-);
+
+	});
+})();
