@@ -1,0 +1,23 @@
+{
+  "name": "wamp",
+  "description": "Apollo",
+  "main": "",
+  "moduleType": [],
+  "authors": [
+    "Athena"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "^1.0.5",
+    "angular": "^1.5.0",
+    "angular-ui-router": "^0.2.18"
+  }
+}

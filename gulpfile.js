@@ -22,7 +22,7 @@ elixir(function(mix) {
 		"dashboard/dashboard.controller.js"
 	], "public/js/app.js", "resources/assets/angular");
 
-	mix.copy('resources/assets/angular/**/*.html', 'public/components');
+	mix.copy('resources/assets/angular/**/*.html', 'public/build');
 
 
 	// Angular mix recipe.

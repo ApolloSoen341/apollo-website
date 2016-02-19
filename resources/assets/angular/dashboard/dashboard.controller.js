@@ -1,6 +1,8 @@
-app.controller('DashboardController', ['$scope', '$http',
-	function ($scope, $http) {
-		$scope.test = 'Francis forgot that semicolon though... ->';
-		$scope.true = true;
-	}]
-);
+angular.module("StarterApp").controller("DashboardController",
+	["$scope", "$http", "$state", "$stateParams",
+		function ($scope, $http, $state, $stateParams) {
+
+
+
+
+			}]);

@@ -1,9 +1,12 @@
-app.config(['$stateProvider',
-	function($stateProvider) {
+(function () {
+	angular.module("StarterApp").config(function ($stateProvider) {
 		$stateProvider
-			.state('dashboard', {
-				templateUrl: 'dashboard.html', // whats this?
-				url: 'components/dashboard/dashboard.html'
+
+		.state('dashboard', {
+			url: "/dashboard",
+			templateUrl: "..\\angular\\dashboard\\dashboard.html",
+			controller: "DashboardController"
 		});
-	}]
-);
+
+	});
+})();
