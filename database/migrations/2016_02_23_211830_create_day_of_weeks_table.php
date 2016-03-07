@@ -14,7 +14,7 @@ class CreateDayOfWeeksTable extends Migration
     {
         Schema::create('day_of_weeks', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
         });
     }
 
