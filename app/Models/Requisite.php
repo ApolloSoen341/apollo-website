@@ -1,6 +1,6 @@
 <?php
 
-namespace apollo;
+namespace apollo\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,12 +19,12 @@ class Requisite extends Model
 	// Relations
 	public function requisite()
 	{
-		return $this->hasOne('apollo\\Course', 'id', 'course_requisite_id');
+		return $this->hasOne('apollo\\Models\\Course', 'id', 'course_requisite_id');
 	}
 
 	public function type()
 	{
-		return $this->hasOne('apollo\\RequisiteType', 'id', 'requisite_type_id');
+		return $this->hasOne('apollo\\Models\\RequisiteType', 'id', 'requisite_type_id');
 	}
 
 	// Class functions

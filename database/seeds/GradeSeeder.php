@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use apollo\Grade;
+
 class GradeSeeder extends Seeder
 {
     /**
@@ -11,6 +13,22 @@ class GradeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Grade::firstOrCreate(['name' => 'A+']);
+        Grade::firstOrCreate(['name' => 'A']);
+        Grade::firstOrCreate(['name' => 'A-']);
+
+        Grade::firstOrCreate(['name' => 'B+']);
+        Grade::firstOrCreate(['name' => 'B']);
+        Grade::firstOrCreate(['name' => 'B-']);
+
+        Grade::firstOrCreate(['name' => 'C+']);
+        Grade::firstOrCreate(['name' => 'C']);
+        Grade::firstOrCreate(['name' => 'C-']);
+
+        Grade::firstOrCreate(['name' => 'D+']);
+        Grade::firstOrCreate(['name' => 'D']);
+        Grade::firstOrCreate(['name' => 'D-']);
+
+        Grade::firstOrCreate(['name' => 'F']);
     }
 }

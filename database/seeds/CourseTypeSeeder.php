@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use apollo\CourseType;
+
 class CourseTypeSeeder extends Seeder
 {
     /**
@@ -11,6 +13,8 @@ class CourseTypeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        CourseType::firstOrCreate(['name' => 'Lecture']);
+        CourseType::firstOrCreate(['name' => 'Lab']);
+        CourseType::firstOrCreate(['name' => 'Tutorial']);
     }
 }

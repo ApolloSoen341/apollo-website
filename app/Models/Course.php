@@ -1,6 +1,6 @@
 <?php
 
-namespace apollo;
+namespace apollo\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -24,7 +24,7 @@ class Course extends Model
 	// Relations
 	public function faculty()
 	{
-		return $this->hasOne('apollo\\Faculty', 'id', 'faculty_id');
+		return $this->hasOne('apollo\\Models\\Faculty', 'id', 'faculty_id');
 	}
 
 	public function prerequisites()
