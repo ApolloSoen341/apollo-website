@@ -18,7 +18,7 @@ class CreateStudentsTable extends Migration
             $table->string('last_name');
             $table->string('username')->unique();
             $table->string('password');
-            $table->string('number', 4);
+            $table->string('number', 4)->unique();
         });
     }
 
