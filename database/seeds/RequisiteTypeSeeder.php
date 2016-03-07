@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-use apollo\RequisiteType;
+use apollo\Models\RequisiteType;
 
 class RequisiteTypeSeeder extends Seeder
 {

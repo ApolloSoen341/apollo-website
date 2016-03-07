@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-use apollo\CourseType;
+use apollo\Models\CourseType;
 
 class CourseTypeSeeder extends Seeder
 {

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-use apollo\Grade;
+use apollo\Models\Grade;
 
 class GradeSeeder extends Seeder
 {

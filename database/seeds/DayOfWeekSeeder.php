@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-use apollo\DayOfWeek;
+use apollo\Models\DayOfWeek;
 
 class DayOfWeekSeeder extends Seeder
 {
