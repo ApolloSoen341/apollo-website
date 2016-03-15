@@ -2,20 +2,12 @@
 
 namespace apollo\Http\Controllers;
 
-use apollo\Models\Student;
 use Illuminate\Http\Request;
 
 use apollo\Http\Requests;
 use apollo\Http\Controllers\Controller;
 
-
-/*
- ***************************************
- *
- * Should be UserController instead ?
- *
- */
-class StudentController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +16,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::all();
+        $students = User::all();
         return response()->json($students);
     }
 
@@ -48,7 +40,7 @@ class StudentController extends Controller
     {
         $input = $request->input();
 
-        $student = new Student;
+        $student = new User;
         $student->first_name = $input['first_name'];
         $student->last_name = $input['last_name'];
         $student->username = $input['username'];
@@ -65,8 +57,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-
-        $student = Student::all()->where('id', $id);
+        $student = User::all()->where('id', $id);
         return response()->json($student);
     }
 
@@ -92,7 +83,7 @@ class StudentController extends Controller
     {
         $input = $request->input();
 
-        $student = Student::all()->where('id', $id);
+        $student = User::all()->where('id', $id);
         $student->first_name = $input['first_name'];
         $student->last_name = $input['last_name'];
         $student->username = $input['username'];
@@ -109,6 +100,6 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        Student::destroy($id);
+        User::destroy($id);
     }
 }

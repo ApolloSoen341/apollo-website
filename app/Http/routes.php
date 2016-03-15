@@ -31,7 +31,7 @@ Route::group(['middleware' => ['web']], function () {
 });
 
 Route::resource('course','CourseController');
-Route::resource('student', 'StudentController');
-Route::resource('student.preference', 'PreferenceController');
-Route::resource('student.coursehistory', 'CourseHistoryController');
+Route::resource('user', 'UserController');
+Route::resource('user.preference', 'PreferenceController');
+Route::resource('user.coursehistory', 'CourseHistoryController');
 Route::resource('scheduledcourse', 'ScheduledCourseController');
