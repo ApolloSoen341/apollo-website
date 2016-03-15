@@ -70,7 +70,7 @@ class PreferenceController extends Controller
      */
     public function edit($id)
     {
-        //
+        // return view
     }
 
     /**
@@ -82,7 +82,14 @@ class PreferenceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->input();
+
+        $preference = Preference::all()->where('id', $id);
+        $preference->student_id = $input['student_id'];
+        $preference->day_of_week_id = $input['day_of_week'];
+        $preference->start = $input['start'];
+        $preference->end = $input['end'];
+        $preference->save();
     }
 
     /**
@@ -93,6 +100,6 @@ class PreferenceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Preference::destroy($id);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace apollo\Http\Controllers;
 
+use apollo\Models\ScheduledCourse;
 use Illuminate\Http\Request;
 
 use apollo\Http\Requests;
@@ -16,7 +17,8 @@ class ScheduledCourseController extends Controller
      */
     public function index()
     {
-        //
+        $courses = ScheduledCourse::all();
+        return response()->json($courses);
     }
 
     /**
@@ -26,7 +28,7 @@ class ScheduledCourseController extends Controller
      */
     public function create()
     {
-        //
+        // return view
     }
 
     /**
@@ -37,7 +39,12 @@ class ScheduledCourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->input();
+
+        $course = new ScheduledCourse;
+        $course->course_id = $input['course_id'];
+        $course->session_id = $input['session_id'];
+        $course->save();
     }
 
     /**
@@ -48,7 +55,8 @@ class ScheduledCourseController extends Controller
      */
     public function show($id)
     {
-        //
+        $course = ScheduledCourse::all()->where('id', $id);
+        return response()->json($course);
     }
 
     /**
@@ -59,7 +67,7 @@ class ScheduledCourseController extends Controller
      */
     public function edit($id)
     {
-        //
+        // return view
     }
 
     /**
@@ -71,7 +79,12 @@ class ScheduledCourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->input();
+
+        $course = ScheduledCourse::all()->where('id', $id);
+        $course->course_id = $input['course_id'];
+        $course->session_id = $input['session_id'];
+        $course->save();
     }
 
     /**
@@ -82,6 +95,6 @@ class ScheduledCourseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        ScheduledCourse::destroy($id);
     }
 }

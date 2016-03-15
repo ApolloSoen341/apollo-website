@@ -2,23 +2,23 @@
 
 namespace apollo\Http\Controllers;
 
-use apollo\Models\CourseHistory;
+use apollo\Models\Session;
 use Illuminate\Http\Request;
 
 use apollo\Http\Requests;
 use apollo\Http\Controllers\Controller;
 
-class CourseHistoryController extends Controller
+class SessionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($studentid)
+    public function index()
     {
-        $courses = CourseHistory::all()->where('student_id', $studentid);
-        return response()->json($courses);
+        $sessions = Session::all();
+        return response()->json($sessions);
     }
 
     /**
@@ -28,7 +28,7 @@ class CourseHistoryController extends Controller
      */
     public function create()
     {
-        // return view
+        //
     }
 
     /**
@@ -41,11 +41,9 @@ class CourseHistoryController extends Controller
     {
         $input = $request->input();
 
-        $courseHistory = new CourseHistory;
-        $courseHistory->student_id = $input['student_id'];
-        $courseHistory->scheduled_course_id = $input['scheduled_course_id'];
-        $courseHistory->grade_id = $input['grade'];
-        $courseHistory->save();
+        $session = new Session;
+        $session->name = $input['name'];
+        $session->save();
     }
 
     /**
@@ -54,10 +52,10 @@ class CourseHistoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($studentid, $id)
+    public function show($id)
     {
-        $courseHistory = CourseHistory::all()->where('student_id', $studentid)->where('id', $id);
-        return response()->json($courseHistory);
+        $session = Session::all()->where('id', $id);
+        return response()->json($session);
     }
 
     /**
@@ -68,7 +66,7 @@ class CourseHistoryController extends Controller
      */
     public function edit($id)
     {
-        // return view
+        //
     }
 
     /**
@@ -82,11 +80,9 @@ class CourseHistoryController extends Controller
     {
         $input = $request->input();
 
-        $courseHistory = CourseHistory::all()->where('id', $id);
-        $courseHistory->student_id = $input['student_id'];
-        $courseHistory->scheduled_course_id = $input['scheduled_course_id'];
-        $courseHistory->grade_id = $input['grade'];
-        $courseHistory->save();
+        $session = Session::all()->where('id', $id);
+        $session->name = $input['name'];
+        $session->save();
     }
 
     /**
@@ -97,6 +93,6 @@ class CourseHistoryController extends Controller
      */
     public function destroy($id)
     {
-        CourseHistory::destroy($id);
+        Session::destroy($id);
     }
 }

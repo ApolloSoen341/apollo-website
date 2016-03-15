@@ -34,3 +34,4 @@ Route::resource('course','CourseController');
 Route::resource('student', 'StudentController');
 Route::resource('student.preference', 'PreferenceController');
 Route::resource('student.coursehistory', 'CourseHistoryController');
+Route::resource('scheduledcourse', 'ScheduledCourseController');

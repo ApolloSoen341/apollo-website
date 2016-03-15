@@ -2,11 +2,19 @@
 
 namespace apollo\Http\Controllers;
 
+use apollo\Models\Student;
 use Illuminate\Http\Request;
 
 use apollo\Http\Requests;
 use apollo\Http\Controllers\Controller;
 
+
+/*
+ ***************************************
+ *
+ * Should be UserController instead ?
+ *
+ */
 class StudentController extends Controller
 {
     /**
@@ -16,7 +24,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $students = Student::all();
+        return response()->json($students);
     }
 
     /**
@@ -37,7 +46,15 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->input();
+
+        $student = new Student;
+        $student->first_name = $input['first_name'];
+        $student->last_name = $input['last_name'];
+        $student->username = $input['username'];
+        $student->password = $input['password'];
+        $student->number = $input['number'];
+        $student->save();
     }
 
     /**
@@ -48,7 +65,9 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $student = Student::all()->where('id', $id);
+        return response()->json($student);
     }
 
     /**
@@ -71,7 +90,15 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->input();
+
+        $student = Student::all()->where('id', $id);
+        $student->first_name = $input['first_name'];
+        $student->last_name = $input['last_name'];
+        $student->username = $input['username'];
+        $student->password = $input['password'];
+        $student->number = $input['number'];
+        $student->save();
     }
 
     /**
@@ -82,6 +109,6 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Student::destroy($id);
     }
 }
