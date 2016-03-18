@@ -1,3 +1,12 @@
-/**
- * Created by fbouc_000 on 3/18/2016.
- */
+(function () {
+    angular.module("StarterApp").config(function ($stateProvider) {
+        $stateProvider
+
+            .state('homepage', {
+                url: "/#",
+                templateUrl: "..\\resources\\views\\homepage.html",
+                controller: "HomepageController"
+            });
+
+    });
+})();

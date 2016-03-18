@@ -55,19 +55,19 @@
             <md-divider></md-divider>
             <md-list class="md-dense" ng-cloak>
                 <md-list-item ng-href="/public/#/courses">
-                    <h5>View Courses</h5>
+                    <p>View Courses</p>
                 </md-list-item>
                 <md-list-item ng-href="/public/#/scheduler">
-                    <h5>Scheduler</h5>
+                    <p>Scheduler</p>
                 </md-list-item>
                 <md-list-item ng-href="/public/#/academics">
-                    <h5>View My Academics</h5>
+                    <p>View My Academics</p>
                 </md-list-item>
                 <md-list-item class="secondary-button-padding" ng-href="/public/#/curentschedule">
-                    <h5>View My Current Schedule</h5>
+                    <p>View My Current Schedule</p>
                 </md-list-item>
                 <md-list-item class="secondary-button-padding" ng-href="/public/#/sequence">
-                    <h5>View Sequences</h5>
+                    <p>View Sequences</p>
                 </md-list-item>
             </md-list>
         </md-sidenav>
