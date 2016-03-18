@@ -23,6 +23,7 @@
         <script src="..\bower_components\angular-material\angular-material.min.js"></script>
         <script src="..\resources\views\app.js"></script>
         <script src="..\resources\assets\angular\course\course.config.js"></script>
+        <script src="..\resources\assets\angular\user-settings\user-settings.config.js"></script>
 
         <link rel="stylesheet" type="text/css" href="..\public\main.css">
 
