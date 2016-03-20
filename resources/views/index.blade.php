@@ -23,6 +23,9 @@
         <script src="..\bower_components\angular-material\angular-material.min.js"></script>
         <script src="..\resources\views\app.js"></script>
         <script src="..\resources\assets\angular\course\course.config.js"></script>
+        <script src="..\resources\assets\angular\user-settings\user-settings.config.js"></script>
+        <script src="..\resources\assets\angular\user-settings\user-settings.controller.js"></script>
+        <script src="..\resources\assets\angular\schedule-generator\schedule-generator.config.js"></script>
 
 
         <link rel="stylesheet" type="text/css" href="..\public\main.css">
@@ -58,17 +61,20 @@
                 <md-list-item ng-href="/public/#/courses">
                     <p>View Courses</p>
                 </md-list-item>
-                <md-list-item ng-href="/public/#/scheduler">
-                    <p>Scheduler</p>
+                <md-list-item class="secondary-button-padding" ng-href="/public/#/schedule-generator">
+                    <p>Schedule Generator</p>
                 </md-list-item>
                 <md-list-item ng-href="/public/#/academics">
                     <p>View My Academics</p>
                 </md-list-item>
-                <md-list-item class="secondary-button-padding" ng-href="/public/#/curentschedule">
+                <md-list-item class="secondary-button-padding" ng-href="/public/#/currentschedule">
                     <p>View My Current Schedule</p>
                 </md-list-item>
                 <md-list-item class="secondary-button-padding" ng-href="/public/#/sequence">
                     <p>View Sequences</p>
+                </md-list-item>
+                <md-list-item class="secondary-button-padding" ng-href="/public/#/user-settings">
+                    <p>User Settings</p>
                 </md-list-item>
             </md-list>
         </md-sidenav>
