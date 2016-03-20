@@ -24,6 +24,7 @@
         <script src="..\resources\views\app.js"></script>
         <script src="..\resources\assets\angular\course\course.config.js"></script>
 
+
         <link rel="stylesheet" type="text/css" href="..\public\main.css">
 
 
