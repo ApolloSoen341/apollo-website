@@ -30,8 +30,10 @@ Route::group(['middleware' => ['web']], function () {
     //
 });
 
-Route::resource('course','CourseController');
-Route::resource('user', 'UserController');
-Route::resource('user.preference', 'PreferenceController');
-Route::resource('user.coursehistory', 'CourseHistoryController');
-Route::resource('scheduledcourse', 'ScheduledCourseController');
+Route::group(['prefix' => 'api', 'namespace' => 'REST'], function(){
+    Route::resource('course','CourseController');
+    Route::resource('user', 'UserController');
+    Route::resource('user.preference', 'PreferenceController');
+    Route::resource('user.coursehistory', 'CourseHistoryController');
+    Route::resource('scheduledcourse', 'ScheduledCourseController');
+});

@@ -1,6 +1,6 @@
 <?php
 
-namespace apollo\Http\Controllers;
+namespace apollo\Http\Controllers\REST;
 
 use Illuminate\Http\Request;
 
@@ -21,21 +21,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::all();
+        $courses = Course::with('faculty', 'prerequisites', 'corequisites')->get();
         return response()->json($courses);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $faculties = Faculty::all();
-        $courses = Course::all();
-
-        // return view('course.create', compact('courses', 'faculties'));
     }
 
     /**
@@ -50,6 +37,7 @@ class CourseController extends Controller
 
         $course = new Course;
         $course->name = $input['course_name'];
+        $course->title = $input['title'];
         $course->credits = $input['course_credits'];
         $course->description = $input['course_description'];
         $course->faculty_id = $input['faculty_id'];
@@ -74,17 +62,6 @@ class CourseController extends Controller
     {
         $course = Course::with('faculty', 'prerequisites', 'corequisites')->where('id', $id)->first();
         return response()->json($course);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        // return view
     }
 
     /**
