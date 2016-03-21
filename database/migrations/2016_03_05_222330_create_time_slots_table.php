@@ -15,6 +15,7 @@ class CreateTimeSlotsTable extends Migration
         Schema::create('time_slots', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('scheduled_course_id')->unsigned();
+            $table->string('section');
             $table->string('room');
             $table->time('time_start');
             $table->time('time_end');
