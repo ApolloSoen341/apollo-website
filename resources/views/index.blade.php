@@ -41,7 +41,7 @@
             <md-button ng-click="openLeftMenu()">
                 <md-icon aria-label="Menu" md-svg-icon="..\imgs\ic_menu_white_24px.svg"></md-icon>
             </md-button>
-            <h1>Apollo</h1>
+            <a href="/public"><h1>Apollo</h1></a>
         </div>
     </md-toolbar>
     <md-content layout="row" flex>
@@ -60,6 +60,9 @@
             </div>
             <md-divider></md-divider>
             <md-list class="md-dense" ng-cloak>
+                <md-list-item ng-href="/public">
+                    <p>Home</p>
+                </md-list-item>
                 <md-list-item ng-href="/public/#/courses">
                     <p>View Courses</p>
                 </md-list-item>
