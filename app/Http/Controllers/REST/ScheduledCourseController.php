@@ -1,6 +1,6 @@
 <?php
 
-namespace apollo\Http\Controllers;
+namespace apollo\Http\Controllers\REST;
 
 use apollo\Models\ScheduledCourse;
 use Illuminate\Http\Request;
@@ -17,18 +17,8 @@ class ScheduledCourseController extends Controller
      */
     public function index()
     {
-        $courses = ScheduledCourse::all();
-        return response()->json($courses);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        // return view
+        $scheduled_courses = ScheduledCourse::all();
+        return response()->json($scheduled_courses);
     }
 
     /**
@@ -60,17 +50,6 @@ class ScheduledCourseController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        // return view
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -81,10 +60,10 @@ class ScheduledCourseController extends Controller
     {
         $input = $request->input();
 
-        $course = ScheduledCourse::all()->where('id', $id);
-        $course->course_id = $input['course_id'];
-        $course->session_id = $input['session_id'];
-        $course->save();
+        $scheduled_courses = ScheduledCourse::all()->where('id', $id);
+        $scheduled_courses->course_id = $input['course_id'];
+        $scheduled_courses->session_id = $input['session_id'];
+        $scheduled_courses->save();
     }
 
     /**

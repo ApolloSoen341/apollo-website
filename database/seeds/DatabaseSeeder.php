@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DayOfWeekSeeder::class);
         $this->call(GradeSeeder::class);
         $this->call(RequisiteTypeSeeder::class);
+        $this->call(SessionSeeder::class);
     }
 }

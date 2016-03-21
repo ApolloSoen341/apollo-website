@@ -1,6 +1,6 @@
 <?php
 
-namespace apollo\Http\Controllers;
+namespace apollo\Http\Controllers\REST;
 
 use apollo\Models\Session;
 use Illuminate\Http\Request;
@@ -19,16 +19,6 @@ class SessionController extends Controller
     {
         $sessions = Session::all();
         return response()->json($sessions);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -56,17 +46,6 @@ class SessionController extends Controller
     {
         $session = Session::all()->where('id', $id);
         return response()->json($session);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**

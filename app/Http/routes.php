@@ -32,6 +32,7 @@ Route::group(['middleware' => ['web']], function () {
 
 Route::group(['prefix' => 'api', 'namespace' => 'REST'], function(){
     Route::resource('course','CourseController');
+    Route::resource('session','SessionController');
     Route::resource('user', 'UserController');
     Route::resource('user.preference', 'PreferenceController');
     Route::resource('user.coursehistory', 'CourseHistoryController');
