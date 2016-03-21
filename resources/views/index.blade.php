@@ -81,7 +81,7 @@
                 </md-list-item>
             </md-list>
         </md-sidenav>
-        <div flex="20"></div>
+        {{--<div flex="20"></div>--}}
         <div class="content" ui-view flex>
             <!-- CONTENT GOES HERE -->
         </div>

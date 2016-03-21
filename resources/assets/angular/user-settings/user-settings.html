@@ -1,6 +1,5 @@
 <div layout="column" layout-align="start center" flex>
-
-    <div>
+    <div layout-padding>
         <card-avatar></card-avatar>
     </div>
 
@@ -26,34 +25,241 @@
                 <div flex="55">Computer Games</div>
             </div>
         </md-card-content>
+
         <md-divider></md-divider>
 
-
-
-        <md-card-title>
-            <span class="md-headline">Change Password</span>
-            <md-card-actions layout="column" layout-align="start end">
-                <md-button>
-                    <svg style="width:32px;height:32px" viewBox="0 0 24 24">
-                        <path fill="#000000" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-                    </svg>
+        <md-card-actions layout="row" layout-align="start center">
+            <md-button>Change Password</md-button>
+            <!--<span class="ng-scope">Change Password</span>-->
+            <md-card-icon-actions>
+                <md-button class="md-icon-button" aria-label="toggle">
+                    <md-icon md-svg-icon="md-toggle-arrow"></md-icon>
                 </md-button>
-            </md-card-actions>
-        </md-card-title>
+            </md-card-icon-actions>
+        </md-card-actions>
+        <md-card-content>
+            <form ng-submit="authenticate()" name="changePasswordForm">
+                <div layout = "row">
+                    <md-input-container>
+                        <label>New Password</label>
+                        <input name="newPassword" type="password" ng-model="loginInfo.password" required/>
+                        <div ng-messages="loginForm.password.$error" ng-if='loginForm.password.$dirty'>
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout = "row">
+                    <md-input-container>
+                        <label>Confirm Password</label>
+                        <input name="confirmPassword" type="password" ng-model="loginInfo.password" required/>
+                        <div ng-messages="loginForm.password.$error" ng-if='loginForm.password.$dirty'>
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout = "row" layout-align="end center">
+                    <md-button type="submit" class="md-primary btn btn-primary">Submit</md-button>
+                </div>
+            </form>
+        </md-card-content>
+
         <md-divider></md-divider>
-        <md-card-title>
-            <span class="md-headline">Edit Preferences</span>
-            <md-card-actions layout="column" layout-align="start end">
-                <md-button>
-                    <svg style="width:32px;height:32px" viewBox="0 0 24 24">
-                        <path fill="#000000" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-                    </svg>
+
+        <md-card-actions layout="row" layout-align="start center">
+            <md-button>Edit Preferences</md-button>
+            <md-card-icon-actions>
+                <md-button class="md-icon-button" aria-label="toggle">
+                    <md-icon md-svg-icon="md-toggle-arrow"></md-icon>
                 </md-button>
-            </md-card-actions>
-        </md-card-title>
-    </md-card>
+            </md-card-icon-actions>
+        </md-card-actions>
+        <md-card-content>
+            <form ng-submit="submit()" name="updatePreferencesForm">
+                <div layout = "row">
+                    <div flex="100" flex-gt-sm="50" layout="column">
+                        <div >
+                            <fieldset class="standard">
+                                <legend>Time Preferences</legend>
+                                <div layout="row">
+                                    <div layout="column"layout-wrap layout-gt-sm="row" layout-padding>
+                                        <div layout-padding>Times</div>
+                                        <div flex-xs flex="50">All Day</div>
+                                        <div flex-xs flex="50">Morning</div>
+                                        <div flex-xs flex="50">Afternoon</div>
+                                        <div flex-xs flex="50">Evening</div>
+                                    </div>
+                                    <!-- MONDAY -->
+                                    <div layout="column" layout-wrap layout-gt-sm="row" >
+                                        <div flex-xs flex="50"><p>Monday</p></div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1" class="md-primary">
+                                                {{ data.cb1 }}
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox
+                                                    ng-model="data.cb2"
+                                                    aria-label="Checkbox 2"
+                                                    ng-true-value="'yup'"
+                                                    ng-false-value="'nope'"
+                                                    class="md-primary">
+                                                {{ data.cb2 }}
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox ng-disabled="true" aria-label="Disabled checkbox" ng-model="data.cb3" class="md-primary">
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox ng-disabled="true" aria-label="Disabled checked checkbox" ng-model="data.cb4" ng-init="data.cb4=true">
+                                            </md-checkbox>
+                                        </div>
+                                    </div>
+                                    <!-- TUESDAY -->
+                                    <div layout="column" layout-wrap layout-gt-sm="row" >
+                                        <div flex-xs flex="50"><p>Tuesday</p></div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1" class="md-primary">
+                                                {{ data.cb1 }}
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox
+                                                    ng-model="data.cb2"
+                                                    aria-label="Checkbox 2"
+                                                    ng-true-value="'yup'"
+                                                    ng-false-value="'nope'"
+                                                    class="md-primary">
+                                                {{ data.cb2 }}
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox ng-disabled="true" aria-label="Disabled checkbox" ng-model="data.cb3" class="md-primary">
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox ng-disabled="true" aria-label="Disabled checked checkbox" ng-model="data.cb4" ng-init="data.cb4=true">
+                                            </md-checkbox>
+                                        </div>
+                                    </div>
+                                    <!-- WEDNESDAY -->
+                                    <div layout="column" layout-wrap layout-gt-sm="row" >
+                                        <div flex-xs flex="50"><p>Wednesday</p></div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1" class="md-primary">
+                                                {{ data.cb1 }}
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox
+                                                    ng-model="data.cb2"
+                                                    aria-label="Checkbox 2"
+                                                    ng-true-value="'yup'"
+                                                    ng-false-value="'nope'"
+                                                    class="md-primary">
+                                                {{ data.cb2 }}
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox ng-disabled="true" aria-label="Disabled checkbox" ng-model="data.cb3" class="md-primary">
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox ng-disabled="true" aria-label="Disabled checked checkbox" ng-model="data.cb4" ng-init="data.cb4=true">
+                                            </md-checkbox>
+                                        </div>
+                                    </div>
+                                    <!-- THURSDAY -->
+                                    <div layout="column" layout-wrap layout-gt-sm="row" >
+                                        <div flex-xs flex="50"><p>Thursday</p></div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1" class="md-primary">
+                                                {{ data.cb1 }}
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox
+                                                    ng-model="data.cb2"
+                                                    aria-label="Checkbox 2"
+                                                    ng-true-value="'yup'"
+                                                    ng-false-value="'nope'"
+                                                    class="md-primary">
+                                                {{ data.cb2 }}
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox ng-disabled="true" aria-label="Disabled checkbox" ng-model="data.cb3" class="md-primary">
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox ng-disabled="true" aria-label="Disabled checked checkbox" ng-model="data.cb4" ng-init="data.cb4=true">
+                                            </md-checkbox>
+                                        </div>
+                                    </div>
+                                    <!-- FRIDAY -->
+                                    <div layout="column" layout-wrap layout-gt-sm="row" >
+                                        <div flex-xs flex="50"><p>Friday</p></div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1" class="md-primary">
+                                                {{ data.cb1 }}
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox
+                                                    ng-model="data.cb2"
+                                                    aria-label="Checkbox 2"
+                                                    ng-true-value="'yup'"
+                                                    ng-false-value="'nope'"
+                                                    class="md-primary">
+                                                {{ data.cb2 }}
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox ng-disabled="true" aria-label="Disabled checkbox" ng-model="data.cb3" class="md-primary">
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox ng-disabled="true" aria-label="Disabled checked checkbox" ng-model="data.cb4" ng-init="data.cb4=true">
+                                            </md-checkbox>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+
+                <div layout = "row" layout-align="end center">
+                    <md-button type="submit" class="md-primary btn btn-primary">Save</md-button>
+                </div>
+            </form>
+        </md-card-content>
+
+
 
 </div>
 
 
+<!-- Previous code -->
+<!--<md-card-title>-->
+<!--<span class="md-headline">Change Password</span>-->
+<!--<md-card-actions layout="column" layout-align="start end">-->
+<!--<md-button>-->
+<!--<svg style="width:32px;height:32px" viewBox="0 0 24 24">-->
+<!--<path fill="#000000" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />-->
+<!--</svg>-->
+<!--</md-button>-->
+<!--</md-card-actions>-->
+<!--</md-card-title>-->
 
+<!--<md-card-title>-->
+<!--<span class="md-headline">Edit Preferences</span>-->
+<!--<md-card-actions layout="column" layout-align="start end">-->
+<!--<md-button>-->
+<!--<svg style="width:32px;height:32px" viewBox="0 0 24 24">-->
+<!--<path fill="#000000" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />-->
+<!--</svg>-->
+<!--</md-button>-->
+<!--</md-card-actions>-->
+<!--</md-card-title>-->
+<!--</md-card>-->
