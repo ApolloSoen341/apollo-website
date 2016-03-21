@@ -26,6 +26,8 @@
         <script src="..\resources\assets\angular\user-settings\user-settings.config.js"></script>
         <script src="..\resources\assets\angular\user-settings\user-settings.controller.js"></script>
         <script src="..\resources\assets\angular\schedule-generator\schedule-generator.config.js"></script>
+        <script src="..\resources\assets\angular\schedule-generator\schedule-generator.controller.js"></script>
+
 
 
         <link rel="stylesheet" type="text/css" href="..\public\main.css">
