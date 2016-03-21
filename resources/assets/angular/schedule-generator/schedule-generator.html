@@ -1,8 +1,50 @@
-<div layout="row">
+<div layout="column">
     <div flex="5">
-        <h3 class="md-hue-1">Select Courses</h3>
+        <h3 style="color:#2196f3;">Select Courses</h3>
     </div>
-    <md-content>
-        <md-button class="md-raised">button</md-button>
-    </md-content>
+    <div layout="row">
+        <div flex="40">
+        <md-input-container class="md-block">
+        <md-icon md-svg-src="..\imgs\ic_search_black_24px.svg"></md-icon>
+        <input ng-model="search" type="search" placeholder="Search">
+        </md-input-container>
+    </div>
+        <div flex="10"></div>
+        <div>
+            <md-button class="md-raised"> Generate </md-button>
+        </div>
+    </div>
+    <div flex="30" layout="row">
+    <div flex="80">
+        <md-chips ng-model="selectedCourses" name="selectedCourses" md-max-chips="6">
+            <md-chip-template>
+                <strong>{{$chip.code}}</strong>
+                <em>{{$chip.name}}</em>
+            </md-chip-template>
+        </md-chips>
+    </div>
+    </div>
+    <div layout="row">
+    <div flex="80">
+        <table>
+            <tbody ng-repeat='course in courses | filter:{code: search}' >
+            <tr>
+                <td ng-click="collapse=!collapse" width="100%">{{course.code}} - {{course.name}}</td>
+                <td><md-button class="md-raised md-primary" ng-click="addCourse(course)"> ADD </md-button></td>
+            </tr>
+            <tr ng-show=collapse>
+                <td colspan="2">
+                    Prerequisites: {{course.prerequisites}}<br>
+                    Corequisites: {{course.corequisites}}<br>
+                    Credits: {{course.credits}}<br>
+                    Faculty: {{course.faculty}}<br>
+                    {{ course.description }}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
 </div>
+
+<em>{{selectedCourses}}</em>
