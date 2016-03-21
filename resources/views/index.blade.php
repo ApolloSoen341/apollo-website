@@ -29,10 +29,6 @@
         <script src="..\resources\assets\angular\schedule-generator\schedule-generator.controller.js"></script>
 
 
-
-        <link rel="stylesheet" type="text/css" href="..\public\main.css">
-
-
     </head>
     <body ng-controller="AppCtrl" layout="column">
 
