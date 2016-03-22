@@ -80,150 +80,198 @@
                         <div >
                             <fieldset class="standard">
                                 <legend>Time Preferences</legend>
+                                <!--Preference checkboxes -->
                                 <div layout="row">
-                                    <div layout="column"layout-wrap layout-gt-sm="row" layout-padding>
+                                    <div layout="column" layout-padding>
                                         <div layout-padding>Times</div>
                                         <div flex-xs flex="50">All Day</div>
                                         <div flex-xs flex="50">Morning</div>
                                         <div flex-xs flex="50">Afternoon</div>
                                         <div flex-xs flex="50">Evening</div>
                                     </div>
+
                                     <!-- MONDAY -->
-                                    <div layout="column" layout-wrap layout-gt-sm="row" >
-                                        <div flex-xs flex="50"><p>Monday</p></div>
+                                    <div layout="column" layout-align="center center" layout-padding>
+                                        <div layout-padding>Monday</div>
                                         <div flex-xs flex="50">
-                                            <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1" class="md-primary">
-                                                {{ data.cb1 }}
+                                            <md-checkbox
+                                                    ng-model="data.monAll"
+                                                    ng-disabled="data.monAm || data.monDay || data.monPm"
+                                                    aria-label="Monday All Day"
+                                                    class="md-primary">
                                             </md-checkbox>
                                         </div>
                                         <div flex-xs flex="50">
                                             <md-checkbox
-                                                    ng-model="data.cb2"
-                                                    aria-label="Checkbox 2"
-                                                    ng-true-value="'yup'"
-                                                    ng-false-value="'nope'"
+                                                    ng-model="data.monAm"
+                                                    ng-disabled="data.monAll"
+                                                    aria-label="Monday Morning"
                                                     class="md-primary">
-                                                {{ data.cb2 }}
                                             </md-checkbox>
                                         </div>
                                         <div flex-xs flex="50">
-                                            <md-checkbox ng-disabled="true" aria-label="Disabled checkbox" ng-model="data.cb3" class="md-primary">
+                                            <md-checkbox
+                                                    ng-model="data.monDay"
+                                                    ng-disabled="data.monAll"
+                                                    aria-label="Monday Afternoon"
+                                                    class="md-primary">
                                             </md-checkbox>
                                         </div>
                                         <div flex-xs flex="50">
-                                            <md-checkbox ng-disabled="true" aria-label="Disabled checked checkbox" ng-model="data.cb4" ng-init="data.cb4=true">
+                                            <md-checkbox
+                                                    ng-model="data.monPm"
+                                                    ng-disabled="data.monAll"
+                                                    aria-label="Monday Evening"
+                                                    class="md-primary">
                                             </md-checkbox>
                                         </div>
                                     </div>
                                     <!-- TUESDAY -->
-                                    <div layout="column" layout-wrap layout-gt-sm="row" >
-                                        <div flex-xs flex="50"><p>Tuesday</p></div>
+                                    <div layout="column"  layout-align="center center" layout-padding>
+                                        <div layout-padding>Tuesday</div>
                                         <div flex-xs flex="50">
-                                            <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1" class="md-primary">
-                                                {{ data.cb1 }}
+                                            <md-checkbox
+                                                    ng-model="data.tuesAll"
+                                                    ng-disabled="data.tuesAm || data.tuesDay || data.tuesPm"
+                                                    aria-label="Tuesday All Day"
+                                                    class="md-primary">
                                             </md-checkbox>
                                         </div>
                                         <div flex-xs flex="50">
                                             <md-checkbox
-                                                    ng-model="data.cb2"
-                                                    aria-label="Checkbox 2"
-                                                    ng-true-value="'yup'"
-                                                    ng-false-value="'nope'"
+                                                    ng-model="data.tuesAm"
+                                                    ng-disabled="data.tuesAll"
+                                                    aria-label="Tuesday Morning"
                                                     class="md-primary">
-                                                {{ data.cb2 }}
                                             </md-checkbox>
                                         </div>
                                         <div flex-xs flex="50">
-                                            <md-checkbox ng-disabled="true" aria-label="Disabled checkbox" ng-model="data.cb3" class="md-primary">
+                                            <md-checkbox
+                                                    ng-model="data.tuesDay"
+                                                    ng-disabled="data.tuesAll"
+                                                    aria-label="Tuesday Afternoon"
+                                                    class="md-primary">
                                             </md-checkbox>
                                         </div>
                                         <div flex-xs flex="50">
-                                            <md-checkbox ng-disabled="true" aria-label="Disabled checked checkbox" ng-model="data.cb4" ng-init="data.cb4=true">
+                                            <md-checkbox
+                                                    ng-model="data.tuesPm"
+                                                    ng-disabled="data.tuesAll"
+                                                    aria-label="Tuesday Evening"
+                                                    class="md-primary">
                                             </md-checkbox>
                                         </div>
                                     </div>
                                     <!-- WEDNESDAY -->
-                                    <div layout="column" layout-wrap layout-gt-sm="row" >
-                                        <div flex-xs flex="50"><p>Wednesday</p></div>
+                                    <div layout="column" layout-align="center center" layout-padding>
+                                        <div layout-pading>Wednesday</div>
                                         <div flex-xs flex="50">
-                                            <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1" class="md-primary">
-                                                {{ data.cb1 }}
+                                            <md-checkbox
+                                                    ng-model="data.wedAll"
+                                                    ng-disabled="data.wedAm || data.wedDay || data.wedPm"
+                                                    aria-label="Wednesday All Day"
+                                                    class="md-primary">
                                             </md-checkbox>
                                         </div>
                                         <div flex-xs flex="50">
                                             <md-checkbox
-                                                    ng-model="data.cb2"
-                                                    aria-label="Checkbox 2"
-                                                    ng-true-value="'yup'"
-                                                    ng-false-value="'nope'"
+                                                    ng-model="data.wedAm"
+                                                    ng-disabled="data.wedAll"
+                                                    aria-label="Wednesday Morning"
                                                     class="md-primary">
-                                                {{ data.cb2 }}
                                             </md-checkbox>
                                         </div>
                                         <div flex-xs flex="50">
-                                            <md-checkbox ng-disabled="true" aria-label="Disabled checkbox" ng-model="data.cb3" class="md-primary">
+                                            <md-checkbox
+                                                    ng-model="data.wedDay"
+                                                    ng-disabled="data.wedAll"
+                                                    aria-label="Wednesday Afternoon"
+                                                    class="md-primary">
                                             </md-checkbox>
                                         </div>
                                         <div flex-xs flex="50">
-                                            <md-checkbox ng-disabled="true" aria-label="Disabled checked checkbox" ng-model="data.cb4" ng-init="data.cb4=true">
+                                            <md-checkbox
+                                                    ng-model="data.wedPm"
+                                                    ng-disabled="data.wedAll"
+                                                    aria-label="Wednesday Evening"
+                                                    class="md-primary">
                                             </md-checkbox>
                                         </div>
                                     </div>
                                     <!-- THURSDAY -->
-                                    <div layout="column" layout-wrap layout-gt-sm="row" >
-                                        <div flex-xs flex="50"><p>Thursday</p></div>
+                                    <div layout="column" layout-align="center center" layout-padding>
+                                        <div layout-padding>Thursday</div>
                                         <div flex-xs flex="50">
-                                            <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1" class="md-primary">
-                                                {{ data.cb1 }}
+                                            <md-checkbox
+                                                    ng-model="data.thursAll"
+                                                    ng-disabled="data.thursAm || data.thursDay || data.thursPm"
+                                                    aria-label="Thursday All Day"
+                                                    class="md-primary">
                                             </md-checkbox>
                                         </div>
                                         <div flex-xs flex="50">
                                             <md-checkbox
-                                                    ng-model="data.cb2"
-                                                    aria-label="Checkbox 2"
-                                                    ng-true-value="'yup'"
-                                                    ng-false-value="'nope'"
+                                                    ng-model="data.thursAm"
+                                                    ng-disabled="data.thursAll"
+                                                    aria-label="Thursday Morning"
                                                     class="md-primary">
-                                                {{ data.cb2 }}
                                             </md-checkbox>
                                         </div>
                                         <div flex-xs flex="50">
-                                            <md-checkbox ng-disabled="true" aria-label="Disabled checkbox" ng-model="data.cb3" class="md-primary">
+                                            <md-checkbox
+                                                    ng-model="data.thursDay"
+                                                    ng-disabled="data.thursAll"
+                                                    aria-label="Thursday Afternoon"
+                                                    class="md-primary">
                                             </md-checkbox>
                                         </div>
                                         <div flex-xs flex="50">
-                                            <md-checkbox ng-disabled="true" aria-label="Disabled checked checkbox" ng-model="data.cb4" ng-init="data.cb4=true">
+                                            <md-checkbox
+                                                    ng-model="data.thursPm"
+                                                    ng-disabled="data.thursAll"
+                                                    aria-label="Thursday Evening"
+                                                    class="md-primary">
                                             </md-checkbox>
                                         </div>
                                     </div>
                                     <!-- FRIDAY -->
-                                    <div layout="column" layout-wrap layout-gt-sm="row" >
-                                        <div flex-xs flex="50"><p>Friday</p></div>
+                                    <div layout="column" layout-align="center center" layout-padding>
+                                        <div layout-padding>Friday</div>
                                         <div flex-xs flex="50">
-                                            <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1" class="md-primary">
-                                                {{ data.cb1 }}
+                                            <md-checkbox
+                                                    ng-model="data.friAll"
+                                                    ng-disabled="data.friAm || data.friDay || data.friPm"
+                                                    aria-label="Friday All Day"
+                                                    class="md-primary">
                                             </md-checkbox>
                                         </div>
                                         <div flex-xs flex="50">
                                             <md-checkbox
-                                                    ng-model="data.cb2"
-                                                    aria-label="Checkbox 2"
-                                                    ng-true-value="'yup'"
-                                                    ng-false-value="'nope'"
+                                                    ng-model="data.friAm"
+                                                    ng-disabled="data.friAll"
+                                                    aria-label="Friday Morning"
                                                     class="md-primary">
-                                                {{ data.cb2 }}
                                             </md-checkbox>
                                         </div>
                                         <div flex-xs flex="50">
-                                            <md-checkbox ng-disabled="true" aria-label="Disabled checkbox" ng-model="data.cb3" class="md-primary">
+                                            <md-checkbox
+                                                    ng-model="data.friDay"
+                                                    ng-disabled="data.friAll"
+                                                    aria-label="Friday Afternoon"
+                                                    class="md-primary">
                                             </md-checkbox>
                                         </div>
                                         <div flex-xs flex="50">
-                                            <md-checkbox ng-disabled="true" aria-label="Disabled checked checkbox" ng-model="data.cb4" ng-init="data.cb4=true">
+                                            <md-checkbox
+                                                    ng-model="data.friPm"
+                                                    ng-disabled="data.friAll"
+                                                    aria-label="Friday Evening"
+                                                    class="md-primary">
                                             </md-checkbox>
                                         </div>
                                     </div>
                                 </div>
+                                <div layout-padding>&#42; Morning 8h45 - 11h30 &#124; Afternoon 11h45 - 17h30 &#124; Evening 17h45 - 22h00</div>
                             </fieldset>
                         </div>
                     </div>
@@ -234,8 +282,7 @@
                 </div>
             </form>
         </md-card-content>
-
-
+    </md-card>
 
 </div>
 
