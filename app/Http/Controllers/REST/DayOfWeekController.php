@@ -2,13 +2,13 @@
 
 namespace apollo\Http\Controllers\REST;
 
-use apollo\Models\Session;
+use apollo\Models\DayOfWeek;
 use Illuminate\Http\Request;
 
 use apollo\Http\Requests;
 use apollo\Http\Controllers\Controller;
 
-class SessionController extends Controller
+class DayOfWeekController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class SessionController extends Controller
      */
     public function index()
     {
-        $sessions = Session::all();
-        return response()->json($sessions);
+        $day_of_weeks = DayOfWeek::all();
+        return response()->json($day_of_weeks);
     }
 
     /**
@@ -31,9 +31,9 @@ class SessionController extends Controller
     {
         $input = $request->input();
 
-        $session = new Session;
-        $session->name = $input['name'];
-        $session->save();
+        $day_of_week = new DayOfWeek;
+        $day_of_week->name = $input['name'];
+        $day_of_week->save();
     }
 
     /**
@@ -44,8 +44,8 @@ class SessionController extends Controller
      */
     public function show($id)
     {
-        $session = Session::find($id);
-        return response()->json($session);
+        $day_of_week = DayOfWeek::find($id);
+        return response()->json($day_of_week);
     }
 
     /**
@@ -59,9 +59,9 @@ class SessionController extends Controller
     {
         $input = $request->input();
 
-        $session = Session::find($id);
-        $session->name = $input['name'];
-        $session->save();
+        $day_of_week = DayOfWeek::find($id);
+        $day_of_week->name = $input['name'];
+        $day_of_week->save();
     }
 
     /**
@@ -72,6 +72,6 @@ class SessionController extends Controller
      */
     public function destroy($id)
     {
-        Session::destroy($id);
+        DayOfWeek::destroy($id);
     }
 }

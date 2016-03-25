@@ -2,13 +2,13 @@
 
 namespace apollo\Http\Controllers\REST;
 
-use apollo\Models\Session;
+use apollo\Models\RequisiteType;
 use Illuminate\Http\Request;
 
 use apollo\Http\Requests;
 use apollo\Http\Controllers\Controller;
 
-class SessionController extends Controller
+class RequisiteTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class SessionController extends Controller
      */
     public function index()
     {
-        $sessions = Session::all();
-        return response()->json($sessions);
+        $requisite_types = RequisiteType::all();
+        return response()->json($requisite_types);
     }
 
     /**
@@ -31,9 +31,9 @@ class SessionController extends Controller
     {
         $input = $request->input();
 
-        $session = new Session;
-        $session->name = $input['name'];
-        $session->save();
+        $requisite_type = new RequisiteType;
+        $requisite_type->name = $input['name'];
+        $requisite_type->save();
     }
 
     /**
@@ -44,8 +44,8 @@ class SessionController extends Controller
      */
     public function show($id)
     {
-        $session = Session::find($id);
-        return response()->json($session);
+        $requisite_type = RequisiteType::find($id);
+        return response()->json($requisite_type);
     }
 
     /**
@@ -59,9 +59,9 @@ class SessionController extends Controller
     {
         $input = $request->input();
 
-        $session = Session::find($id);
-        $session->name = $input['name'];
-        $session->save();
+        $requisite_type = RequisiteType::find($id);
+        $requisite_type->name = $input['name'];
+        $requisite_type->save();
     }
 
     /**
@@ -72,6 +72,6 @@ class SessionController extends Controller
      */
     public function destroy($id)
     {
-        Session::destroy($id);
+        RequisiteType::destroy($id);
     }
 }

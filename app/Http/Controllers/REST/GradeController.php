@@ -2,13 +2,14 @@
 
 namespace apollo\Http\Controllers\REST;
 
-use apollo\Models\Session;
 use Illuminate\Http\Request;
 
 use apollo\Http\Requests;
 use apollo\Http\Controllers\Controller;
 
-class SessionController extends Controller
+use apollo\Models\Grade;
+
+class GradeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +18,8 @@ class SessionController extends Controller
      */
     public function index()
     {
-        $sessions = Session::all();
-        return response()->json($sessions);
+        $grades = Grade::all();
+        return response()->json($grades);
     }
 
     /**
@@ -31,9 +32,9 @@ class SessionController extends Controller
     {
         $input = $request->input();
 
-        $session = new Session;
-        $session->name = $input['name'];
-        $session->save();
+        $grade = new Grade;
+        $grade->value = $input['value'];
+        $grade->save();
     }
 
     /**
@@ -44,8 +45,8 @@ class SessionController extends Controller
      */
     public function show($id)
     {
-        $session = Session::find($id);
-        return response()->json($session);
+        $grades = Grade::find($id);
+        return response()->json($grades);
     }
 
     /**
@@ -59,9 +60,9 @@ class SessionController extends Controller
     {
         $input = $request->input();
 
-        $session = Session::find($id);
-        $session->name = $input['name'];
-        $session->save();
+        $grade = Grade::find($id);
+        $grade->value = $input['value'];
+        $grade->save();
     }
 
     /**
@@ -72,6 +73,6 @@ class SessionController extends Controller
      */
     public function destroy($id)
     {
-        Session::destroy($id);
+        Grade::destroy($id);
     }
 }

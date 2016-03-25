@@ -2,13 +2,13 @@
 
 namespace apollo\Http\Controllers\REST;
 
-use apollo\Models\Session;
 use Illuminate\Http\Request;
 
 use apollo\Http\Requests;
 use apollo\Http\Controllers\Controller;
+use apollo\Models\CourseType;
 
-class SessionController extends Controller
+class CourseTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class SessionController extends Controller
      */
     public function index()
     {
-        $sessions = Session::all();
-        return response()->json($sessions);
+        $course_types = CourseType::all();
+        return response()->json($course_types);
     }
 
     /**
@@ -31,9 +31,9 @@ class SessionController extends Controller
     {
         $input = $request->input();
 
-        $session = new Session;
-        $session->name = $input['name'];
-        $session->save();
+        $course_type = new CourseType;
+        $course_type->name = $input['name'];
+        $course_type->save();
     }
 
     /**
@@ -44,8 +44,8 @@ class SessionController extends Controller
      */
     public function show($id)
     {
-        $session = Session::find($id);
-        return response()->json($session);
+        $course_type = CourseType::find($id);
+        return response()->json($course_type);
     }
 
     /**
@@ -59,9 +59,9 @@ class SessionController extends Controller
     {
         $input = $request->input();
 
-        $session = Session::find($id);
-        $session->name = $input['name'];
-        $session->save();
+        $course_type = CourseType::find($id);
+        $course_type->name = $input['name'];
+        $course_type->save();
     }
 
     /**
@@ -72,6 +72,6 @@ class SessionController extends Controller
      */
     public function destroy($id)
     {
-        Session::destroy($id);
+        CourseType::destroy($id);
     }
 }
