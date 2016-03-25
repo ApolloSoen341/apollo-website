@@ -1,6 +1,6 @@
 <?php
 
-namespace apollo\Http\Controllers;
+namespace apollo\Http\Controllers\REST;
 
 use apollo\Models\CourseHistory;
 use Illuminate\Http\Request;
@@ -17,7 +17,7 @@ class CourseHistoryController extends Controller
      */
     public function index()
     {
-        $course_histories = CourseHistory::all();
+        $course_histories = CourseHistory::with('student', 'scheduled_course', 'grade')->get();
         return response()->json($course_histories);
     }
 
@@ -46,7 +46,7 @@ class CourseHistoryController extends Controller
      */
     public function show($id)
     {
-        $course_history = CourseHistory::find($id);
+        $course_history = CourseHistory::with('student', 'scheduled_course', 'grade')->find($id);
         return response()->json($course_history);
     }
 

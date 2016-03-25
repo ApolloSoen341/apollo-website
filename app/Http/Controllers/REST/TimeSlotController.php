@@ -2,13 +2,13 @@
 
 namespace apollo\Http\Controllers\REST;
 
-use apollo\Models\ScheduledCourse;
+use apollo\Models\TimeSlot;
 use Illuminate\Http\Request;
 
 use apollo\Http\Requests;
 use apollo\Http\Controllers\Controller;
 
-class ScheduledCourseController extends Controller
+class TimeSlotController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class ScheduledCourseController extends Controller
      */
     public function index()
     {
-        $scheduled_courses = ScheduledCourse::with('course', 'session')->get();
-        return response()->json($scheduled_courses);
+        $time_slot = TimeSlot::all();
+        return response()->json($time_slot);
     }
 
     /**
@@ -29,12 +29,7 @@ class ScheduledCourseController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->input();
-
-        $scheduled_course = new ScheduledCourse;
-        $scheduled_course->course_id = $input['course_id'];
-        $scheduled_course->session_id = $input['session_id'];
-        $scheduled_course->save();
+        //
     }
 
     /**
@@ -45,8 +40,8 @@ class ScheduledCourseController extends Controller
      */
     public function show($id)
     {
-        $scheduled_course = ScheduledCourse::with('course', 'session')->find($id);
-        return response()->json($scheduled_course);
+        $time_slot = TimeSlot::find($id);
+        return response()->json($time_slot);
     }
 
     /**
@@ -58,12 +53,7 @@ class ScheduledCourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $input = $request->input();
-
-        $scheduled_course = ScheduledCourse::find($id);
-        $scheduled_course->course_id = $input['course_id'];
-        $scheduled_course->session_id = $input['session_id'];
-        $scheduled_course->save();
+        //
     }
 
     /**
@@ -74,6 +64,6 @@ class ScheduledCourseController extends Controller
      */
     public function destroy($id)
     {
-        ScheduledCourse::destroy($id);
+        TimeSlot::destroy($id);
     }
 }

@@ -38,6 +38,7 @@ Route::group(['prefix' => 'api', 'namespace' => 'REST'], function(){
     Route::resource('requisite_type', 'RequisiteTypeController');
     Route::resource('day_of_week', 'DayOfWeekController');
     Route::resource('course_type', 'CourseTypeController');
+    Route::resource('course_history', 'CourseHistoryController');
 
     Route::resource('user', 'UserController');
     Route::resource('user.preference', 'PreferenceController');
