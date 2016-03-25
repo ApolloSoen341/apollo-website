@@ -24,7 +24,7 @@ class Course extends Model
 	// Relations
 	public function faculty()
 	{
-		return $this->hasOne('apollo\\Models\\Faculty', 'id', 'faculty_id');
+		return $this->belongsTo(Faculty::class);
 	}
 
 	public function prerequisites()

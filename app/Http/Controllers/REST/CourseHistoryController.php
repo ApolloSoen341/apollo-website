@@ -15,20 +15,10 @@ class CourseHistoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($studentid)
+    public function index()
     {
-        $courses = CourseHistory::all()->where('student_id', $studentid);
-        return response()->json($courses);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        // return view
+        $course_histories = CourseHistory::all();
+        return response()->json($course_histories);
     }
 
     /**
@@ -44,7 +34,7 @@ class CourseHistoryController extends Controller
         $courseHistory = new CourseHistory;
         $courseHistory->student_id = $input['student_id'];
         $courseHistory->scheduled_course_id = $input['scheduled_course_id'];
-        $courseHistory->grade_id = $input['grade'];
+        $courseHistory->grade_id = $input['grade_id'];
         $courseHistory->save();
     }
 
@@ -54,21 +44,10 @@ class CourseHistoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($studentid, $id)
+    public function show($id)
     {
-        $courseHistory = CourseHistory::all()->where('student_id', $studentid)->where('id', $id);
-        return response()->json($courseHistory);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        // return view
+        $course_history = CourseHistory::find($id);
+        return response()->json($course_history);
     }
 
     /**
@@ -82,11 +61,11 @@ class CourseHistoryController extends Controller
     {
         $input = $request->input();
 
-        $courseHistory = CourseHistory::all()->where('id', $id);
-        $courseHistory->student_id = $input['student_id'];
-        $courseHistory->scheduled_course_id = $input['scheduled_course_id'];
-        $courseHistory->grade_id = $input['grade'];
-        $courseHistory->save();
+        $course_history = CourseHistory::find($id);
+        $course_history->student_id = $input['student_id'];
+        $course_history->scheduled_course_id = $input['scheduled_course_id'];
+        $course_history->grade_id = $input['grade_id'];
+        $course_history->save();
     }
 
     /**
