@@ -16,6 +16,5 @@ class CourseTypeSeeder extends Seeder
         CourseType::firstOrCreate(['name' => 'Lecture']);
         CourseType::firstOrCreate(['name' => 'Lab']);
         CourseType::firstOrCreate(['name' => 'Tutorial']);
-        CourseType::firstOrCreate(['name' => 'SEM']);
     }
 }
