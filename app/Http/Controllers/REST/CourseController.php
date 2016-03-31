@@ -36,10 +36,10 @@ class CourseController extends Controller
         $input = $request->input();
 
         $course = new Course;
-        $course->name = $input['course_name'];
-        $course->title = $input['title'];
-        $course->credits = $input['course_credits'];
-        $course->description = $input['course_description'];
+        $course->name = $input['name'];
+        $course->number = $input['number'];
+        $course->credits = $input['credits'];
+        $course->description = $input['description'];
         $course->faculty_id = $input['faculty_id'];
         $course->save();
 
@@ -75,10 +75,11 @@ class CourseController extends Controller
     {
         $input = $request->input();
 
-        $course = Course::all()->where('id', $id)->first();
-        $course->name = $input['course_name'];
-        $course->credits = $input['course_credits'];
-        $course->description = $input['course_description'];
+        $course = Course::find($id);
+        $course->name = $input['name'];
+        $course->number = $input['number'];
+        $course->credits = $input['credits'];
+        $course->description = $input['description'];
         $course->faculty_id = $input['faculty_id'];
         $course->save();
 
