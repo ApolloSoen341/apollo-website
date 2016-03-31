@@ -32,15 +32,15 @@ Route::group(['middleware' => ['web']], function () {
 
 Route::group(['prefix' => 'api', 'namespace' => 'REST'], function(){
     Route::resource('course','CourseController');
-    Route::resource('session','SessionController');
-    Route::resource('scheduled_course', 'ScheduledCourseController');
-    Route::resource('grade', 'GradeController');
-    Route::resource('requisite_type', 'RequisiteTypeController');
-    Route::resource('day_of_week', 'DayOfWeekController');
-    Route::resource('course_type', 'CourseTypeController');
     Route::resource('course_history', 'CourseHistoryController');
-
-    Route::resource('user', 'UserController');
-    Route::resource('user.preference', 'PreferenceController');
-    Route::resource('user.coursehistory', 'CourseHistoryController');
+    Route::resource('course_type', 'CourseTypeController');
+    Route::resource('day_of_week', 'DayOfWeekController');
+    Route::resource('faculty','FacultyController');
+    Route::resource('grade', 'GradeController');
+    Route::resource('preference','PreferenceController');
+    Route::resource('requisite_type', 'RequisiteTypeController');
+    Route::resource('scheduled_course', 'ScheduledCourseController');
+    Route::resource('session','SessionController');
+    Route::resource('time_slot','TimeSlotController');
+    Route::resource('student', 'UserController');
 });
