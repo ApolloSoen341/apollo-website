@@ -1,6 +1,6 @@
 <?php
 
-namespace apollo\Http\Controllers;
+namespace apollo\Http\Controllers\REST;
 
 use apollo\Models\Preference;
 use Illuminate\Http\Request;
@@ -15,20 +15,10 @@ class PreferenceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($studentid)
+    public function index()
     {
-        $preferences = Preference::all()->where('student_id', $studentid);
+        $preferences = Preference::all();
         return response()->json($preferences);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //return preferences view
     }
 
     /**
@@ -55,22 +45,10 @@ class PreferenceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($studentid, $preferenceid)
+    public function show($id)
     {
-        $preference = Preference::with('day_of_week', 'start', 'end')->where('student_id', $studentid)
-                                                                    ->where('id', $preferenceid);
+        $preference = Preference::find($id);
         return response()->json($preference);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        // return view
     }
 
     /**
@@ -84,7 +62,7 @@ class PreferenceController extends Controller
     {
         $input = $request->input();
 
-        $preference = Preference::all()->where('id', $id);
+        $preference = Preference::find($id);
         $preference->student_id = $input['student_id'];
         $preference->day_of_week_id = $input['day_of_week'];
         $preference->start = $input['start'];

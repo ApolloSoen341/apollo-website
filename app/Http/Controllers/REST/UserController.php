@@ -1,6 +1,6 @@
 <?php
 
-namespace apollo\Http\Controllers;
+namespace apollo\Http\Controllers\REST;
 
 use Illuminate\Http\Request;
 
@@ -18,16 +18,6 @@ class UserController extends Controller
     {
         $students = User::all();
         return response()->json($students);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -59,17 +49,6 @@ class UserController extends Controller
     {
         $student = User::all()->where('id', $id);
         return response()->json($student);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
