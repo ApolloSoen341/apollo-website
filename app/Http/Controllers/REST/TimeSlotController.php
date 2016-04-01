@@ -2,6 +2,7 @@
 
 namespace apollo\Http\Controllers\REST;
 
+use apollo\Models\CourseType;
 use apollo\Models\TimeSlot;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class TimeSlotController extends Controller
      */
     public function index()
     {
-        $time_slot = TimeSlot::all();
+        $time_slot = TimeSlot::with('courseType', 'dayOfWeek')->get();
         return response()->json($time_slot);
     }
 
@@ -32,7 +33,7 @@ class TimeSlotController extends Controller
         $input = $request->input();
 
         $time_slot = new TimeSlot;
-        $time_slot->scheduled_course_id = input['scheduled_course_id'];
+        $time_slot->scheduled_course_id = $input['scheduled_course_id'];
         $time_slot->section = $input['section'];
         $time_slot->room = $input['room'];
         $time_slot->time_start = $input['time_start'];
@@ -50,7 +51,7 @@ class TimeSlotController extends Controller
      */
     public function show($id)
     {
-        $time_slot = TimeSlot::find($id);
+        $time_slot = TimeSlot::with('courseType', 'dayOfWeek')->find($id);
         return response()->json($time_slot);
     }
 
@@ -66,7 +67,7 @@ class TimeSlotController extends Controller
         $input = $request->input();
 
         $time_slot = TimeSlot::find($id);
-        $time_slot->scheduled_course_id = input['scheduled_course_id'];
+        $time_slot->scheduled_course_id = $input['scheduled_course_id'];
         $time_slot->section = $input['section'];
         $time_slot->room = $input['room'];
         $time_slot->time_start = $input['time_start'];

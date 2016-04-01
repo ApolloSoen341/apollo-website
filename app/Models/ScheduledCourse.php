@@ -25,4 +25,9 @@ class ScheduledCourse extends Model
 	{
 		return $this->belongsTo(Session::class);
 	}
+
+	public function timeSlots()
+	{
+		return $this->hasMany(TimeSlot::class);
+	}
 }

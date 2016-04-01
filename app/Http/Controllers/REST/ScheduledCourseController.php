@@ -17,7 +17,7 @@ class ScheduledCourseController extends Controller
      */
     public function index()
     {
-        $scheduled_courses = ScheduledCourse::with('course', 'session')->get();
+        $scheduled_courses = ScheduledCourse::with('course.faculty', 'session', 'timeSlots.courseType', 'timeSlots.dayOfWeek')->get();
         return response()->json($scheduled_courses);
     }
 
@@ -45,7 +45,7 @@ class ScheduledCourseController extends Controller
      */
     public function show($id)
     {
-        $scheduled_course = ScheduledCourse::with('course', 'session')->find($id);
+        $scheduled_course = ScheduledCourse::with('course.faculty', 'session', 'timeSlots.courseType', 'timeSlots.dayOfWeek')->find($id);
         return response()->json($scheduled_course);
     }
 
