@@ -61,28 +61,29 @@ var comp249 = [
                 ];
 
 //ALL COMBOS FOR LECTURES WITH THEIR TUTORIALS AND LABS:
-//For each course fill in the courseSections that has [{"lec":"","tut":"", "lab":"", "lecTimeBegin":"","lecTimeEnd":"", "tutTimeBegin":"", "tutTimeEnd":"", "labTimeBegin":"", "labTimeEnd":""}]
+//For each course fill in the courseSections that has [{"lec":"","tut":"", "lab":"", "lecDay", "lecTimeBegin":"","lecTimeEnd":"", "tutTimeBegin":"", "tutTimeEnd":"", "labTimeBegin":"", "labTimeEnd":""}]
 //So comp232 has it's own array, and comp249 has it's own array.
 
+//
 //Loop in comp232 array
 //For i = 0, i < comp232.length, i++
-    //if comp232[i].type == LEC
-        //Fill in section letters to "lec", and timeBegin and timeEnd in courseSections
-        //comp232Sections[i].lec = comp232[i].section
-        //comp232Sections[i].lecTimeBegin = comp232[i].timeBegin
-        //comp232Sections[i].lecTimeEnd = comp232[i].timeEnd
-            //For j = 0, i < comp232.length, j ++
-                //if comp232[j].type == TUT
-                    //Fill in section letters to "tut", and timeBegin and timeEnd
-                    //comp232Sections[j].tut = comp232[i].section
-                    //comp232Sections[j].tutTimeBegin = comp232[i].timeBegin
-                    //comp232Sections[j].tutTimeEnd = comp232[i].timeEnd
-                        //For k = 0, k < comp232.length, k ++
-                        //if comp232[k].type == X || comp232[k].type == LAB
-                            //Fill in section letters to "lab", and timeBegin and timeEnd
-                            //comp232Sections[k].lab = comp232[i].section
-                            //comp232Sections[k].labTimeBegin = comp232[i].timeBegin
-                            //comp232Sections[k].labTimeEnd = comp232[i].timeEnd
+//    if comp232[i].type == LEC
+//        Fill in section letters to "lec", and timeBegin and timeEnd in courseSections
+//        comp232Sections[i].lec = comp232[i].section
+//        comp232Sections[i].lecTimeBegin = comp232[i].timeBegin
+//        comp232Sections[i].lecTimeEnd = comp232[i].timeEnd
+//            For j = 0, i < comp232.length, j ++
+//                if (comp232[j].type == TUT) && (first letter of comp232[j].section)
+//                    Fill in section letters to "tut", and timeBegin and timeEnd
+//                    comp232Sections[j].tut = comp232[i].section
+//                    comp232Sections[j].tutTimeBegin = comp232[i].timeBegin
+//                    comp232Sections[j].tutTimeEnd = comp232[i].timeEnd
+//                        For k = 0, k < comp232.length, k ++
+//                        if (comp232[k].type == X || comp232[k].type == LAB) && (first letter of comp232[k].section)
+//                            Fill in section letters to "lab", and timeBegin and timeEnd
+//                            comp232Sections[k].lab = comp232[i].section
+//                            comp232Sections[k].labTimeBegin = comp232[i].timeBegin
+//                            comp232Sections[k].labTimeEnd = comp232[i].timeEnd
 
 
 //CHECK FOR SAME TIME:
@@ -91,37 +92,47 @@ var comp249 = [
 //Example: sectionId = "023", means sections at index 0, 2, and 3 all have same times for comp249
 //Every same-time combo, will append the course section lec-tut-lab letters and separate the different combos by " or "
 //Example: "D - D DA - DI or E - E EA - EI or E - E EA - EJ"
-
+//
 //Duplicate courseSections
 //int i = 0;
 //sameTime index is: int x = 0
-        //For j = 1, j < courseSections.length, j++ {
-                //compare courseSections[i] to courseSections[j]:
-                //if (i's lec-tut-lab timeBegin == j's lec-tut-lab timeBegin) && (i's lec-tut-lab timeEnd == j's lec-tut-lab timeEnd)
-                    //if sameTime[x].sectionId == null
-                        //append i's lec-tut-lab courseId to sameTime[x].sectionId
-                        //append j's lec-tut-lab courseId to sameTime[x].sectionId
-                        //title of i +  " or " title of j
-                        //sameTime[x].lecTimeBegin = courseSections[i].lecTimeBegin
-                        //sameTime[x].lecTimeEnd = courseSections[i].lecTimeEnd
-                        //sameTime[x].tutTimeBegin = courseSections[i].tutTimeBegin
-                        //sameTime[x].tutTimeEnd = courseSections[i].tutTimeEnd
-                        //sameTime[x].labTimeBegin = courseSections[i].labTimeBegin
-                        //sameTime[x].labTimeEnd = courseSections[i].labTimeEnd
-                        //delete courseSections[i] and courseSections[j]
-                    //else
-                        //append j's courseId to sameTime[x].sectionId
-                        //"or" + title
-                        //delete courseSections[j]
-        //}
-    //x++
-    //}
+//        For j = 1, j < courseSections.length, j++ {
+//                compare courseSections[i] to courseSections[j]:
+//                if (i's lec-tut-lab timeBegin == j's lec-tut-lab timeBegin) && (i's lec-tut-lab timeEnd == j's lec-tut-lab timeEnd)
+//                    if sameTime[x].sectionId == null
+//                        append i's lec-tut-lab courseId to sameTime[x].sectionId
+//                        append j's lec-tut-lab courseId to sameTime[x].sectionId
+//                        title of i +  " or " title of j
+//                        sameTime[x].lecTimeBegin = courseSections[i].lecTimeBegin
+//                        sameTime[x].lecTimeEnd = courseSections[i].lecTimeEnd
+//                        sameTime[x].tutTimeBegin = courseSections[i].tutTimeBegin
+//                        sameTime[x].tutTimeEnd = courseSections[i].tutTimeEnd
+//                        sameTime[x].labTimeBegin = courseSections[i].labTimeBegin
+//                        sameTime[x].labTimeEnd = courseSections[i].labTimeEnd
+//                    else
+//                        append j's courseId to sameTime[x].sectionId
+//                        "or" + title
+//        }
+//    x++
+//    delete courseSections at end then re-iterate through
+//    }
 
 
 //MAKE SCHEDULES
 //Iterate between each course's same-time array and and see which combination of courses fit together
 //Make array for each possible schedule
 
-//Loop through first course ex: comp232
-    //Loop through each other
+//
+//int z = 0
+//For each preferredCourses
+//For each i in comp232 sameTime array
+//      For each j in comp249 sameTime array
+//            For each k in lastCourseChosen sameTime array
+//               if(comp232[i] && comp249[j] && lastCourseChosen[k] do not conflict){
+//                      push to schedules[z]
+//                      z++
+//               }
+//
+//if all conflict, return "no possible schedules"
+
 
