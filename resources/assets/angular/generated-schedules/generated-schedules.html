@@ -1,0 +1,8 @@
+<table>
+    <th></th>
+    <th ng-repeat="day in days">{{day}}</th>
+    <tr ng-repeat="time in times">
+        <td>{{time}}</td>
+        <td ng-repeat="day in days"> {{day}}, {{time}}</td>
+    </tr>
+</table>

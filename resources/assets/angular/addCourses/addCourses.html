@@ -1,0 +1,18 @@
+<h1>Add courses</h1>
+<md-input-container class="md-block">
+    <md-icon md-svg-src="..\imgs\ic_search_black_24px.svg"></md-icon>
+    <input ng-model="search" type="search" placeholder="Search">
+</md-input-container>
+<table>
+    <tbody ng-repeat='course in courses | filter:{name: search}' >
+    <tr>
+        <td ng-click="collapse=!collapse" width="100%">{{course.name}}}</td>
+        <td><md-button class="md-raised md-primary" ng-click="addCourse(course)"> EDIT </md-button></td>
+    </tr>
+    <tr ng-show=collapse>
+        <td colspan="2">
+
+        </td>
+    </tr>
+    </tbody>
+</table>

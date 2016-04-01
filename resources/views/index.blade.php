@@ -30,9 +30,6 @@
 
 
 
-        <link rel="stylesheet" type="text/css" href="..\public\main.css">
-
-
     </head>
     <body ng-controller="AppCtrl" layout="column">
 
