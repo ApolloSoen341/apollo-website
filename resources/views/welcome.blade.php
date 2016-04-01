@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="StarterApp">
     <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+        <script src="\resources\views\app.js"></script>
         <title>Laravel</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
@@ -35,10 +37,11 @@
             }
         </style>
     </head>
-    <body>
+    <body ng-controller="AppCtrl">
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
+                <div class="title">Laravel 5 </div>
+                <h1><% test %></h1>
             </div>
         </div>
     </body>
