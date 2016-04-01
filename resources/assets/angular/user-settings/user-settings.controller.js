@@ -29,5 +29,7 @@ app.controller('UserSettingsController', ['$scope', '$http', '$state', '$statePa
         //$scope.data.friAm = false;
         //$scope.data.friDay = false;
         //$scope.data.friPm = false;
+
+        //
     }]
 )

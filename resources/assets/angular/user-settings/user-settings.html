@@ -32,14 +32,17 @@
             <md-button>Change Password</md-button>
             <!--<span class="ng-scope">Change Password</span>-->
             <md-card-icon-actions>
-                <md-button class="md-icon-button" aria-label="toggle">
+                <md-button class="md-icon-button" aria-label="toggle" ng-click="showPasswordSheet()">
                     <md-icon md-svg-icon="md-toggle-arrow"></md-icon>
                 </md-button>
             </md-card-icon-actions>
         </md-card-actions>
+
+
         <md-card-content>
             <form ng-submit="authenticate()" name="changePasswordForm">
                 <div layout = "row">
+                    <md-card-content layout="row" layout-align="start center">Enter new password:</md-card-content>
                     <md-input-container>
                         <label>New Password</label>
                         <input name="newPassword" type="password" ng-model="loginInfo.password" required/>
@@ -49,6 +52,7 @@
                     </md-input-container>
                 </div>
                 <div layout = "row">
+                    <md-card-content layout="row" layout-align="start center">Confirm password:</md-card-content>
                     <md-input-container>
                         <label>Confirm Password</label>
                         <input name="confirmPassword" type="password" ng-model="loginInfo.password" required/>
