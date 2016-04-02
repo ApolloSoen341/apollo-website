@@ -57,12 +57,13 @@ class ScrapeSeeder extends Seeder
                 $time_end = $course->timeEnd;
                 $course_type_id = $this->getType($course->type)->id;
 
-                $days = explode(';', preg_replace('/;$/', '', chunk_split($course->day, 2, ';')));
+//                $days = explode(';', preg_replace('/;$/', '', chunk_split($course->day, 2, ';')));
+                $day = $course->day;
                 // end requirements for time_slot
 
-                foreach($days as $day)
+//                foreach($days as $day)
                 {
-                    $day_of_week_id = $this->getDay($day)->id;
+//                    $day_of_week_id = $this->getDay($day)->id;
 
                     TimeSlot::firstOrCreate([
                         'scheduled_course_id' => $scheduled_course_id,
@@ -70,7 +71,8 @@ class ScrapeSeeder extends Seeder
                         'room' => $room,
                         'time_start' => $time_start,
                         'time_end' => $time_end,
-                        'day_of_week_id' => $day_of_week_id,
+//                        'day_of_week_id' => $day_of_week_id,
+                        'day' => $day,
                         'course_type_id' => $course_type_id
                     ]);
                 }

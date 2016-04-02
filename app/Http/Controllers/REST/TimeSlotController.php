@@ -2,12 +2,10 @@
 
 namespace apollo\Http\Controllers\REST;
 
-use apollo\Models\CourseType;
+use apollo\Http\Controllers\Controller;
+use apollo\Http\Requests;
 use apollo\Models\TimeSlot;
 use Illuminate\Http\Request;
-
-use apollo\Http\Requests;
-use apollo\Http\Controllers\Controller;
 
 class TimeSlotController extends Controller
 {
@@ -18,7 +16,7 @@ class TimeSlotController extends Controller
      */
     public function index()
     {
-        $time_slot = TimeSlot::with('courseType', 'dayOfWeek')->get();
+        $time_slot = TimeSlot::with('courseType'/*, 'dayOfWeek'*/)->get();
         return response()->json($time_slot);
     }
 
@@ -38,7 +36,8 @@ class TimeSlotController extends Controller
         $time_slot->room = $input['room'];
         $time_slot->time_start = $input['time_start'];
         $time_slot->time_end = $input['time_end'];
-        $time_slot->day_of_week_id = $input['day_of_week_id'];
+//        $time_slot->day_of_week_id = $input['day_of_week_id'];
+        $time_slot->day = $input['day'];
         $time_slot->course_type_id = $input['course_type_id'];
         $time_slot->save();
     }
@@ -51,7 +50,7 @@ class TimeSlotController extends Controller
      */
     public function show($id)
     {
-        $time_slot = TimeSlot::with('courseType', 'dayOfWeek')->find($id);
+        $time_slot = TimeSlot::with('courseType'/*, 'dayOfWeek'*/)->find($id);
         return response()->json($time_slot);
     }
 
@@ -72,7 +71,8 @@ class TimeSlotController extends Controller
         $time_slot->room = $input['room'];
         $time_slot->time_start = $input['time_start'];
         $time_slot->time_end = $input['time_end'];
-        $time_slot->day_of_week_id = $input['day_of_week_id'];
+//        $time_slot->day_of_week_id = $input['day_of_week_id'];
+        $time_slot->day = $input['day'];
         $time_slot->course_type_id = $input['course_type_id'];
         $time_slot->save();
     }
