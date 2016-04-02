@@ -20,7 +20,7 @@ class ScrapeSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-        $data = json_decode(file_get_contents('../scraped/coursesFall2016.json'));
+        $data = json_decode(file_get_contents('database/scraped/coursesFall2016.json'));
 
         foreach($data as $course)
         {
