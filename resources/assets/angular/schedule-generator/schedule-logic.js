@@ -60,66 +60,72 @@ var comp249 = [
                 {"faculty":"COMP","classNum":"249","title":"Object-Oriented Programming II ","section":"EK","type":"X","day":"We","timeBegin":"7:30PM","timeEnd":"8:30PM","room":"TBA","semester":"Fall 2016","classid":8713}
                 ];
 
-var combinations232 = [];
-var lecs = [];
-var tuts = [];
-var labs = [];
+var courseCombinations = getCombinations(comp249);
+
+function getCombinations(selectedCourse) {
+    var combinations = [];
+    var lecs = [];
+    var tuts = [];
+    var labs = [];
+
 
 // group sections by type
-for (var i=0; i<comp232.length; i++) {
-    if(comp232[i].type == "LEC") {
-        var lec = {};
-        lec.section = comp232[i].section;
-        lec.timeBegin = comp232[i].timeBegin;
-        lec.timeEnd = comp232[i].timeEnd;
-        lec.day = comp232[i].day;
-        lecs.push(lec);
-    } else if(comp232[i].type == "TUT") {
-        var tut = {};
-        tut.section = comp232[i].section;
-        tut.timeBegin = comp232[i].timeBegin;
-        tut.timeEnd = comp232[i].timeEnd;
-        tut.day = comp232[i].day;
-        tuts.push(tut);
-    } else {
-        var lab = {};
-        lab.section = comp232[i].section;
-        lab.timeBegin = comp232[i].timeBegin;
-        lab.timeEnd = comp232[i].timeEnd;
-        lab.day = comp232[i].day;
-        labs.push(lab);
+    for (var i=0; i<selectedCourse.length; i++) {
+        if(selectedCourse[i].type == "LEC") {
+            var lec = {};
+            lec.section = selectedCourse[i].section;
+            lec.timeBegin = selectedCourse[i].timeBegin;
+            lec.timeEnd = selectedCourse[i].timeEnd;
+            lec.day = selectedCourse[i].day;
+            lecs.push(lec);
+        } else if(selectedCourse[i].type == "TUT") {
+            var tut = {};
+            tut.section = selectedCourse[i].section;
+            tut.timeBegin = selectedCourse[i].timeBegin;
+            tut.timeEnd = selectedCourse[i].timeEnd;
+            tut.day = selectedCourse[i].day;
+            tuts.push(tut);
+        } else {
+            var lab = {};
+            lab.section = selectedCourse[i].section;
+            lab.timeBegin = selectedCourse[i].timeBegin;
+            lab.timeEnd = selectedCourse[i].timeEnd;
+            lab.day = selectedCourse[i].day;
+            labs.push(lab);
+        }
     }
-}
 
-for (var i=0; i<lecs.length; i++) {
-    if (tuts.length <= 0) {
-        var course = {};
-        course.lec = lecs[i];
-        combinations232.push(course);
-    }
-    for (var j=0; j<tuts.length; j++) {
-        if (tuts[j].section.charAt(0) == lecs[i].section.charAt(0)) {
-            if (labs.length <= 0) {
-                var course = {};
-                course.lec = lecs[i];
-                course.tut  = tuts[j];
-                combinations232.push(course);
-            } else {
-                for (var k=0; k<labs.length; k++) {
-                    if (labs[k].section.charAt(0) == lecs[i].section.charAt(0)) {
-                        var course = {};
-                        course.lec = lecs[i];
-                        course.tut = tuts[j];
-                        course.lab = labs[k];
-                        combinations232.push(course);
+    for (var i=0; i<lecs.length; i++) {
+        if (tuts.length <= 0) {
+            var course = {};
+            course.lec = lecs[i];
+            combinations.push(course);
+        }
+        for (var j=0; j<tuts.length; j++) {
+            if (tuts[j].section.charAt(0) == lecs[i].section.charAt(0)) {
+                if (labs.length <= 0) {
+                    var course = {};
+                    course.lec = lecs[i];
+                    course.tut  = tuts[j];
+                    combinations.push(course);
+                } else {
+                    for (var k=0; k<labs.length; k++) {
+                        if (labs[k].section.charAt(0) == lecs[i].section.charAt(0)) {
+                            var course = {};
+                            course.lec = lecs[i];
+                            course.tut = tuts[j];
+                            course.lab = labs[k];
+                            combinations.push(course);
+                        }
                     }
                 }
             }
         }
     }
+    return combinations;
 }
 
-console.log(combinations232);
+console.log(courseCombinations);
 
 
 //ALL COMBOS FOR LECTURES WITH THEIR TUTORIALS AND LABS:
