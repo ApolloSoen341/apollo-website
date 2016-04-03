@@ -60,6 +60,74 @@ var comp249 = [
                 {"faculty":"COMP","classNum":"249","title":"Object-Oriented Programming II ","section":"EK","type":"X","day":"We","timeBegin":"7:30PM","timeEnd":"8:30PM","room":"TBA","semester":"Fall 2016","classid":8713}
                 ];
 
+var courseCombinations = getCombinations(comp249);
+
+function getCombinations(selectedCourse) {
+    var combinations = [];
+    var lecs = [];
+    var tuts = [];
+    var labs = [];
+
+
+// group sections by type
+    for (var i=0; i<selectedCourse.length; i++) {
+        if(selectedCourse[i].type == "LEC") {
+            var lec = {};
+            lec.section = selectedCourse[i].section;
+            lec.timeBegin = selectedCourse[i].timeBegin;
+            lec.timeEnd = selectedCourse[i].timeEnd;
+            lec.day = selectedCourse[i].day;
+            lecs.push(lec);
+        } else if(selectedCourse[i].type == "TUT") {
+            var tut = {};
+            tut.section = selectedCourse[i].section;
+            tut.timeBegin = selectedCourse[i].timeBegin;
+            tut.timeEnd = selectedCourse[i].timeEnd;
+            tut.day = selectedCourse[i].day;
+            tuts.push(tut);
+        } else {
+            var lab = {};
+            lab.section = selectedCourse[i].section;
+            lab.timeBegin = selectedCourse[i].timeBegin;
+            lab.timeEnd = selectedCourse[i].timeEnd;
+            lab.day = selectedCourse[i].day;
+            labs.push(lab);
+        }
+    }
+
+    for (var i=0; i<lecs.length; i++) {
+        if (tuts.length <= 0) {
+            var course = {};
+            course.lec = lecs[i];
+            combinations.push(course);
+        }
+        for (var j=0; j<tuts.length; j++) {
+            if (tuts[j].section.charAt(0) == lecs[i].section.charAt(0)) {
+                if (labs.length <= 0) {
+                    var course = {};
+                    course.lec = lecs[i];
+                    course.tut  = tuts[j];
+                    combinations.push(course);
+                } else {
+                    for (var k=0; k<labs.length; k++) {
+                        if (labs[k].section.charAt(0) == lecs[i].section.charAt(0)) {
+                            var course = {};
+                            course.lec = lecs[i];
+                            course.tut = tuts[j];
+                            course.lab = labs[k];
+                            combinations.push(course);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return combinations;
+}
+
+console.log(courseCombinations);
+
+
 //ALL COMBOS FOR LECTURES WITH THEIR TUTORIALS AND LABS:
 //For each course fill in the courseSections that has [{"lec":"","tut":"", "lab":"", "lecDay", "lecTimeBegin":"","lecTimeEnd":"", "tutTimeBegin":"", "tutTimeEnd":"", "labTimeBegin":"", "labTimeEnd":""}]
 //So comp232 has it's own array, and comp249 has it's own array.
