@@ -128,6 +128,211 @@ function getSectionCombinations(selectedCourse) {
 console.log(courseCombinations);
 
 
+///////////////////////////////////////////////////
+
+var groupSections =  groupCombinations(courseCombinations);
+
+function groupCombinations(courseCombinations){
+    var temp = courseCombinations;
+
+    var groupedSections = [];
+    var removeGroups = [];
+
+    //groupedSectionsIndex
+    var x = 0;
+
+    //Iterate through the combinations and group them
+    var group = {};
+
+
+
+    while(temp.length !=0){
+
+        var removeGroup = [];
+
+        var hasGroupSections = false;
+
+        for (var i=1; i<temp.length; i++){
+
+            var lec = {};
+            var tut = {};
+            var lab = {};
+
+
+            //TODO: CHECK FOR WHEN THERE'S NO TUT OR NO LAB
+            var hasSameLecTime = (temp[0].lec.timeBegin == temp[i].lec.timeBegin) && (temp[0].lec.timeEnd == temp[i].lec.timeEnd) && (temp[0].lec.day == temp[i].lec.day);
+            var hasSameTutTime = (temp[0].tut.timeBegin == temp[i].tut.timeBegin) && (temp[0].tut.timeEnd == temp[i].tut.timeEnd) && (temp[0].tut.day == temp[i].tut.day);
+            var hasSameLabTime = (temp[0].lab.timeBegin == temp[i].lab.timeBegin) && (temp[0].lab.timeEnd == temp[i].lab.timeEnd) && (temp[0].lab.day == temp[i].lab.day);
+            if (hasSameLecTime && hasSameTutTime && hasSameLabTime){
+
+                hasGroupSections = true;
+                if(groupedSections[x] == null){
+                    //Add the first matching pair to groupedSections
+
+                    //TODO: CHECK FOR WHEN THERE'S NO TUT OR NO LAB
+
+                    //Get section titles
+                    var sectionA = temp[0].lec.section + "-" + temp[0].tut.section + "-" + temp[0].lab.section;
+                    var sectionB = temp[i].lec.section + "-" + temp[i].tut.section + "-" + temp[i].lab.section;
+                    group.name = sectionA + " or " + sectionB;
+
+                    //Get lec time
+                    lec.timeBegin = temp[0].lec.timeBegin;
+                    lec.timeEnd = temp[0].lec.timeEnd;
+                    lec.day = temp[0].lec.day;
+                    group.lec = lec;
+
+
+                    //Get tut time
+                    tut.timeBegin = temp[0].tut.timeBegin;
+                    tut.timeEnd = temp[0].tut.timeEnd;
+                    tut.day = temp[0].tut.day;
+                    group.tut = tut;
+
+                    //Get lab time
+                    lab.timeBegin = temp[0].lab.timeBegin;
+                    lab.timeEnd = temp[0].lab.timeEnd;
+                    lab.day = temp[0].lab.day;
+                    group.lab = lab;
+
+                    //Save indices to remove
+                    removeGroup.push(0);
+                    removeGroup.push(i)
+
+                    groupedSections.push(group);
+
+                } else {
+                    //Add another section to a group in groupedSections
+
+                    //TODO: CHECK FOR WHEN THERE'S NO TUT OR NO LAB
+
+                    //Get section titles
+                    var sectionB = temp[i].lec.section + "-" + temp[i].tut.section + "-" + temp[i].lab.section;
+                    groupedSections[x].name = groupedSections[x].name + " or " + sectionB;
+
+
+                    //Save index to remove
+                    removeGroup.push(i);
+
+                }
+            }
+
+
+        }
+
+        if(!hasGroupSections) {
+            //If none have same times with the first section,
+            //then push the first section only
+
+            //Get section titles
+            group.name = temp[0].lec.section + "-" + temp[0].tut.section + "-" + temp[0].lab.section;
+
+            //Get lec time
+            lec.timeBegin = temp[0].lec.timeBegin;
+            lec.timeEnd = temp[0].lec.timeEnd;
+            lec.day = temp[0].lec.day;
+            group.lec = lec;
+
+
+            //Get tut time
+            tut.timeBegin = temp[0].tut.timeBegin;
+            tut.timeEnd = temp[0].tut.timeEnd;
+            tut.day = temp[0].tut.day;
+            group.tut = tut;
+
+            //Get lab time
+            lab.timeBegin = temp[0].lab.timeBegin;
+            lab.timeEnd = temp[0].lab.timeEnd;
+            lab.day = temp[0].lab.day;
+            group.lab = lab;
+
+            //Save indices to remove
+            removeGroup.push(0);
+
+            groupedSections.push(group);
+        }
+
+        //TODO: remove all indices in temp
+        for(var i= (removeGroup.length - 1); i>=0; i--){
+            var location = removeGroup[i];
+            temp.splice(location, 1);
+        }
+
+
+        //Increment groupedSections tail index
+        x++;
+
+    }
+
+
+
+    //return temp;
+    //return removeGroup;
+    return groupedSections;
+
+}
+
+
+console.log(groupSections);
+
+
+
+///////////////////////////////////////////////////
+
+
+var groupedCourses = [];
+for (var i=0; i<selectedCourses.length; i++) {
+    //returns array of (grouped) sections in the form {name, lec{timeBegin, timeEnd, day}, tut{}, lab{} }
+    var course = getGroupedSectionCombinations(selectedCourses[i]);
+    groupedCourses.push(course);
+}
+
+/**
+ * Cartesian Product recursive algorithm
+ * returns conflict-free course combinations
+ */
+function getCourseCombinations(selectedCourses) {
+    var firstCourse, combination = [];
+
+    //base case
+    if (!selectedCourses || selectedCourses.length == 0) {
+        return selectedCourses;
+    }
+
+    //recursive case
+    firstCourse = selectedCourses.splice(0,1)[0];
+    selectedCourses = getCourseCombinations(selectedCourses);
+
+    for (var i=0; i<firstCourse.length; i++) {
+        if (selectedCourses && selectedCourses.length > 0) {
+            for (var j=0; j<selectedCourses.length; j++) {
+                var add = true;
+                for (var k=0; k<selectedCourses[j].length; k++) {
+                    if ((firstCourse[i].lec.day.indexOf(selectedCourses[j][k].lec.day) > -1) ||
+                        (selectedCourses[j][k].lec.day.indexOf(firstCourse[i].lec.day) > -1)) {
+                        if ((firstCourse[i].lec.timeBegin >= selectedCourses[j][k].lec.timeBegin
+                            && firstCourse[i].lec.timeBegin < selectedCourses[j][k].lec.timeEnd) ||
+                            (firstCourse[i].lec.timeEnd > selectedCourses[j][k].lec.timeBegin
+                            && firstCourse[i].lec.timeEnd <= selectedCourses[j][k].lec.timeEnd)) {
+                            add = false;
+                            break;
+                        }
+                    }
+                }
+                if (add) {
+                    combination.push([firstCourse[i]].concat([selectedCourses[j]]));
+                }
+            }
+        }
+        else {
+            combination.push(firstCourse[i]);
+        }
+    }
+
+    return combination;
+}
+
+
 //ALL COMBOS FOR LECTURES WITH THEIR TUTORIALS AND LABS:
 //For each course fill in the courseSections that has [{"lec":"","tut":"", "lab":"", "lecDay", "lecTimeBegin":"","lecTimeEnd":"", "tutTimeBegin":"", "tutTimeEnd":"", "labTimeBegin":"", "labTimeEnd":""}]
 //So comp232 has it's own array, and comp249 has it's own array.
@@ -202,63 +407,6 @@ console.log(courseCombinations);
 //               }
 //
 //if all conflict, return "no possible schedules"
-
-
-
-var groupedCourses = [];
-for (var i=0; i<selectedCourses.length; i++) {
-    //returns array of (grouped) sections in the form {name, lec{timeBegin, timeEnd, day}, tut{}, lab{} }
-    var course = getGroupedSectionCombinations(selectedCourses[i]);
-    groupedCourses.push(course);
-}
-
-/**
- * Cartesian Product recursive algorithm
- * returns conflict-free course combinations
- */
-function getCourseCombinations(selectedCourses) {
-    var firstCourse, combination = [];
-
-    //base case
-    if (!selectedCourses || selectedCourses.length == 0) {
-        return selectedCourses;
-    }
-
-    //recursive case
-    firstCourse = selectedCourses.splice(0,1)[0];
-    selectedCourses = getCourseCombinations(selectedCourses);
-
-    for (var i=0; i<firstCourse.length; i++) {
-        if (selectedCourses && selectedCourses.length > 0) {
-            for (var j=0; j<selectedCourses.length; j++) {
-                var add = true;
-                for (var k=0; k<selectedCourses[j].length; k++) {
-                    if ((firstCourse[i].lec.day.indexOf(selectedCourses[j][k].lec.day) > -1) ||
-                        (selectedCourses[j][k].lec.day.indexOf(firstCourse[i].lec.day) > -1)) {
-                        if ((firstCourse[i].lec.timeBegin >= selectedCourses[j][k].lec.timeBegin
-                            && firstCourse[i].lec.timeBegin < selectedCourses[j][k].lec.timeEnd) ||
-                            (firstCourse[i].lec.timeEnd > selectedCourses[j][k].lec.timeBegin
-                            && firstCourse[i].lec.timeEnd <= selectedCourses[j][k].lec.timeEnd)) {
-                            add = false;
-                            break;
-                        }
-                    }
-                }
-                if (add) {
-                    combination.push([firstCourse[i]].concat([selectedCourses[j]]));
-                }
-            }
-        }
-        else {
-            combination.push(firstCourse[i]);
-        }
-    }
-
-    return combination;
-}
-
-
-
 
 
 
