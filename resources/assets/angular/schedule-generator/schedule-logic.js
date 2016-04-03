@@ -60,16 +60,16 @@ var comp249 = [
                 {"faculty":"COMP","classNum":"249","title":"Object-Oriented Programming II ","section":"EK","type":"X","day":"We","timeBegin":"7:30PM","timeEnd":"8:30PM","room":"TBA","semester":"Fall 2016","classid":8713}
                 ];
 
-var courseCombinations = getCombinations(comp249);
+var courseCombinations = getSectionCombinations(comp249);
 
-function getCombinations(selectedCourse) {
+function getSectionCombinations(selectedCourse) {
     var combinations = [];
     var lecs = [];
     var tuts = [];
     var labs = [];
 
 
-// group sections by type
+    // group sections by type
     for (var i=0; i<selectedCourse.length; i++) {
         if(selectedCourse[i].type == "LEC") {
             var lec = {};
@@ -202,5 +202,64 @@ console.log(courseCombinations);
 //               }
 //
 //if all conflict, return "no possible schedules"
+
+
+
+var groupedCourses = [];
+for (var i=0; i<selectedCourses.length; i++) {
+    //returns array of (grouped) sections in the form {name, lec{timeBegin, timeEnd, day}, tut{}, lab{} }
+    var course = getGroupedSectionCombinations(selectedCourses[i]);
+    groupedCourses.push(course);
+}
+
+/**
+ * Cartesian Product recursive algorithm
+ * returns conflict-free course combinations
+ */
+function getCourseCombinations(selectedCourses) {
+    var firstCourse, combination = [];
+
+    //base case
+    if (!selectedCourses || selectedCourses.length == 0) {
+        return selectedCourses;
+    }
+
+    //recursive case
+    firstCourse = selectedCourses.splice(0,1)[0];
+    selectedCourses = getCourseCombinations(selectedCourses);
+
+    for (var i=0; i<firstCourse.length; i++) {
+        if (selectedCourses && selectedCourses.length > 0) {
+            for (var j=0; j<selectedCourses.length; j++) {
+                var add = true;
+                for (var k=0; k<selectedCourses[j].length; k++) {
+                    if ((firstCourse[i].lec.day.indexOf(selectedCourses[j][k].lec.day) > -1) ||
+                        (selectedCourses[j][k].lec.day.indexOf(firstCourse[i].lec.day) > -1)) {
+                        if ((firstCourse[i].lec.timeBegin >= selectedCourses[j][k].lec.timeBegin
+                            && firstCourse[i].lec.timeBegin < selectedCourses[j][k].lec.timeEnd) ||
+                            (firstCourse[i].lec.timeEnd > selectedCourses[j][k].lec.timeBegin
+                            && firstCourse[i].lec.timeEnd <= selectedCourses[j][k].lec.timeEnd)) {
+                            add = false;
+                            break;
+                        }
+                    }
+                }
+                if (add) {
+                    combination.push([firstCourse[i]].concat([selectedCourses[j]]));
+                }
+            }
+        }
+        else {
+            combination.push(firstCourse[i]);
+        }
+    }
+
+    return combination;
+}
+
+
+
+
+
 
 
