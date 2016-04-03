@@ -29,7 +29,6 @@
         <script src="..\resources\assets\angular\schedule-generator\schedule-generator.controller.js"></script>
 
 
-
     </head>
     <body ng-controller="AppCtrl" layout="column">
 
@@ -69,9 +68,6 @@
                 <md-list-item ng-href="/public/#/academics">
                     <p>View My Academics</p>
                 </md-list-item>
-                <md-list-item class="secondary-button-padding" ng-href="/public/#/currentschedule">
-                    <p>View My Current Schedule</p>
-                </md-list-item>
                 <md-list-item class="secondary-button-padding" ng-href="/public/#/sequence">
                     <p>View Sequences</p>
                 </md-list-item>
@@ -80,7 +76,7 @@
                 </md-list-item>
             </md-list>
         </md-sidenav>
-        <div flex="20"></div>
+        {{--<div flex="20"></div>--}}
         <div class="content" ui-view flex>
             <!-- CONTENT GOES HERE -->
         </div>
