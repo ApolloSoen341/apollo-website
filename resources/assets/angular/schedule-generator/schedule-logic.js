@@ -142,14 +142,10 @@ function groupCombinations(courseCombinations){
     var x = 0;
 
     //Iterate through the combinations and group them
-    var group = {};
-
-
-
     while(temp.length !=0){
 
+        var group = {};
         var removeGroup = [];
-
         var hasGroupSections = false;
 
         for (var i=1; i<temp.length; i++){
@@ -221,8 +217,8 @@ function groupCombinations(courseCombinations){
         }
 
         if(!hasGroupSections) {
-            //If none have same times with the first section,
-            //then push the first section only
+            //If none have same times with the a section,
+            //then push the single section
 
             //Get section titles
             group.name = temp[0].lec.section + "-" + temp[0].tut.section + "-" + temp[0].lab.section;
@@ -252,7 +248,7 @@ function groupCombinations(courseCombinations){
             groupedSections.push(group);
         }
 
-        //TODO: remove all indices in temp
+        //Remove all indices in temp that were pushed to groupedSections
         for(var i= (removeGroup.length - 1); i>=0; i--){
             var location = removeGroup[i];
             temp.splice(location, 1);
@@ -264,10 +260,6 @@ function groupCombinations(courseCombinations){
 
     }
 
-
-
-    //return temp;
-    //return removeGroup;
     return groupedSections;
 
 }
