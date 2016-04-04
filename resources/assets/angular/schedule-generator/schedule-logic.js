@@ -308,19 +308,31 @@ function getCourseCombinations(selectedCourses) {
             for (var j=0; j<selectedCourses.length; j++) {
                 var add = true;
                 for (var k=0; k<selectedCourses[j].length; k++) {
-                    if ((firstCourse[i].lec.day.indexOf(selectedCourses[j][k].lec.day) > -1) ||
-                        (selectedCourses[j][k].lec.day.indexOf(firstCourse[i].lec.day) > -1)) {
-                        if ((firstCourse[i].lec.timeBegin >= selectedCourses[j][k].lec.timeBegin
-                            && firstCourse[i].lec.timeBegin < selectedCourses[j][k].lec.timeEnd) ||
-                            (firstCourse[i].lec.timeEnd > selectedCourses[j][k].lec.timeBegin
-                            && firstCourse[i].lec.timeEnd <= selectedCourses[j][k].lec.timeEnd)) {
+                    if (isConflict(firstCourse[i].lec, selectedCourses[j][k].lec) ||
+                        selectedCourses[j][k].tut && isConflict(firstCourse[i].lec, selectedCourses[j][k].tut) ||
+                        selectedCourses[j][k].lab && isConflict(firstCourse[i].lec, selectedCourses[j][k].lab)) {
+                        add = false;
+                        break;
+                    }
+                    if (firstCourse[i].tut) {
+                        if (isConflict(firstCourse[i].tut, selectedCourses[j][k].lec) ||
+                            selectedCourses[j][k].tut && isConflict(firstCourse[i].tut, selectedCourses[j][k].tut) ||
+                            selectedCourses[j][k].lab && isConflict(firstCourse[i].tut, selectedCourses[j][k].lab)) {
+                            add = false;
+                            break;
+                        }
+                    }
+                    if (firstCourse[i].lab) {
+                        if (isConflict(firstCourse[i].lab, selectedCourses[j][k].lec) ||
+                            selectedCourses[j][k].tut && isConflict(firstCourse[i].lab, selectedCourses[j][k].tut) ||
+                            selectedCourses[j][k].lab && isConflict(firstCourse[i].lab, selectedCourses[j][k].lab)) {
                             add = false;
                             break;
                         }
                     }
                 }
                 if (add) {
-                    combination.push([firstCourse[i]].concat([selectedCourses[j]]));
+                    combination.push([firstCourse[i]].concat(selectedCourses[j]));
                 }
             }
         }
@@ -330,6 +342,16 @@ function getCourseCombinations(selectedCourses) {
     }
 
     return combination;
+}
+
+function isConflict(block1, block2) {
+    if ((block1.day.indexOf(block2.day) > -1) || (block2.day.indexOf(block1.day) > -1)) {
+        if ((block1.timeBegin >= block2.timeBegin && block1.timeBegin < block2.timeEnd) ||
+            (block1.timeEnd > block2.timeBegin && block1.timeEnd <= block2.timeEnd)) {
+            return true;
+        }
+    }
+    return false;
 }
 
 
