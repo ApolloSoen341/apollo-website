@@ -134,9 +134,10 @@ var groupSections =  groupCombinations(courseCombinations);
 
 function groupCombinations(courseCombinations){
     var temp = courseCombinations;
-
     var groupedSections = [];
     var removeGroups = [];
+    var hasTutorials = (temp[0].tut != null);
+    var hasLabs = (temp[0].lab != null);
 
     //groupedSectionsIndex
     var x = 0;
@@ -149,28 +150,48 @@ function groupCombinations(courseCombinations){
         var hasGroupSections = false;
 
         for (var i=1; i<temp.length; i++){
-
             var lec = {};
             var tut = {};
             var lab = {};
 
+            //To accomodate if a course does not have a lab or tut,
+            //these variables are first initialized to true:
+            var hasSameLecTime = true;
+            var hasSameTutTime = true;
+            var hasSameLabTime = true;
 
-            //TODO: CHECK FOR WHEN THERE'S NO TUT OR NO LAB
+            //Check lecture times
+            //Check tutorial times if course has tutorials
+            //Check lab times if course has labs
             var hasSameLecTime = (temp[0].lec.timeBegin == temp[i].lec.timeBegin) && (temp[0].lec.timeEnd == temp[i].lec.timeEnd) && (temp[0].lec.day == temp[i].lec.day);
-            var hasSameTutTime = (temp[0].tut.timeBegin == temp[i].tut.timeBegin) && (temp[0].tut.timeEnd == temp[i].tut.timeEnd) && (temp[0].tut.day == temp[i].tut.day);
-            var hasSameLabTime = (temp[0].lab.timeBegin == temp[i].lab.timeBegin) && (temp[0].lab.timeEnd == temp[i].lab.timeEnd) && (temp[0].lab.day == temp[i].lab.day);
+            if(hasTutorials){
+                hasSameTutTime = (temp[0].tut.timeBegin == temp[i].tut.timeBegin) && (temp[0].tut.timeEnd == temp[i].tut.timeEnd) && (temp[0].tut.day == temp[i].tut.day);
+            }
+            if(hasLabs){
+                hasSameLabTime = (temp[0].lab.timeBegin == temp[i].lab.timeBegin) && (temp[0].lab.timeEnd == temp[i].lab.timeEnd) && (temp[0].lab.day == temp[i].lab.day);
+            }
+
+            //Add courses with matching times to groupedSections
             if (hasSameLecTime && hasSameTutTime && hasSameLabTime){
-
                 hasGroupSections = true;
-                if(groupedSections[x] == null){
-                    //Add the first matching pair to groupedSections
 
-                    //TODO: CHECK FOR WHEN THERE'S NO TUT OR NO LAB
+                //Add the first matching pair to groupedSections
+                if(groupedSections[x] == null){
 
                     //Get section titles
-                    var sectionA = temp[0].lec.section + "-" + temp[0].tut.section + "-" + temp[0].lab.section;
-                    var sectionB = temp[i].lec.section + "-" + temp[i].tut.section + "-" + temp[i].lab.section;
-                    group.name = sectionA + " or " + sectionB;
+                    if(hasTutorials && hasLabs){
+                        var sectionA = temp[0].lec.section + "-" + temp[0].tut.section + "-" + temp[0].lab.section;
+                        var sectionB = temp[i].lec.section + "-" + temp[i].tut.section + "-" + temp[i].lab.section;
+                        group.name = sectionA + " or " + sectionB;
+                    } else if(hasTutorials) {
+                        var sectionA = temp[0].lec.section + "-" + temp[0].tut.section;
+                        var sectionB = temp[i].lec.section + "-" + temp[i].tut.section;
+                        group.name = sectionA + " or " + sectionB;
+                    } else {
+                        var sectionA = temp[0].lec.section + "-" + temp[0].lab.section;
+                        var sectionB = temp[i].lec.section + "-" + temp[i].lab.section;
+                        group.name = sectionA + " or " + sectionB;
+                    }
 
                     //Get lec time
                     lec.timeBegin = temp[0].lec.timeBegin;
@@ -180,16 +201,20 @@ function groupCombinations(courseCombinations){
 
 
                     //Get tut time
-                    tut.timeBegin = temp[0].tut.timeBegin;
-                    tut.timeEnd = temp[0].tut.timeEnd;
-                    tut.day = temp[0].tut.day;
-                    group.tut = tut;
+                    if(hasTutorials){
+                        tut.timeBegin = temp[0].tut.timeBegin;
+                        tut.timeEnd = temp[0].tut.timeEnd;
+                        tut.day = temp[0].tut.day;
+                        group.tut = tut;
+                    }
 
                     //Get lab time
-                    lab.timeBegin = temp[0].lab.timeBegin;
-                    lab.timeEnd = temp[0].lab.timeEnd;
-                    lab.day = temp[0].lab.day;
-                    group.lab = lab;
+                    if(hasLabs){
+                        lab.timeBegin = temp[0].lab.timeBegin;
+                        lab.timeEnd = temp[0].lab.timeEnd;
+                        lab.day = temp[0].lab.day;
+                        group.lab = lab;
+                    }
 
                     //Save indices to remove
                     removeGroup.push(0);
@@ -200,12 +225,17 @@ function groupCombinations(courseCombinations){
                 } else {
                     //Add another section to a group in groupedSections
 
-                    //TODO: CHECK FOR WHEN THERE'S NO TUT OR NO LAB
-
                     //Get section titles
-                    var sectionB = temp[i].lec.section + "-" + temp[i].tut.section + "-" + temp[i].lab.section;
-                    groupedSections[x].name = groupedSections[x].name + " or " + sectionB;
-
+                    if(hasTutorials && hasLabs){
+                        var sectionB = temp[i].lec.section + "-" + temp[i].tut.section + "-" + temp[i].lab.section;
+                        groupedSections[x].name = groupedSections[x].name + " or " + sectionB;
+                    } else if(hasTutorials){
+                        var sectionB = temp[i].lec.section + "-" + temp[i].tut.section;
+                        groupedSections[x].name = groupedSections[x].name + " or " + sectionB;
+                    } else {
+                        var sectionB = temp[i].lec.section + "-" + temp[i].lab.section;
+                        groupedSections[x].name = groupedSections[x].name + " or " + sectionB;
+                    }
 
                     //Save index to remove
                     removeGroup.push(i);
@@ -220,8 +250,14 @@ function groupCombinations(courseCombinations){
             //If none have same times with the a section,
             //then push the single section
 
-            //Get section titles
-            group.name = temp[0].lec.section + "-" + temp[0].tut.section + "-" + temp[0].lab.section;
+            //Get section title
+            if(hasTutorials && hasLabs){
+                group.name = temp[0].lec.section + "-" + temp[0].tut.section + "-" + temp[0].lab.section;
+            } else if(hasTutorials){
+                group.name = temp[0].lec.section + "-" + temp[0].tut.section;
+            } else {
+                group.name = temp[0].lec.section + "-" + temp[0].lab.section;
+            }
 
             //Get lec time
             lec.timeBegin = temp[0].lec.timeBegin;
@@ -229,18 +265,21 @@ function groupCombinations(courseCombinations){
             lec.day = temp[0].lec.day;
             group.lec = lec;
 
-
             //Get tut time
-            tut.timeBegin = temp[0].tut.timeBegin;
-            tut.timeEnd = temp[0].tut.timeEnd;
-            tut.day = temp[0].tut.day;
-            group.tut = tut;
+            if(hasTutorials){
+                tut.timeBegin = temp[0].tut.timeBegin;
+                tut.timeEnd = temp[0].tut.timeEnd;
+                tut.day = temp[0].tut.day;
+                group.tut = tut;
+            }
 
             //Get lab time
-            lab.timeBegin = temp[0].lab.timeBegin;
-            lab.timeEnd = temp[0].lab.timeEnd;
-            lab.day = temp[0].lab.day;
-            group.lab = lab;
+            if(hasLabs){
+                lab.timeBegin = temp[0].lab.timeBegin;
+                lab.timeEnd = temp[0].lab.timeEnd;
+                lab.day = temp[0].lab.day;
+                group.lab = lab;
+            }
 
             //Save indices to remove
             removeGroup.push(0);
