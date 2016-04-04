@@ -132,6 +132,13 @@ console.log(courseCombinations);
 
 var groupSections =  groupCombinations(courseCombinations);
 
+/**
+ * groupCombinations returns array of sections grouped by same time and day
+ * Example of a groupedSection: "D - D DA - DI or E - E EA - EI or E - E EA - EJ"
+ * @param courseCombinations
+ * @returns {Array}
+ */
+
 function groupCombinations(courseCombinations){
     var temp = courseCombinations;
     var groupedSections = [];
@@ -306,6 +313,43 @@ function groupCombinations(courseCombinations){
 
 console.log(groupSections);
 
+///////////////////////////////////////////////////
+
+
+var timeA = "8:45AM";
+var timeB = "1:00PM";
+var test = convertTimeFormat(timeB);
+
+/**
+ * convertTimeFormat converts AMPM time to 24H time
+ * @param t
+ * @returns {number}
+ */
+function convertTimeFormat(t) {
+    //Get time digits and convert to integer number
+    var timeMatch = t.match(/\d+/g);
+    var timeStr = "";
+    for(var i=0; i<timeMatch.length; i++){
+        timeStr = timeStr + timeMatch[i];
+    }
+    var timeInt = Number(timeStr);
+
+    //Get AMPM and convert to string
+    var AMPMMatch = t.match(/(AM|PM)$/g);
+    var AMPMStr = AMPMMatch[0];
+
+    //Convert to 24H range
+    if (AMPMStr == "PM" && timeInt < 1200){
+        timeInt = timeInt + 1200;
+    }
+    if (AMPMStr == "AM" && timeInt == 1200){
+        timeInt = timeInt - 1200;
+    }
+    return timeInt;
+
+}
+
+console.log(test);
 
 
 ///////////////////////////////////////////////////
@@ -385,31 +429,6 @@ function isConflict(block1, block2) {
     return false;
 }
 
-
-//ALL COMBOS FOR LECTURES WITH THEIR TUTORIALS AND LABS:
-//For each course fill in the courseSections that has [{"lec":"","tut":"", "lab":"", "lecDay", "lecTimeBegin":"","lecTimeEnd":"", "tutTimeBegin":"", "tutTimeEnd":"", "labTimeBegin":"", "labTimeEnd":""}]
-//So comp232 has it's own array, and comp249 has it's own array.
-
-//
-//Loop in comp232 array
-//For i = 0, i < comp232.length, i++
-//    if comp232[i].type == LEC
-//        Fill in section letters to "lec", and timeBegin and timeEnd in courseSections
-//        comp232Sections[i].lec = comp232[i].section
-//        comp232Sections[i].lecTimeBegin = comp232[i].timeBegin
-//        comp232Sections[i].lecTimeEnd = comp232[i].timeEnd
-//            For j = 0, i < comp232.length, j ++
-//                if (comp232[j].type == TUT) && (first letter of comp232[j].section)
-//                    Fill in section letters to "tut", and timeBegin and timeEnd
-//                    comp232Sections[j].tut = comp232[i].section
-//                    comp232Sections[j].tutTimeBegin = comp232[i].timeBegin
-//                    comp232Sections[j].tutTimeEnd = comp232[i].timeEnd
-//                        For k = 0, k < comp232.length, k ++
-//                        if (comp232[k].type == X || comp232[k].type == LAB) && (first letter of comp232[k].section)
-//                            Fill in section letters to "lab", and timeBegin and timeEnd
-//                            comp232Sections[k].lab = comp232[i].section
-//                            comp232Sections[k].labTimeBegin = comp232[i].timeBegin
-//                            comp232Sections[k].labTimeEnd = comp232[i].timeEnd
 
 
 //CHECK FOR SAME TIME:
