@@ -194,9 +194,13 @@ function groupCombinations(courseCombinations){
                         var sectionA = temp[0].lec.section + "-" + temp[0].tut.section;
                         var sectionB = temp[i].lec.section + "-" + temp[i].tut.section;
                         group.name = sectionA + " or " + sectionB;
-                    } else {
+                    } else if(hasLabs){
                         var sectionA = temp[0].lec.section + "-" + temp[0].lab.section;
                         var sectionB = temp[i].lec.section + "-" + temp[i].lab.section;
+                        group.name = sectionA + " or " + sectionB;
+                    } else {
+                        var sectionA = temp[0].lec.section;
+                        var sectionB = temp[i].lec.section;
                         group.name = sectionA + " or " + sectionB;
                     }
 
@@ -239,8 +243,11 @@ function groupCombinations(courseCombinations){
                     } else if(hasTutorials){
                         var sectionB = temp[i].lec.section + "-" + temp[i].tut.section;
                         groupedSections[x].name = groupedSections[x].name + " or " + sectionB;
-                    } else {
+                    } else if(hasLabs){
                         var sectionB = temp[i].lec.section + "-" + temp[i].lab.section;
+                        groupedSections[x].name = groupedSections[x].name + " or " + sectionB;
+                    } else {
+                        var sectionB = temp[i].lec.section;
                         groupedSections[x].name = groupedSections[x].name + " or " + sectionB;
                     }
 
@@ -262,8 +269,10 @@ function groupCombinations(courseCombinations){
                 group.name = temp[0].lec.section + "-" + temp[0].tut.section + "-" + temp[0].lab.section;
             } else if(hasTutorials){
                 group.name = temp[0].lec.section + "-" + temp[0].tut.section;
-            } else {
+            } else if(hasLabs){
                 group.name = temp[0].lec.section + "-" + temp[0].lab.section;
+            } else {
+                group.name = temp[0].lec.section;
             }
 
             //Get lec time
@@ -428,57 +437,6 @@ function isConflict(block1, block2) {
     }
     return false;
 }
-
-
-
-//CHECK FOR SAME TIME:
-//For each same-time combo, fill in sameTime with [{"sectionId": "", "courseSections":"", "lecTimeBegin":"", "lecTimeEnd":"", "tutTimeBegin":"", "tutTimeEnd":"", "labTimeBegin":"", "labTimeEnd":""}]
-//Every same-time combo, will append the index of the courseSections to sectionId string.
-//Example: sectionId = "023", means sections at index 0, 2, and 3 all have same times for comp249
-//Every same-time combo, will append the course section lec-tut-lab letters and separate the different combos by " or "
-//Example: "D - D DA - DI or E - E EA - EI or E - E EA - EJ"
-//
-//Duplicate courseSections
-//int i = 0;
-//sameTime index is: int x = 0
-//        For j = 1, j < courseSections.length, j++ {
-//                compare courseSections[i] to courseSections[j]:
-//                if (i's lec-tut-lab timeBegin == j's lec-tut-lab timeBegin) && (i's lec-tut-lab timeEnd == j's lec-tut-lab timeEnd)
-//                    if sameTime[x].sectionId == null
-//                        append i's lec-tut-lab courseId to sameTime[x].sectionId
-//                        append j's lec-tut-lab courseId to sameTime[x].sectionId
-//                        title of i +  " or " title of j
-//                        sameTime[x].lecTimeBegin = courseSections[i].lecTimeBegin
-//                        sameTime[x].lecTimeEnd = courseSections[i].lecTimeEnd
-//                        sameTime[x].tutTimeBegin = courseSections[i].tutTimeBegin
-//                        sameTime[x].tutTimeEnd = courseSections[i].tutTimeEnd
-//                        sameTime[x].labTimeBegin = courseSections[i].labTimeBegin
-//                        sameTime[x].labTimeEnd = courseSections[i].labTimeEnd
-//                    else
-//                        append j's courseId to sameTime[x].sectionId
-//                        "or" + title
-//        }
-//    x++
-//    delete courseSections at end then re-iterate through
-//    }
-
-
-//MAKE SCHEDULES
-//Iterate between each course's same-time array and and see which combination of courses fit together
-//Make array for each possible schedule
-
-//
-//int z = 0
-//For each preferredCourses
-//For each i in comp232 sameTime array
-//      For each j in comp249 sameTime array
-//            For each k in lastCourseChosen sameTime array
-//               if(comp232[i] && comp249[j] && lastCourseChosen[k] do not conflict){
-//                      push to schedules[z]
-//                      z++
-//               }
-//
-//if all conflict, return "no possible schedules"
 
 
 
