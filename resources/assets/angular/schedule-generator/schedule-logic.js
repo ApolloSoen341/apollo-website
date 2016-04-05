@@ -73,6 +73,8 @@ function getSectionCombinations(selectedCourse) {
     for (var i=0; i<selectedCourse.length; i++) {
         if(selectedCourse[i].type == "LEC") {
             var lec = {};
+            lec.course = selectedCourse[i].faculty + selectedCourse[i].classNum;
+            lec.title = selectedCourse[i].title;
             lec.section = selectedCourse[i].section;
             lec.timeBegin = selectedCourse[i].timeBegin;
             lec.timeEnd = selectedCourse[i].timeEnd;
@@ -80,6 +82,8 @@ function getSectionCombinations(selectedCourse) {
             lecs.push(lec);
         } else if(selectedCourse[i].type == "TUT") {
             var tut = {};
+            tut.course = selectedCourse[i].faculty + selectedCourse[i].classNum;
+            tut.title = selectedCourse[i].title;
             tut.section = selectedCourse[i].section;
             tut.timeBegin = selectedCourse[i].timeBegin;
             tut.timeEnd = selectedCourse[i].timeEnd;
@@ -87,6 +91,8 @@ function getSectionCombinations(selectedCourse) {
             tuts.push(tut);
         } else {
             var lab = {};
+            lab.course = selectedCourse[i].faculty + selectedCourse[i].classNum;
+            lab.title = selectedCourse[i].title;
             lab.section = selectedCourse[i].section;
             lab.timeBegin = selectedCourse[i].timeBegin;
             lab.timeEnd = selectedCourse[i].timeEnd;
@@ -142,7 +148,6 @@ var groupSections =  groupCombinations(courseCombinations);
 function groupCombinations(courseCombinations){
     var temp = courseCombinations;
     var groupedSections = [];
-    var removeGroups = [];
     var hasTutorials = (temp[0].tut != null);
     var hasLabs = (temp[0].lab != null);
 
@@ -184,6 +189,9 @@ function groupCombinations(courseCombinations){
 
                 //Add the first matching pair to groupedSections
                 if(groupedSections[x] == null){
+                    //Get course name and course title
+                    group.course = temp[0].lec.course;
+                    group.title = temp[0].lec.title;
 
                     //Get section titles
                     if(hasTutorials && hasLabs){
@@ -263,6 +271,10 @@ function groupCombinations(courseCombinations){
         if(!hasGroupSections) {
             //If none have same times with the a section,
             //then push the single section
+
+            //Get course name and course title
+            group.course = temp[0].lec.course;
+            group.title = temp[0].lec.title;
 
             //Get section title
             if(hasTutorials && hasLabs){
