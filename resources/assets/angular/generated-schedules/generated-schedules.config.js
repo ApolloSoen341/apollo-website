@@ -8,7 +8,7 @@
             .state('generated-schedules', {
                 url: "/generated-schedules",
                 templateUrl: "..\\resources\\assets\\angular\\generated-schedules\\generated-schedules.html",
-                controller: "GeneratedScheduelsController"
+                controller: "GeneratedSchedulesController"
             });
 
     });

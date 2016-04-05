@@ -1,8 +1,14 @@
-<table>
+
+<table border="1">
     <th></th>
     <th ng-repeat="day in days">{{day}}</th>
     <tr ng-repeat="time in times">
         <td>{{time}}</td>
-        <td ng-repeat="day in days"> {{day}}, {{time}}</td>
+        <!--DATA HERE -->
+            {{day}}
+            <td ng-repeat="day in days" ng-if="(classBeginAt(time, day) >= 0) || !classAt(time, day)" rowspan="{{duration(classBeginAt(time, day))}}">
+                <span ng-if="(classBeginAt(time, day) >= 0)">{{course[classBeginAt(time, day)].faculty}} - {{course[classBeginAt(time, day)].classNum}}</span>
+            </td>
     </tr>
 </table>
+
