@@ -1,26 +1,26 @@
 var comp232 = [
-                {"faculty":"COMP","classNum":"232","title":"Mathematics for Computer Science ","section":"DD","type":"LEC","day":"We","timeBegin":"5:45PM","timeEnd":"8:15PM","room":"H 920 SGW","semester":"Fall 2016","classid":1808}
-                ,
-                {"faculty":"COMP","classNum":"232","title":"Mathematics for Computer Science ","section":"DDDA","type":"TUT","day":"We","timeBegin":"8:30PM","timeEnd":"10:10PM","room":"MB S1.105 SGW","semester":"Fall 2016","classid":1807}
-                ,
-                {"faculty":"COMP","classNum":"232","title":"Mathematics for Computer Science ","section":"DDDB","type":"TUT","day":"We","timeBegin":"8:30PM","timeEnd":"10:10PM","room":"MB S1.255 SGW","semester":"Fall 2016","classid":1806}
-                ,
-                {"faculty":"COMP","classNum":"232","title":"Mathematics for Computer Science ","section":"PP","type":"LEC","day":"Th","timeBegin":"5:45PM","timeEnd":"8:15PM","room":"H 1070 SGW","semester":"Fall 2016","classid":8648}
-                ,
-                {"faculty":"COMP","classNum":"232","title":"Mathematics for Computer Science ","section":"PPPA","type":"TUT","day":"Th","timeBegin":"8:30PM","timeEnd":"10:10PM","room":"MB 2.265 SGW","semester":"Fall 2016","classid":8649}
-                ,
-                {"faculty":"COMP","classNum":"232","title":"Mathematics for Computer Science ","section":"PPPB","type":"TUT","day":"Th","timeBegin":"8:30PM","timeEnd":"10:10PM","room":"MB S1.105 SGW","semester":"Fall 2016","classid":8650}
-                ,
-                {"faculty":"COMP","classNum":"232","title":"Mathematics for Computer Science ","section":"PPPC","type":"TUT","day":"Th","timeBegin":"8:30PM","timeEnd":"10:10PM","room":"MB S2.105 SGW","semester":"Fall 2016","classid":8651}
-                ,
-                {"faculty":"COMP","classNum":"232","title":"Mathematics for Computer Science ","section":"Q","type":"LEC","day":"TuTh","timeBegin":"1:15PM","timeEnd":"2:30PM","room":"H 520 SGW","semester":"Fall 2016","classid":1805}
-                ,
-                {"faculty":"COMP","classNum":"232","title":"Mathematics for Computer Science ","section":"Q QA","type":"TUT","day":"Tu","timeBegin":"4:15PM","timeEnd":"5:55PM","room":"MB 2.285 SGW","semester":"Fall 2016","classid":1803}
-                ,
-                {"faculty":"COMP","classNum":"232","title":"Mathematics for Computer Science ","section":"Q QC","type":"TUT","day":"Th","timeBegin":"2:45PM","timeEnd":"4:25PM","room":"MB S1.255 SGW","semester":"Fall 2016","classid":8201}
-                ,
-                {"faculty":"COMP","classNum":"232","title":"Mathematics for Computer Science ","section":"Q QB","type":"TUT","day":"Th","timeBegin":"2:45PM","timeEnd":"4:25PM","room":"MB S1.105 SGW","semester":"Fall 2016","classid":1804}
-                ,
+                //{"faculty":"COMP","classNum":"232","title":"Mathematics for Computer Science ","section":"DD","type":"LEC","day":"We","timeBegin":"5:45PM","timeEnd":"8:15PM","room":"H 920 SGW","semester":"Fall 2016","classid":1808}
+                //,
+                //{"faculty":"COMP","classNum":"232","title":"Mathematics for Computer Science ","section":"DDDA","type":"TUT","day":"We","timeBegin":"8:30PM","timeEnd":"10:10PM","room":"MB S1.105 SGW","semester":"Fall 2016","classid":1807}
+                //,
+                //{"faculty":"COMP","classNum":"232","title":"Mathematics for Computer Science ","section":"DDDB","type":"TUT","day":"We","timeBegin":"8:30PM","timeEnd":"10:10PM","room":"MB S1.255 SGW","semester":"Fall 2016","classid":1806}
+                //,
+                //{"faculty":"COMP","classNum":"232","title":"Mathematics for Computer Science ","section":"PP","type":"LEC","day":"Th","timeBegin":"5:45PM","timeEnd":"8:15PM","room":"H 1070 SGW","semester":"Fall 2016","classid":8648}
+                //,
+                //{"faculty":"COMP","classNum":"232","title":"Mathematics for Computer Science ","section":"PPPA","type":"TUT","day":"Th","timeBegin":"8:30PM","timeEnd":"10:10PM","room":"MB 2.265 SGW","semester":"Fall 2016","classid":8649}
+                //,
+                //{"faculty":"COMP","classNum":"232","title":"Mathematics for Computer Science ","section":"PPPB","type":"TUT","day":"Th","timeBegin":"8:30PM","timeEnd":"10:10PM","room":"MB S1.105 SGW","semester":"Fall 2016","classid":8650}
+                //,
+                //{"faculty":"COMP","classNum":"232","title":"Mathematics for Computer Science ","section":"PPPC","type":"TUT","day":"Th","timeBegin":"8:30PM","timeEnd":"10:10PM","room":"MB S2.105 SGW","semester":"Fall 2016","classid":8651}
+                //,
+                //{"faculty":"COMP","classNum":"232","title":"Mathematics for Computer Science ","section":"Q","type":"LEC","day":"TuTh","timeBegin":"1:15PM","timeEnd":"2:30PM","room":"H 520 SGW","semester":"Fall 2016","classid":1805}
+                //,
+                //{"faculty":"COMP","classNum":"232","title":"Mathematics for Computer Science ","section":"Q QA","type":"TUT","day":"Tu","timeBegin":"4:15PM","timeEnd":"5:55PM","room":"MB 2.285 SGW","semester":"Fall 2016","classid":1803}
+                //,
+                //{"faculty":"COMP","classNum":"232","title":"Mathematics for Computer Science ","section":"Q QC","type":"TUT","day":"Th","timeBegin":"2:45PM","timeEnd":"4:25PM","room":"MB S1.255 SGW","semester":"Fall 2016","classid":8201}
+                //,
+                //{"faculty":"COMP","classNum":"232","title":"Mathematics for Computer Science ","section":"Q QB","type":"TUT","day":"Th","timeBegin":"2:45PM","timeEnd":"4:25PM","room":"MB S1.105 SGW","semester":"Fall 2016","classid":1804}
+                //,
                 {"faculty":"COMP","classNum":"232","title":"Mathematics for Computer Science ","section":"R","type":"LEC","day":"TuTh","timeBegin":"1:15PM","timeEnd":"2:30PM","room":"H 820 SGW","semester":"Fall 2016","classid":1802}
                 ,
                 {"faculty":"COMP","classNum":"232","title":"Mathematics for Computer Science ","section":"R RA","type":"TUT","day":"Tu","timeBegin":"4:15PM","timeEnd":"5:55PM","room":"MB 1.301 SGW","semester":"Fall 2016","classid":1801}
@@ -44,21 +44,39 @@ var comp249 = [
                 {"faculty":"COMP","classNum":"249","title":"Object-Oriented Programming II ","section":"DJ","type":"X","day":"We","timeBegin":"6:15PM","timeEnd":"7:15PM","room":"TBA","semester":"Fall 2016","classid":7474}
                 ,
                 {"faculty":"COMP","classNum":"249","title":"Object-Oriented Programming II ","section":"DK","type":"X","day":"We","timeBegin":"7:30PM","timeEnd":"8:30PM","room":"TBA","semester":"Fall 2016","classid":7475}
-                ,
-                {"faculty":"COMP","classNum":"249","title":"Object-Oriented Programming II ","section":"E","type":"LEC","day":"MoWe","timeBegin":"2:45PM","timeEnd":"4:00PM","room":"H 1070 SGW","semester":"Fall 2016","classid":8707}
-                ,
-                {"faculty":"COMP","classNum":"249","title":"Object-Oriented Programming II ","section":"E EA","type":"TUT","day":"Mo","timeBegin":"12:45PM","timeEnd":"2:35PM","room":"TBA","semester":"Fall 2016","classid":8708}
-                ,
-                {"faculty":"COMP","classNum":"249","title":"Object-Oriented Programming II ","section":"E EB","type":"TUT","day":"We","timeBegin":"4:15PM","timeEnd":"5:55PM","room":"TBA","semester":"Fall 2016","classid":8709}
-                ,
-                {"faculty":"COMP","classNum":"249","title":"Object-Oriented Programming II ","section":"E EC","type":"TUT","day":"Mo","timeBegin":"4:15PM","timeEnd":"5:55PM","room":"TBA","semester":"Fall 2016","classid":8710}
-                ,
-                {"faculty":"COMP","classNum":"249","title":"Object-Oriented Programming II ","section":"EI","type":"X","day":"Mo","timeBegin":"6:15PM","timeEnd":"7:15PM","room":"TBA","semester":"Fall 2016","classid":8711}
-                ,
-                {"faculty":"COMP","classNum":"249","title":"Object-Oriented Programming II ","section":"EJ","type":"X","day":"We","timeBegin":"6:15PM","timeEnd":"7:15PM","room":"TBA","semester":"Fall 2016","classid":8712}
-                ,
-                {"faculty":"COMP","classNum":"249","title":"Object-Oriented Programming II ","section":"EK","type":"X","day":"We","timeBegin":"7:30PM","timeEnd":"8:30PM","room":"TBA","semester":"Fall 2016","classid":8713}
+                //,
+                //{"faculty":"COMP","classNum":"249","title":"Object-Oriented Programming II ","section":"E","type":"LEC","day":"MoWe","timeBegin":"2:45PM","timeEnd":"4:00PM","room":"H 1070 SGW","semester":"Fall 2016","classid":8707}
+                //,
+                //{"faculty":"COMP","classNum":"249","title":"Object-Oriented Programming II ","section":"E EA","type":"TUT","day":"Mo","timeBegin":"12:45PM","timeEnd":"2:35PM","room":"TBA","semester":"Fall 2016","classid":8708}
+                //,
+                //{"faculty":"COMP","classNum":"249","title":"Object-Oriented Programming II ","section":"E EB","type":"TUT","day":"We","timeBegin":"4:15PM","timeEnd":"5:55PM","room":"TBA","semester":"Fall 2016","classid":8709}
+                //,
+                //{"faculty":"COMP","classNum":"249","title":"Object-Oriented Programming II ","section":"E EC","type":"TUT","day":"Mo","timeBegin":"4:15PM","timeEnd":"5:55PM","room":"TBA","semester":"Fall 2016","classid":8710}
+                //,
+                //{"faculty":"COMP","classNum":"249","title":"Object-Oriented Programming II ","section":"EI","type":"X","day":"Mo","timeBegin":"6:15PM","timeEnd":"7:15PM","room":"TBA","semester":"Fall 2016","classid":8711}
+                //,
+                //{"faculty":"COMP","classNum":"249","title":"Object-Oriented Programming II ","section":"EJ","type":"X","day":"We","timeBegin":"6:15PM","timeEnd":"7:15PM","room":"TBA","semester":"Fall 2016","classid":8712}
+                //,
+                //{"faculty":"COMP","classNum":"249","title":"Object-Oriented Programming II ","section":"EK","type":"X","day":"We","timeBegin":"7:30PM","timeEnd":"8:30PM","room":"TBA","semester":"Fall 2016","classid":8713}
                 ];
+
+
+var selectedCourses = [comp232,comp249];
+var combos = getSchedules(selectedCourses);
+
+console.log(combos);
+
+function getSchedules(selectedCourses) {
+    var groupedCourses = [];
+    for (var i=0; i<selectedCourses.length; i++) {
+        var course = getSectionCombinations(selectedCourses[i]);
+        var grouped = groupCombinations(course);
+        groupedCourses.push(grouped);
+    }
+
+    return getCourseCombinations(groupedCourses);
+}
+
 
 var courseCombinations = getSectionCombinations(comp249);
 
@@ -125,7 +143,7 @@ function getSectionCombinations(selectedCourse) {
     return combinations;
 }
 
-console.log(courseCombinations);
+//console.log(courseCombinations);
 
 
 ///////////////////////////////////////////////////
@@ -143,8 +161,8 @@ function groupCombinations(courseCombinations){
     var temp = courseCombinations;
     var groupedSections = [];
     var removeGroups = [];
-    var hasTutorials = (temp[0].tut != null);
-    var hasLabs = (temp[0].lab != null);
+    var hasTutorials = (temp[0] && temp[0].tut != null);
+    var hasLabs = (temp[0] && temp[0].lab != null);
 
     //groupedSectionsIndex
     var x = 0;
@@ -320,7 +338,7 @@ function groupCombinations(courseCombinations){
 }
 
 
-console.log(groupSections);
+//console.log(groupSections);
 
 ///////////////////////////////////////////////////
 
@@ -358,18 +376,10 @@ function convertTimeFormat(t) {
 
 }
 
-console.log(test);
+//console.log(test);
 
 
 ///////////////////////////////////////////////////
-
-
-var groupedCourses = [];
-for (var i=0; i<selectedCourses.length; i++) {
-    //returns array of (grouped) sections in the form {name, lec{timeBegin, timeEnd, day}, tut{}, lab{} }
-    var course = getGroupedSectionCombinations(selectedCourses[i]);
-    groupedCourses.push(course);
-}
 
 /**
  * Cartesian Product recursive algorithm
@@ -429,9 +439,12 @@ function getCourseCombinations(selectedCourses) {
 }
 
 function isConflict(block1, block2) {
+    var begin1 = convertTimeFormat(block1.timeBegin);
+    var begin2 = convertTimeFormat(block1.timeEnd);
+    var end1 = convertTimeFormat(block2.timeBegin);
+    var end2 = convertTimeFormat(block2.timeEnd);
     if ((block1.day.indexOf(block2.day) > -1) || (block2.day.indexOf(block1.day) > -1)) {
-        if ((block1.timeBegin >= block2.timeBegin && block1.timeBegin < block2.timeEnd) ||
-            (block1.timeEnd > block2.timeBegin && block1.timeEnd <= block2.timeEnd)) {
+        if ((begin1 >= begin2 && begin1 < end2) || (end1 > begin2 && end1 <= end2)) {
             return true;
         }
     }
