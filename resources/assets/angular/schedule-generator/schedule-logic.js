@@ -66,6 +66,10 @@ var combos = getSchedules(selectedCourses);
 
 console.log(combos);
 
+/**
+ * Main function to generate schedules from an array of selected courses
+ * @param selectedCourses
+ */
 function getSchedules(selectedCourses) {
     var groupedCourses = [];
     for (var i=0; i<selectedCourses.length; i++) {
@@ -78,8 +82,21 @@ function getSchedules(selectedCourses) {
 }
 
 
-var courseCombinations = getSectionCombinations(comp249);
+/*
+ ****************************************************************
+ *
+ * HELPER FUNCTIONS
+ * Used by getSchedules, typically shouldn't be used on their own
+ *
+ ****************************************************************
+ */
 
+/**
+ * Generate all possible combinations of sections (lectures, labs, tutorials) of a course
+ *
+ * @param selectedCourse
+ * @returns {Array}
+ */
 function getSectionCombinations(selectedCourse) {
     var combinations = [];
     var lecs = [];
@@ -149,12 +166,8 @@ function getSectionCombinations(selectedCourse) {
     return combinations;
 }
 
-//console.log(courseCombinations);
-
 
 ///////////////////////////////////////////////////
-
-var groupSections =  groupCombinations(courseCombinations);
 
 /**
  * groupCombinations returns array of sections grouped by same time and day
@@ -351,8 +364,6 @@ function groupCombinations(courseCombinations){
 }
 
 
-//console.log(groupSections);
-
 ///////////////////////////////////////////////////
 
 
@@ -389,14 +400,15 @@ function convertTimeFormat(t) {
 
 }
 
-//console.log(test);
-
 
 ///////////////////////////////////////////////////
 
 /**
  * Cartesian Product recursive algorithm
  * returns conflict-free course combinations
+ *
+ * @param selectedCourses
+ * @returns {Array}
  */
 function getCourseCombinations(selectedCourses) {
     var firstCourse, combination = [];
@@ -450,7 +462,13 @@ function getCourseCombinations(selectedCourses) {
 
     return combination;
 }
-
+/**
+ * Check if two sections (could be lecture/lab/tutorial) conflict
+ *
+ * @param block1
+ * @param block2
+ * @returns {boolean}
+ */
 function isConflict(block1, block2) {
     var begin1 = convertTimeFormat(block1.timeBegin);
     var begin2 = convertTimeFormat(block1.timeEnd);
