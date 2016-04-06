@@ -22,11 +22,12 @@ app.controller('ScheduleGeneratorController', ['$scope', '$http', '$state', '$st
     function ($scope, $http, $state, $stateParams, CourseService) {
 
 
-        $http({method: 'GET', url: 'http://apollo.matthewteolis.com/api/course', headers: {
-            'Access-Control-Allow-Origin': '*'}
-        }).then(function (res) {
-            $scope.courses = res.data;
-        });
+        //$http({method: 'GET', url: 'http://apollo.matthewteolis.com/api/course', headers: {
+        //    'Access-Control-Allow-Origin': '*',
+        //    'Authorization': 'Basic c29lbjozNDE='}
+        //}).then(function (res) {
+        //    $scope.courses = res.data;
+        //});
 
         $scope.selectedCourses = [];
 
@@ -39,7 +40,7 @@ app.controller('ScheduleGeneratorController', ['$scope', '$http', '$state', '$st
                 }
             }
                 $scope.selectedCourses.push(course);
-            CourseService.push(course)
+            CourseService.addCourse(course)
 
         }
 
