@@ -61,8 +61,8 @@
                 <md-list-item ng-href="/public">
                     <p>Home</p>
                 </md-list-item>
-                <md-list-item ng-href="/public/#/courses">
-                    <p>View Courses</p>
+                <md-list-item ng-href="/public/#/generated-schedules">
+                    <p>View Schedule</p>
                 </md-list-item>
                 <md-list-item class="secondary-button-padding" ng-href="/public/#/schedule-generator">
                     <p>Schedule Generator</p>
