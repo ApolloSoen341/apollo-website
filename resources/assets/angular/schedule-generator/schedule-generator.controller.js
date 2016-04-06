@@ -1,22 +1,7 @@
 /**
  * Created by fbouc_000 on 3/20/2016.
  */
-
 var app = angular.module('StarterApp');
-
-app.factory('CourseService', function(){
-
-    var courses = [];
-
-    return {
-        courses: function(){
-            return courses;
-        },
-        addCourse: function(course){
-          courses.push(course)
-        }
-    };
-})
 
 app.controller('ScheduleGeneratorController', ['$scope', '$http', '$state', '$stateParams', 'CourseService',
     function ($scope, $http, $state, $stateParams, CourseService) {

@@ -103,6 +103,6 @@
                     }
                     return false
                 }
-                $scope.factoryTest = CourseService.courses()
+
             }]
         );

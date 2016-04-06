@@ -29,6 +29,8 @@
         <script src="..\resources\assets\angular\schedule-generator\schedule-generator.controller.js"></script>
         <script src="..\resources\assets\angular\generated-schedules\generated-schedules.config.js"></script>
         <script src="..\resources\assets\angular\generated-schedules\generated-schedules.controller.js"></script>
+        <script src="..\resources\assets\angular\courseService.js"></script>
+
 
 
     </head>
