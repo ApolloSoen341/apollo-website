@@ -7335,6 +7335,7 @@ app.factory('CourseService', function(){
                 }
                 selectedScheduledCourses.push(classSections)
             }
+            console.log("Scheduled Courses: " + selectedScheduledCourses)
             return selectedScheduledCourses
         }
     };
