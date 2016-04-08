@@ -403,22 +403,61 @@ app.factory('SchedulerService', function() {
         return false;
     }
 
+
     return {
         /**
          * Main function to generate schedules from an array of selected courses
          * @param selectedCourses
          */
-        getSchedules: function(selectedCourses) {
-        var groupedCourses = [];
-        for (var i = 0; i < selectedCourses.length; i++) {
-            var course = getSectionCombinations(selectedCourses[i]);
-            var grouped = groupCombinations(course);
-            groupedCourses.push(grouped);
+        getSchedules: function (selectedCourses) {
+            var groupedCourses = [];
+            for (var i = 0; i < selectedCourses.length; i++) {
+                var course = getSectionCombinations(selectedCourses[i]);
+                var grouped = groupCombinations(course);
+                groupedCourses.push(grouped);
+            }
+            var combinations = getCourseCombinations(groupedCourses);
+                var schedules = [];
+
+                for (var i = 0; i < combinations.length; i++) {
+                    var timeSlots = [];
+                    for (var j = 0; j <combinations[i].length; j++) {
+                        var lec = {};
+                        lec.course = combinations[i][j].course;
+                        lec.title = combinations[i][j].title;
+                        lec.name = combinations[i][j].name;
+                        lec.type = "LEC";
+                        lec.day = combinations[i][j].lec.day;
+                        lec.timeBegin = combinations[i][j].lec.timeBegin;
+                        lec.timeEnd = combinations[i][j].lec.timeEnd;
+                        timeSlots.push(lec);
+                        if (combinations[i][j].tut) {
+                            var tut = {};
+                            tut.course = combinations[i][j].course;
+                            tut.title = combinations[i][j].title;
+                            tut.name = combinations[i][j].name;
+                            tut.type = "TUT";
+                            tut.day = combinations[i][j].tut.day;
+                            tut.timeBegin = combinations[i][j].tut.timeBegin;
+                            tut.timeEnd = combinations[i][j].tut.timeEnd;
+                            timeSlots.push(tut);
+                        }
+                        if (combinations[i][j].lab) {
+                            var lab = {};
+                            lab.course = combinations[i][j].course;
+                            lab.title = combinations[i][j].title;
+                            lab.name = combinations[i][j].name;
+                            lab.type = "LAB";
+                            lab.day = combinations[i][j].lab.day;
+                            lab.timeBegin = combinations[i][j].lab.timeBegin;
+                            lab.timeEnd = combinations[i][j].lab.timeEnd;
+                            timeSlots.push(lab);
+                        }
+                    }
+                    schedules.push(timeSlots);
+                }
+            return schedules;
         }
-
-        return getCourseCombinations(groupedCourses);
     }
-    }
-
 
 })
