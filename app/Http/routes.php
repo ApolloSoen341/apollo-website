@@ -30,7 +30,7 @@ Route::group(['middleware' => ['web']], function () {
     //
 });
 
-Route::group(['prefix' => 'api', 'namespace' => 'REST'], function(){
+Route::group(['prefix' => 'api', 'namespace' => 'REST', 'middleware' => 'cors'], function(){
     Route::resource('course','CourseController', ['except' => ['create', 'edit']]);
     Route::resource('course_history', 'CourseHistoryController', ['except' => ['create', 'edit']]);
     Route::resource('course_type', 'CourseTypeController', ['except' => ['create', 'edit']]);
