@@ -20,6 +20,7 @@ Route::group(['prefix' => 'api/v1', 'namespace' => 'REST'], function() {
 	Route::resource('course', 'CourseController');
 });
 
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
