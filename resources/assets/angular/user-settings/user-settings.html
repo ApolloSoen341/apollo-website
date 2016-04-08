@@ -1,0 +1,316 @@
+<div layout="column" layout-align="start center" flex>
+    <div layout-padding>
+        <card-avatar></card-avatar>
+    </div>
+
+    <md-card>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Firstname Lastname</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <div layout="row">
+                <div flex="45">Username:</div>
+                <div flex="55">DianaBob</div>
+            </div>
+            <div layout="row">
+                <div flex="45">ID:</div>
+                <div flex="55">34567</div>
+            </div>
+            <br>
+            <div>ENGR Department</div>
+            <div layout="row">
+                <div flex="45">Option:</div>
+                <div flex="55">Computer Games</div>
+            </div>
+        </md-card-content>
+
+        <md-divider></md-divider>
+
+        <md-card-actions layout="row" layout-align="start center">
+            <md-button>Change Password</md-button>
+            <!--<span class="ng-scope">Change Password</span>-->
+            <md-card-icon-actions>
+                <md-button class="md-icon-button" aria-label="toggle" ng-click="showPasswordSheet()">
+                    <md-icon md-svg-icon="md-toggle-arrow"></md-icon>
+                </md-button>
+            </md-card-icon-actions>
+        </md-card-actions>
+
+
+        <md-card-content>
+            <form ng-submit="authenticate()" name="changePasswordForm">
+                <div layout = "row">
+                    <md-card-content layout="row" layout-align="start center">Enter new password:</md-card-content>
+                    <md-input-container>
+                        <label>New Password</label>
+                        <input name="newPassword" type="password" ng-model="loginInfo.password" required/>
+                        <div ng-messages="loginForm.password.$error" ng-if='loginForm.password.$dirty'>
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout = "row">
+                    <md-card-content layout="row" layout-align="start center">Confirm password:</md-card-content>
+                    <md-input-container>
+                        <label>Confirm Password</label>
+                        <input name="confirmPassword" type="password" ng-model="loginInfo.password" required/>
+                        <div ng-messages="loginForm.password.$error" ng-if='loginForm.password.$dirty'>
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout = "row" layout-align="end center">
+                    <md-button type="submit" class="md-primary btn btn-primary">Submit</md-button>
+                </div>
+            </form>
+        </md-card-content>
+
+        <md-divider></md-divider>
+
+        <md-card-actions layout="row" layout-align="start center">
+            <md-button>Edit Preferences</md-button>
+            <md-card-icon-actions>
+                <md-button class="md-icon-button" aria-label="toggle">
+                    <md-icon md-svg-icon="md-toggle-arrow"></md-icon>
+                </md-button>
+            </md-card-icon-actions>
+        </md-card-actions>
+        <md-card-content>
+            <form ng-submit="submit()" name="updatePreferencesForm">
+                <div layout = "row">
+                    <div flex="100" flex-gt-sm="50" layout="column">
+                        <div >
+                            <fieldset class="standard">
+                                <legend>Time Preferences</legend>
+                                <!--Preference checkboxes -->
+                                <div layout="row">
+                                    <div layout="column" layout-padding>
+                                        <div layout-padding>Times</div>
+                                        <div flex-xs flex="50">All Day</div>
+                                        <div flex-xs flex="50">Morning</div>
+                                        <div flex-xs flex="50">Afternoon</div>
+                                        <div flex-xs flex="50">Evening</div>
+                                    </div>
+
+                                    <!-- MONDAY -->
+                                    <div layout="column" layout-align="center center" layout-padding>
+                                        <div layout-padding>Monday</div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox
+                                                    ng-model="data.monAll"
+                                                    ng-disabled="data.monAm || data.monDay || data.monPm"
+                                                    aria-label="Monday All Day"
+                                                    class="md-primary">
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox
+                                                    ng-model="data.monAm"
+                                                    ng-disabled="data.monAll"
+                                                    aria-label="Monday Morning"
+                                                    class="md-primary">
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox
+                                                    ng-model="data.monDay"
+                                                    ng-disabled="data.monAll"
+                                                    aria-label="Monday Afternoon"
+                                                    class="md-primary">
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox
+                                                    ng-model="data.monPm"
+                                                    ng-disabled="data.monAll"
+                                                    aria-label="Monday Evening"
+                                                    class="md-primary">
+                                            </md-checkbox>
+                                        </div>
+                                    </div>
+                                    <!-- TUESDAY -->
+                                    <div layout="column"  layout-align="center center" layout-padding>
+                                        <div layout-padding>Tuesday</div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox
+                                                    ng-model="data.tuesAll"
+                                                    ng-disabled="data.tuesAm || data.tuesDay || data.tuesPm"
+                                                    aria-label="Tuesday All Day"
+                                                    class="md-primary">
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox
+                                                    ng-model="data.tuesAm"
+                                                    ng-disabled="data.tuesAll"
+                                                    aria-label="Tuesday Morning"
+                                                    class="md-primary">
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox
+                                                    ng-model="data.tuesDay"
+                                                    ng-disabled="data.tuesAll"
+                                                    aria-label="Tuesday Afternoon"
+                                                    class="md-primary">
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox
+                                                    ng-model="data.tuesPm"
+                                                    ng-disabled="data.tuesAll"
+                                                    aria-label="Tuesday Evening"
+                                                    class="md-primary">
+                                            </md-checkbox>
+                                        </div>
+                                    </div>
+                                    <!-- WEDNESDAY -->
+                                    <div layout="column" layout-align="center center" layout-padding>
+                                        <div layout-pading>Wednesday</div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox
+                                                    ng-model="data.wedAll"
+                                                    ng-disabled="data.wedAm || data.wedDay || data.wedPm"
+                                                    aria-label="Wednesday All Day"
+                                                    class="md-primary">
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox
+                                                    ng-model="data.wedAm"
+                                                    ng-disabled="data.wedAll"
+                                                    aria-label="Wednesday Morning"
+                                                    class="md-primary">
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox
+                                                    ng-model="data.wedDay"
+                                                    ng-disabled="data.wedAll"
+                                                    aria-label="Wednesday Afternoon"
+                                                    class="md-primary">
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox
+                                                    ng-model="data.wedPm"
+                                                    ng-disabled="data.wedAll"
+                                                    aria-label="Wednesday Evening"
+                                                    class="md-primary">
+                                            </md-checkbox>
+                                        </div>
+                                    </div>
+                                    <!-- THURSDAY -->
+                                    <div layout="column" layout-align="center center" layout-padding>
+                                        <div layout-padding>Thursday</div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox
+                                                    ng-model="data.thursAll"
+                                                    ng-disabled="data.thursAm || data.thursDay || data.thursPm"
+                                                    aria-label="Thursday All Day"
+                                                    class="md-primary">
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox
+                                                    ng-model="data.thursAm"
+                                                    ng-disabled="data.thursAll"
+                                                    aria-label="Thursday Morning"
+                                                    class="md-primary">
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox
+                                                    ng-model="data.thursDay"
+                                                    ng-disabled="data.thursAll"
+                                                    aria-label="Thursday Afternoon"
+                                                    class="md-primary">
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox
+                                                    ng-model="data.thursPm"
+                                                    ng-disabled="data.thursAll"
+                                                    aria-label="Thursday Evening"
+                                                    class="md-primary">
+                                            </md-checkbox>
+                                        </div>
+                                    </div>
+                                    <!-- FRIDAY -->
+                                    <div layout="column" layout-align="center center" layout-padding>
+                                        <div layout-padding>Friday</div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox
+                                                    ng-model="data.friAll"
+                                                    ng-disabled="data.friAm || data.friDay || data.friPm"
+                                                    aria-label="Friday All Day"
+                                                    class="md-primary">
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox
+                                                    ng-model="data.friAm"
+                                                    ng-disabled="data.friAll"
+                                                    aria-label="Friday Morning"
+                                                    class="md-primary">
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox
+                                                    ng-model="data.friDay"
+                                                    ng-disabled="data.friAll"
+                                                    aria-label="Friday Afternoon"
+                                                    class="md-primary">
+                                            </md-checkbox>
+                                        </div>
+                                        <div flex-xs flex="50">
+                                            <md-checkbox
+                                                    ng-model="data.friPm"
+                                                    ng-disabled="data.friAll"
+                                                    aria-label="Friday Evening"
+                                                    class="md-primary">
+                                            </md-checkbox>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div layout-padding>&#42; Morning 8h45 - 11h30 &#124; Afternoon 11h45 - 17h30 &#124; Evening 17h45 - 22h00</div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+
+                <div layout = "row" layout-align="end center">
+                    <md-button type="submit" class="md-primary btn btn-primary">Save</md-button>
+                </div>
+            </form>
+        </md-card-content>
+    </md-card>
+
+</div>
+
+
+<!-- Previous code -->
+<!--<md-card-title>-->
+<!--<span class="md-headline">Change Password</span>-->
+<!--<md-card-actions layout="column" layout-align="start end">-->
+<!--<md-button>-->
+<!--<svg style="width:32px;height:32px" viewBox="0 0 24 24">-->
+<!--<path fill="#000000" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />-->
+<!--</svg>-->
+<!--</md-button>-->
+<!--</md-card-actions>-->
+<!--</md-card-title>-->
+
+<!--<md-card-title>-->
+<!--<span class="md-headline">Edit Preferences</span>-->
+<!--<md-card-actions layout="column" layout-align="start end">-->
+<!--<md-button>-->
+<!--<svg style="width:32px;height:32px" viewBox="0 0 24 24">-->
+<!--<path fill="#000000" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />-->
+<!--</svg>-->
+<!--</md-button>-->
+<!--</md-card-actions>-->
+<!--</md-card-title>-->
+<!--</md-card>-->

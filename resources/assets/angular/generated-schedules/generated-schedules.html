@@ -1,0 +1,23 @@
+<style>
+    table{
+        font-size: 10px;
+    }
+</style>
+<div ng-repeat="course in courseList">
+<table border="1px">
+    <th></th>
+    <th ng-repeat="day in days">{{day}}</th>
+    <tr ng-repeat="time in times">
+        <td>{{time}}</td>
+
+            {{day}}
+            <td ng-repeat="day in days" ng-if="(classBeginAt(course, time, day) >= 0) || !classAt(course, time, day)" rowspan="{{duration(course, classBeginAt(course, time, day))}}">
+                <span ng-if="(classBeginAt(course, time, day) >= 0)">
+                    {{course[classBeginAt(course, time, day)].faculty}} - {{course[classBeginAt(course, time, day)].classNum}}
+                    <br> {{course[classBeginAt(course, time, day)].type}}
+                </span>
+            </td>
+    </tr>
+</table>
+
+</div>
