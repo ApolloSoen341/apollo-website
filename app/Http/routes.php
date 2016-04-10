@@ -21,7 +21,6 @@ Route::any(
 	function(){return view('index');}
 )->where('all', '.*');
 
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes

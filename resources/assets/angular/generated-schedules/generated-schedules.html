@@ -13,8 +13,8 @@
             {{day}}
             <td ng-repeat="day in days" ng-if="(classBeginAt(course, time, day) >= 0) || !classAt(course, time, day)" rowspan="{{duration(course, classBeginAt(course, time, day))}}">
                 <span ng-if="(classBeginAt(course, time, day) >= 0)">
-                    {{course[classBeginAt(course, time, day)].faculty}} - {{course[classBeginAt(course, time, day)].classNum}}
-                    <br> {{course[classBeginAt(course, time, day)].type}}
+                    {{course[classBeginAt(course, time, day)].title}}
+                    <br> {{course[classBeginAt(course, time, day)].time}}
                 </span>
             </td>
     </tr>

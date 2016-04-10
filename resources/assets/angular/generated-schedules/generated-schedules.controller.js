@@ -7,12 +7,8 @@
         app.controller('GeneratedSchedulesController', ['$scope', '$http', '$state', '$stateParams', 'CourseService', 'SchedulerService',
             function ($scope, $http, $state, $stateParams, CourseService, SchedulerService) {
 
-                $scope.courseList = [
-                    [
-                    {"faculty":"COMP","classNum":"232","title":"Mathematics for Computer Science ","section":"PPPC","type":"TUT","day":"Thursday","timeBegin":"8:30PM","timeEnd":"10:15PM","room":"MB S2.105 SGW","semester":"Fall 2016","classid":8651},
-                    {"faculty":"COMP","classNum":"249","title":"Object-Oriented Programming II ","section":"D","type":"LEC","day":"Monday","timeBegin":"2:45PM","timeEnd":"6:00PM","room":"H 420 SGW","semester":"Fall 2016","classid":7469}
-                    ]
-                ]
+               $scope.courseList = SchedulerService.getSchedules(CourseService.selectedScheduledCourses())
+
 
                 $scope.days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
                 $scope.times = [];
