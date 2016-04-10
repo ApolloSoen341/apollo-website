@@ -4,7 +4,7 @@ namespace apollo\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class RequisiteType extends Model
+class Session extends Model
 {
 	/*
 	 * Whether or not the table uses timestamps

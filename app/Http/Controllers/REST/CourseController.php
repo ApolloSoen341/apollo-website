@@ -8,19 +8,31 @@ use apollo\Http\Requests;
 use apollo\Http\Controllers\Controller;
 
 use apollo\Models\Course;
+use apollo\Models\Faculty;
 use apollo\Models\Requisite;
+use apollo\Models\RequisiteType;
 
 class CourseController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $courses = Course::with('faculty', 'prerequisites', 'corequisites')->get();
+        $input = $request->input();
 
+        $courses_query = Course::with('faculty', 'prerequisites', 'corequisites');
+
+        if(isset($input['faculty_id']))
+            $courses_query = $courses_query->where('faculty_id', $input['faculty_id']);
+
+        if(isset($input['number']))
+            $courses_query = $courses_query->where('number', $input['number']);
+
+        $courses = $courses_query->get();
         return response()->json($courses);
     }
 
@@ -35,9 +47,10 @@ class CourseController extends Controller
         $input = $request->input();
 
         $course = new Course;
-        $course->name = $input['course_name'];
-        $course->credits = $input['course_credits'];
-        $course->description = $input['course_description'];
+        $course->name = $input['name'];
+        $course->number = $input['number'];
+        $course->credits = $input['credits'];
+        $course->description = $input['description'];
         $course->faculty_id = $input['faculty_id'];
         $course->save();
 
@@ -48,8 +61,6 @@ class CourseController extends Controller
         // Co-requisite is id 2 in RequisiteType table
         if(isset($input['corequisites']))
             Requisite::addRequisites($course->id, $input['corequisites'], 2);
-
-        return response()->json($course);
     }
 
     /**
@@ -60,9 +71,8 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        $courses = Course::with('faculty', 'prerequisites', 'corequisites')->where('id', $id)->first();
-
-        return response()->json($courses);
+        $course = Course::with('faculty', 'prerequisites', 'corequisites')->where('id', $id)->first();
+        return response()->json($course);
     }
 
     /**
@@ -77,28 +87,20 @@ class CourseController extends Controller
         $input = $request->input();
 
         $course = Course::find($id);
+        $course->name = $input['name'];
+        $course->number = $input['number'];
+        $course->credits = $input['credits'];
+        $course->description = $input['description'];
+        $course->faculty_id = $input['faculty_id'];
+        $course->save();
 
-        if($course != null)
-        {
-            $course->name = $input['course_name'];
-            $course->credits = $input['course_credits'];
-            $course->description = $input['course_description'];
-            $course->faculty_id = $input['faculty_id'];
-            $course->save();
+        // Pre-requisite is id 1 in RequisiteType table
+        if(isset($input['prerequisites']))
+            Requisite::addRequisites($course->id, $input['prerequisites'], 1);
 
-            Requisite::where('course_id', $id)->delete();
-            // Pre-requisite is id 1 in RequisiteType table
-            if(isset($input['prerequisites']))
-                Requisite::addRequisites($course->id, $input['prerequisites'], 1);
-
-            // Co-requisite is id 2 in RequisiteType table
-            if(isset($input['corequisites']))
-                Requisite::addRequisites($course->id, $input['corequisites'], 2);
-
-            return response()->json($course);
-        }
-
-        return response('', 304);
+        // Co-requisite is id 2 in RequisiteType table
+        if(isset($input['corequisites']))
+            Requisite::addRequisites($course->id, $input['corequisites'], 2);
     }
 
     /**
@@ -110,7 +112,5 @@ class CourseController extends Controller
     public function destroy($id)
     {
         Course::destroy($id);
-
-        return response('', 200);
     }
 }

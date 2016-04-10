@@ -2,13 +2,13 @@
 
 namespace apollo\Http\Controllers\REST;
 
-use apollo\Models\Faculty;
+use apollo\Models\CourseHistory;
 use Illuminate\Http\Request;
 
 use apollo\Http\Requests;
 use apollo\Http\Controllers\Controller;
 
-class FacultyController extends Controller
+class CourseHistoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $faculties = Faculty::all();
-        return response()->json($faculties);
+        $course_histories = CourseHistory::with('student', 'scheduled_course', 'grade')->get();
+        return response()->json($course_histories);
     }
 
     /**
@@ -31,9 +31,11 @@ class FacultyController extends Controller
     {
         $input = $request->input();
 
-        $faculty = new Faculty;
-        $faculty->name = $input['name'];
-        $faculty->save();
+        $courseHistory = new CourseHistory;
+        $courseHistory->student_id = $input['student_id'];
+        $courseHistory->scheduled_course_id = $input['scheduled_course_id'];
+        $courseHistory->grade_id = $input['grade_id'];
+        $courseHistory->save();
     }
 
     /**
@@ -44,8 +46,8 @@ class FacultyController extends Controller
      */
     public function show($id)
     {
-        $faculty = Faculty::find($id);
-        return response()->json($faculty);
+        $course_history = CourseHistory::with('student', 'scheduled_course', 'grade')->find($id);
+        return response()->json($course_history);
     }
 
     /**
@@ -59,9 +61,11 @@ class FacultyController extends Controller
     {
         $input = $request->input();
 
-        $faculty = Faculty::find($id);
-        $faculty->name = $input['name'];
-        $faculty->save();
+        $course_history = CourseHistory::find($id);
+        $course_history->student_id = $input['student_id'];
+        $course_history->scheduled_course_id = $input['scheduled_course_id'];
+        $course_history->grade_id = $input['grade_id'];
+        $course_history->save();
     }
 
     /**
@@ -72,6 +76,6 @@ class FacultyController extends Controller
      */
     public function destroy($id)
     {
-        Faculty::destroy($id);
+        CourseHistory::destroy($id);
     }
 }

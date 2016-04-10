@@ -11,9 +11,8 @@
 |
 */
 
-// RESTful api urls
-Route::group(['prefix' => 'api/v1', 'namespace' => 'REST'], function() {
-	Route::resource('course', 'CourseController');
+Route::get('/', function(){
+    return view('welcome');
 });
 
 Route::any(
@@ -34,4 +33,19 @@ Route::any(
 
 Route::group(['middleware' => ['web']], function () {
     //
+});
+
+Route::group(['prefix' => 'api', 'namespace' => 'REST', 'middleware' => 'cors'], function(){
+    Route::resource('course','CourseController', ['except' => ['create', 'edit']]);
+    Route::resource('course_history', 'CourseHistoryController', ['except' => ['create', 'edit']]);
+    Route::resource('course_type', 'CourseTypeController', ['except' => ['create', 'edit']]);
+    Route::resource('day_of_week', 'DayOfWeekController', ['except' => ['create', 'edit']]);
+    Route::resource('faculty','FacultyController', ['except' => ['create', 'edit']]);
+    Route::resource('grade', 'GradeController', ['except' => ['create', 'edit']]);
+    Route::resource('preference','PreferenceController', ['except' => ['create', 'edit']]);
+    Route::resource('requisite_type', 'RequisiteTypeController', ['except' => ['create', 'edit']]);
+    Route::resource('scheduled_course', 'ScheduledCourseController', ['except' => ['create', 'edit']]);
+    Route::resource('session','SessionController', ['except' => ['create', 'edit']]);
+    Route::resource('time_slot','TimeSlotController', ['except' => ['create', 'edit']]);
+    Route::resource('student', 'UserController', ['except' => ['create', 'edit']]);
 });

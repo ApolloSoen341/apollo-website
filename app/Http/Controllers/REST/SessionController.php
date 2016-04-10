@@ -2,13 +2,13 @@
 
 namespace apollo\Http\Controllers\REST;
 
-use apollo\Models\Faculty;
+use apollo\Models\Session;
 use Illuminate\Http\Request;
 
 use apollo\Http\Requests;
 use apollo\Http\Controllers\Controller;
 
-class FacultyController extends Controller
+class SessionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $faculties = Faculty::all();
-        return response()->json($faculties);
+        $sessions = Session::all();
+        return response()->json($sessions);
     }
 
     /**
@@ -31,9 +31,9 @@ class FacultyController extends Controller
     {
         $input = $request->input();
 
-        $faculty = new Faculty;
-        $faculty->name = $input['name'];
-        $faculty->save();
+        $session = new Session;
+        $session->name = $input['name'];
+        $session->save();
     }
 
     /**
@@ -44,8 +44,8 @@ class FacultyController extends Controller
      */
     public function show($id)
     {
-        $faculty = Faculty::find($id);
-        return response()->json($faculty);
+        $session = Session::find($id);
+        return response()->json($session);
     }
 
     /**
@@ -59,9 +59,9 @@ class FacultyController extends Controller
     {
         $input = $request->input();
 
-        $faculty = Faculty::find($id);
-        $faculty->name = $input['name'];
-        $faculty->save();
+        $session = Session::find($id);
+        $session->name = $input['name'];
+        $session->save();
     }
 
     /**
@@ -72,6 +72,6 @@ class FacultyController extends Controller
      */
     public function destroy($id)
     {
-        Faculty::destroy($id);
+        Session::destroy($id);
     }
 }

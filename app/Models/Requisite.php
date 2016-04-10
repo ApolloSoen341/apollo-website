@@ -6,9 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Requisite extends Model
 {
-    public $timestamps = false;
-    public $increment = false;
+	/*
+	 * Whether or not the table uses timestamps
+	 */
+	public $timestamps = false;
 
+	/*
+	 * Whether or not the table's id is autoincrement
+	 */
+	public $increment = false;
+
+	// Relations
 	public function requisite()
 	{
 		return $this->hasOne('apollo\\Models\\Course', 'id', 'course_requisite_id');
@@ -19,15 +27,16 @@ class Requisite extends Model
 		return $this->hasOne('apollo\\Models\\RequisiteType', 'id', 'requisite_type_id');
 	}
 
-    public static function addRequisites($course_id, $array, $type)
-    {
-    	foreach ($array as $course_requisite_id)
-    	{
-	    	$requisite = new Requisite;
-            $requisite->course_id = $course_id;
-            $requisite->course_requisite_id = $course_requisite_id;
-            $requisite->requisite_type_id = $type;
-            $requisite->save();
-    	}
-    }
+	// Class functions
+	public static function addRequisites($course_id, $array, $type)
+	{
+		foreach ($array as $course_requisite_id)
+		{
+			$requisite = new Requisite;
+			$requisite->course_id = $course_id;
+			$requisite->course_requisite_id = $course_requisite_id;
+			$requisite->requisite_type_id = $type;
+			$requisite->save();
+		}
+	}
 }

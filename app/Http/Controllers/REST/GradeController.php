@@ -2,13 +2,14 @@
 
 namespace apollo\Http\Controllers\REST;
 
-use apollo\Models\Faculty;
 use Illuminate\Http\Request;
 
 use apollo\Http\Requests;
 use apollo\Http\Controllers\Controller;
 
-class FacultyController extends Controller
+use apollo\Models\Grade;
+
+class GradeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +18,8 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $faculties = Faculty::all();
-        return response()->json($faculties);
+        $grades = Grade::all();
+        return response()->json($grades);
     }
 
     /**
@@ -31,9 +32,9 @@ class FacultyController extends Controller
     {
         $input = $request->input();
 
-        $faculty = new Faculty;
-        $faculty->name = $input['name'];
-        $faculty->save();
+        $grade = new Grade;
+        $grade->value = $input['value'];
+        $grade->save();
     }
 
     /**
@@ -44,8 +45,8 @@ class FacultyController extends Controller
      */
     public function show($id)
     {
-        $faculty = Faculty::find($id);
-        return response()->json($faculty);
+        $grades = Grade::find($id);
+        return response()->json($grades);
     }
 
     /**
@@ -59,9 +60,9 @@ class FacultyController extends Controller
     {
         $input = $request->input();
 
-        $faculty = Faculty::find($id);
-        $faculty->name = $input['name'];
-        $faculty->save();
+        $grade = Grade::find($id);
+        $grade->value = $input['value'];
+        $grade->save();
     }
 
     /**
@@ -72,6 +73,6 @@ class FacultyController extends Controller
      */
     public function destroy($id)
     {
-        Faculty::destroy($id);
+        Grade::destroy($id);
     }
 }

@@ -13,12 +13,7 @@ class RequisiteTypeSeeder extends Seeder
      */
     public function run()
     {
-        RequisiteType::firstOrCreate([
-            'type' => 'Pre-requisite'
-        ]);
-
-        RequisiteType::firstOrCreate([
-            'type' => 'Co-requisite'
-        ]);
+        RequisiteType::firstOrCreate(['name' => 'Prerequisite']);
+        RequisiteType::firstOrCreate(['name' => 'Corequisite']);
     }
 }

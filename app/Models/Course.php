@@ -8,23 +8,24 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Course extends Model
 {
-    /**
-    * Whether or not the table uses timestamps
-    */
-    public $timestamps = false;
+	/*
+	 * Whether or not the table uses timestamps
+	 */
+	public $timestamps = false;
 
-    /**
-    * This will hide the following fields when getting a query result
-    */
-    protected $hidden = [
-    	'faculty_id',
+	/*
+	 * This will hide the following fields when getting a query result
+	 */
+	protected $hidden = [
+		'faculty_id',
 		'pivot'
-    ];
+	];
 
-    public function faculty()
-    {
-    	return $this->hasOne('apollo\\Models\\Faculty', 'id', 'faculty_id');
-    }
+	// Relations
+	public function faculty()
+	{
+		return $this->belongsTo(Faculty::class);
+	}
 
 	public function prerequisites()
 	{
@@ -36,6 +37,7 @@ class Course extends Model
 		return $this->requisites(2);
 	}
 
+	// Relation helper
 	private function requisites($type_id)
 	{
 		$instance = new Course;
