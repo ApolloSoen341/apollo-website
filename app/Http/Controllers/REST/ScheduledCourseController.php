@@ -13,11 +13,17 @@ class ScheduledCourseController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $scheduled_courses = ScheduledCourse::with('course.faculty', 'session', 'timeSlots.courseType', 'timeSlots.dayOfWeek')->get();
+        $input = $request->input();
+
+        $scheduled_courses_query = ScheduledCourse::with('course.faculty', 'session', 'timeSlots.courseType', 'timeSlots.dayOfWeek');
+        if(isset($input['session_id']))
+            $scheduled_courses_query = $scheduled_courses_query->where('session_id', $input['session_id']);
+        $scheduled_courses = $scheduled_courses_query->get();
         return response()->json($scheduled_courses);
     }
 

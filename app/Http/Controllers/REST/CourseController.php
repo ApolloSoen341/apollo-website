@@ -17,11 +17,22 @@ class CourseController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $courses = Course::with('faculty', 'prerequisites', 'corequisites')->get();
+        $input = $request->input();
+
+        $courses_query = Course::with('faculty', 'prerequisites', 'corequisites');
+
+        if(isset($input['faculty_id']))
+            $courses_query = $courses_query->where('faculty_id', $input['faculty_id']);
+
+        if(isset($input['number']))
+            $courses_query = $courses_query->where('number', $input['number']);
+
+        $courses = $courses_query->get();
         return response()->json($courses);
     }
 
