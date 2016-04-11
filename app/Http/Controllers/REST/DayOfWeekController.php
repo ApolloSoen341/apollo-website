@@ -2,13 +2,13 @@
 
 namespace apollo\Http\Controllers\REST;
 
-use apollo\Models\Faculty;
+use apollo\Models\DayOfWeek;
 use Illuminate\Http\Request;
 
 use apollo\Http\Requests;
 use apollo\Http\Controllers\Controller;
 
-class FacultyController extends Controller
+class DayOfWeekController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $faculties = Faculty::all();
-        return response()->json($faculties);
+        $day_of_weeks = DayOfWeek::all();
+        return response()->json($day_of_weeks);
     }
 
     /**
@@ -31,9 +31,9 @@ class FacultyController extends Controller
     {
         $input = $request->input();
 
-        $faculty = new Faculty;
-        $faculty->name = $input['name'];
-        $faculty->save();
+        $day_of_week = new DayOfWeek;
+        $day_of_week->name = $input['name'];
+        $day_of_week->save();
     }
 
     /**
@@ -44,8 +44,8 @@ class FacultyController extends Controller
      */
     public function show($id)
     {
-        $faculty = Faculty::find($id);
-        return response()->json($faculty);
+        $day_of_week = DayOfWeek::find($id);
+        return response()->json($day_of_week);
     }
 
     /**
@@ -59,9 +59,9 @@ class FacultyController extends Controller
     {
         $input = $request->input();
 
-        $faculty = Faculty::find($id);
-        $faculty->name = $input['name'];
-        $faculty->save();
+        $day_of_week = DayOfWeek::find($id);
+        $day_of_week->name = $input['name'];
+        $day_of_week->save();
     }
 
     /**
@@ -72,6 +72,6 @@ class FacultyController extends Controller
      */
     public function destroy($id)
     {
-        Faculty::destroy($id);
+        DayOfWeek::destroy($id);
     }
 }

@@ -2,13 +2,12 @@
 
 namespace apollo\Http\Controllers\REST;
 
-use apollo\Models\Faculty;
 use Illuminate\Http\Request;
 
 use apollo\Http\Requests;
 use apollo\Http\Controllers\Controller;
 
-class FacultyController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,8 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $faculties = Faculty::all();
-        return response()->json($faculties);
+        $students = User::all();
+        return response()->json($students);
     }
 
     /**
@@ -31,9 +30,13 @@ class FacultyController extends Controller
     {
         $input = $request->input();
 
-        $faculty = new Faculty;
-        $faculty->name = $input['name'];
-        $faculty->save();
+        $student = new User;
+        $student->first_name = $input['first_name'];
+        $student->last_name = $input['last_name'];
+        $student->username = $input['username'];
+        $student->password = $input['password'];
+        $student->number = $input['number'];
+        $student->save();
     }
 
     /**
@@ -44,8 +47,8 @@ class FacultyController extends Controller
      */
     public function show($id)
     {
-        $faculty = Faculty::find($id);
-        return response()->json($faculty);
+        $student = User::all()->where('id', $id);
+        return response()->json($student);
     }
 
     /**
@@ -59,9 +62,13 @@ class FacultyController extends Controller
     {
         $input = $request->input();
 
-        $faculty = Faculty::find($id);
-        $faculty->name = $input['name'];
-        $faculty->save();
+        $student = User::all()->where('id', $id);
+        $student->first_name = $input['first_name'];
+        $student->last_name = $input['last_name'];
+        $student->username = $input['username'];
+        $student->password = $input['password'];
+        $student->number = $input['number'];
+        $student->save();
     }
 
     /**
@@ -72,6 +79,6 @@ class FacultyController extends Controller
      */
     public function destroy($id)
     {
-        Faculty::destroy($id);
+        User::destroy($id);
     }
 }

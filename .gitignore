@@ -6,3 +6,4 @@ Homestead.json
 .idea/
 composer.phar
 /bower_components
+public/build/

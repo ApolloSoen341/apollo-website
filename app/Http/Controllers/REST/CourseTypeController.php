@@ -2,13 +2,13 @@
 
 namespace apollo\Http\Controllers\REST;
 
-use apollo\Models\Faculty;
 use Illuminate\Http\Request;
 
 use apollo\Http\Requests;
 use apollo\Http\Controllers\Controller;
+use apollo\Models\CourseType;
 
-class FacultyController extends Controller
+class CourseTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $faculties = Faculty::all();
-        return response()->json($faculties);
+        $course_types = CourseType::all();
+        return response()->json($course_types);
     }
 
     /**
@@ -31,9 +31,9 @@ class FacultyController extends Controller
     {
         $input = $request->input();
 
-        $faculty = new Faculty;
-        $faculty->name = $input['name'];
-        $faculty->save();
+        $course_type = new CourseType;
+        $course_type->name = $input['name'];
+        $course_type->save();
     }
 
     /**
@@ -44,8 +44,8 @@ class FacultyController extends Controller
      */
     public function show($id)
     {
-        $faculty = Faculty::find($id);
-        return response()->json($faculty);
+        $course_type = CourseType::find($id);
+        return response()->json($course_type);
     }
 
     /**
@@ -59,9 +59,9 @@ class FacultyController extends Controller
     {
         $input = $request->input();
 
-        $faculty = Faculty::find($id);
-        $faculty->name = $input['name'];
-        $faculty->save();
+        $course_type = CourseType::find($id);
+        $course_type->name = $input['name'];
+        $course_type->save();
     }
 
     /**
@@ -72,6 +72,6 @@ class FacultyController extends Controller
      */
     public function destroy($id)
     {
-        Faculty::destroy($id);
+        CourseType::destroy($id);
     }
 }
