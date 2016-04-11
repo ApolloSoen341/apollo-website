@@ -2,13 +2,13 @@
 
 namespace apollo\Http\Controllers\REST;
 
-use apollo\Models\Faculty;
+use apollo\Models\Preference;
 use Illuminate\Http\Request;
 
 use apollo\Http\Requests;
 use apollo\Http\Controllers\Controller;
 
-class FacultyController extends Controller
+class PreferenceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $faculties = Faculty::all();
-        return response()->json($faculties);
+        $preferences = Preference::all();
+        return response()->json($preferences);
     }
 
     /**
@@ -31,9 +31,12 @@ class FacultyController extends Controller
     {
         $input = $request->input();
 
-        $faculty = new Faculty;
-        $faculty->name = $input['name'];
-        $faculty->save();
+        $preference = new Preference;
+        $preference->student_id = $input['student_id'];
+        $preference->day_of_week_id = $input['day_of_week'];
+        $preference->start = $input['start'];
+        $preference->end = $input['end'];
+        $preference->save();
     }
 
     /**
@@ -44,8 +47,8 @@ class FacultyController extends Controller
      */
     public function show($id)
     {
-        $faculty = Faculty::find($id);
-        return response()->json($faculty);
+        $preference = Preference::find($id);
+        return response()->json($preference);
     }
 
     /**
@@ -59,9 +62,12 @@ class FacultyController extends Controller
     {
         $input = $request->input();
 
-        $faculty = Faculty::find($id);
-        $faculty->name = $input['name'];
-        $faculty->save();
+        $preference = Preference::find($id);
+        $preference->student_id = $input['student_id'];
+        $preference->day_of_week_id = $input['day_of_week'];
+        $preference->start = $input['start'];
+        $preference->end = $input['end'];
+        $preference->save();
     }
 
     /**
@@ -72,6 +78,6 @@ class FacultyController extends Controller
      */
     public function destroy($id)
     {
-        Faculty::destroy($id);
+        Preference::destroy($id);
     }
 }

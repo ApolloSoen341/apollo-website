@@ -9,10 +9,6 @@
         <!-- Angular Material style sheet -->
         <link rel="stylesheet" href="..\bower_components\angular-material\angular-material.css">
         <!-- Angular Material requires Angular.js Libraries -->
-
-        <!--
-        Your HTML content here
-        -->
         <script src="..\bower_components\angular\angular.js"></script>
         <script src="..\bower_components\angular-animate\angular-animate.min.js"></script>
         <script src="..\bower_components\angular-aria\angular-aria.min.js"></script>
@@ -36,6 +32,7 @@
 
     </head>
     <body ng-controller="AppCtrl" layout="column">
+
 
     <md-toolbar layout="row">
         <div class="md-toolbar-tools">
@@ -87,7 +84,6 @@
         </div>
     </md-content>
     </md-content>
-
 
 
 

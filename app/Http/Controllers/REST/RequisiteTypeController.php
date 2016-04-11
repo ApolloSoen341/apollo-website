@@ -2,13 +2,13 @@
 
 namespace apollo\Http\Controllers\REST;
 
-use apollo\Models\Faculty;
+use apollo\Models\RequisiteType;
 use Illuminate\Http\Request;
 
 use apollo\Http\Requests;
 use apollo\Http\Controllers\Controller;
 
-class FacultyController extends Controller
+class RequisiteTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $faculties = Faculty::all();
-        return response()->json($faculties);
+        $requisite_types = RequisiteType::all();
+        return response()->json($requisite_types);
     }
 
     /**
@@ -31,9 +31,9 @@ class FacultyController extends Controller
     {
         $input = $request->input();
 
-        $faculty = new Faculty;
-        $faculty->name = $input['name'];
-        $faculty->save();
+        $requisite_type = new RequisiteType;
+        $requisite_type->name = $input['name'];
+        $requisite_type->save();
     }
 
     /**
@@ -44,8 +44,8 @@ class FacultyController extends Controller
      */
     public function show($id)
     {
-        $faculty = Faculty::find($id);
-        return response()->json($faculty);
+        $requisite_type = RequisiteType::find($id);
+        return response()->json($requisite_type);
     }
 
     /**
@@ -59,9 +59,9 @@ class FacultyController extends Controller
     {
         $input = $request->input();
 
-        $faculty = Faculty::find($id);
-        $faculty->name = $input['name'];
-        $faculty->save();
+        $requisite_type = RequisiteType::find($id);
+        $requisite_type->name = $input['name'];
+        $requisite_type->save();
     }
 
     /**
@@ -72,6 +72,6 @@ class FacultyController extends Controller
      */
     public function destroy($id)
     {
-        Faculty::destroy($id);
+        RequisiteType::destroy($id);
     }
 }
