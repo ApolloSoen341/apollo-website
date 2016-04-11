@@ -8,7 +8,7 @@
             function ($scope, $http, $state, $stateParams, CourseService, SchedulerService) {
 
                $scope.courseList = SchedulerService.getSchedules(CourseService.selectedScheduledCourses())
-
+                $scope.selectedCourseList = CourseService.courses();
 
                 $scope.days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
                 $scope.times = [];

@@ -3,7 +3,12 @@
         font-size: 10px;
     }
 </style>
-<div ng-repeat="course in courseList">
+<div layout="row">
+    <div flex="20">
+
+    </div>
+    <div flex="60">
+        <div ng-repeat="course in courseList">
 <table border="1px">
     <th></th>
     <th ng-repeat="day in days">{{day}}</th>
@@ -14,10 +19,30 @@
             <td ng-repeat="day in days" ng-if="(classBeginAt(course, time, day) >= 0) || !classAt(course, time, day)" rowspan="{{duration(course, classBeginAt(course, time, day))}}">
                 <span ng-if="(classBeginAt(course, time, day) >= 0)">
                     {{course[classBeginAt(course, time, day)].title}}
-                    <br> {{course[classBeginAt(course, time, day)].time}}
+                    <br> {{course[classBeginAt(course, time, day)].type}}
                 </span>
             </td>
     </tr>
 </table>
+<em>{{course}}</em>
+</div>
+    </div>
+    <div flex="20" layout="column">
+        <md-toolbar layout="row" class="md-accent">
+            <div class="md-toolbar-tools">
+                <span>Selected Courses</span>
+            </div>
+        </md-toolbar>
+        <md-list flex>
+            <md-list-item class="md-2-line" ng-repeat="course in selectedCourseList">
+                <div class="md-list-item-text" layout="column">
+                    <h6>{{course.faculty.name}} - {{course.number}}</h6>
+                    <p>{{course.name}}</p>
+                </div>
+            </md-list-item>
+        </md-list>
 
+
+
+    </div>
 </div>

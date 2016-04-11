@@ -3,7 +3,7 @@
         $stateProvider
 
             .state('homepage', {
-                url: "/#/homepage",
+                url: "/",
                 templateUrl: "..\\resources\\views\\homepage.html",
                 controller: "HomepageController"
             });

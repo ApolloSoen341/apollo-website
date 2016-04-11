@@ -16,7 +16,9 @@ app.controller('ScheduleGeneratorController', ['$scope', '$http', '$state', '$st
 
         $scope.selectedCourses = [];
 
-        $scope.search = "";
+        $scope.searchFaculty = "";
+        $scope.searchNumber = "";
+        $scope.searchTitle = "";
 
         $scope.addCourse = function(course) {
             for(i = 0; i < $scope.selectedCourses.length; i++){
@@ -27,6 +29,11 @@ app.controller('ScheduleGeneratorController', ['$scope', '$http', '$state', '$st
                 $scope.selectedCourses.push(course);
             CourseService.addCourse(course)
 
+        }
+        $scope.courseList = CourseService.courses();
+
+        $scope.removeCourse =function(id){
+            CourseService.removeCourse(id)
         }
 
         $scope.courses = [
@@ -17516,6 +17523,7 @@ app.controller('ScheduleGeneratorController', ['$scope', '$http', '$state', '$st
                 "corequisites": []
             }
         ]
+
 
 
     }]

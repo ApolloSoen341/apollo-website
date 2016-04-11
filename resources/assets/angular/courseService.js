@@ -7314,6 +7314,13 @@ app.factory('CourseService', function(){
         addCourse: function(course){
             courses.push(course)
         },
+        removeCourse: function(id){
+            for(var i = 0; i<courses.length; i++){
+                if(id == courses[i].id){
+                    courses.splice(i, 1)
+                }
+            }
+        },
         selectedCourses: function() {
             var selectedCourses = []
             for(var i = 0; i < courses.length; i++){
