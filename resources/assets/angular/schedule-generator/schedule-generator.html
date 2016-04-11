@@ -1,54 +1,55 @@
-<div layout="column">
-    <div flex="5">
-        <h3 style="color:#2196f3;">Select Courses</h3>
-    </div>
-    <div layout="row">
-        <div flex="40">
-        <md-input-container class="md-block">
-        <md-icon md-svg-src="..\imgs\ic_search_black_24px.svg"></md-icon>
-        <input ng-model="search" type="search" placeholder="Search">
-        </md-input-container>
-    </div>
-        <div flex="10"></div>
+<div layout="row" layout-align="center start">
+    <div layout="column" layout-align="start start" flex="60">
         <div>
-            <md-button class="md-raised" ng-href="/public/#/generated-schedules"> Generate </md-button>
+            <h3 style="color:#2196f3;">Select Courses</h3>
         </div>
-    </div>
-    <div flex="30" layout="row">
+        <div layout="row" layout-align="start">
+            <div flex="80">
+                <md-input-container class="md-block">
+                    <md-icon md-svg-src="..\imgs\ic_search_black_24px.svg"></md-icon>
+                    <input ng-model="search" type="search" placeholder="Search">
+                </md-input-container>
+             </div>
+            <div flex="10"></div>
+            <div flex="10">
+                <md-button class="md-raised" ng-href="/public/#/generated-schedules"> Generate </md-button>
+            </div>
+        </div>
+        <div flex="90" layout="row">
+        <div flex="80">
+            <md-chips ng-model="selectedCourses" name="selectedCourses" md-max-chips="6">
+                <md-chip-template>
+                    <strong>{{$chip.code}}</strong>
+                    <em>{{$chip.name}}</em>
+                </md-chip-template>
+            </md-chips>
+        </div>
+        </div>
+        <div>
+            <md-button class="md-raised"> Fall 2016 </md-button>
+        </div>
+        <div layout="row">
+        <div flex="80">
+            <table>
+                <tbody >
 
-    <div flex="80">
-        <md-chips ng-model="selectedCourses" name="selectedCourses" md-max-chips="6">
-            <md-chip-template>
-                <strong>{{$chip.code}}</strong>
-                <em>{{$chip.name}}</em>
-            </md-chip-template>
-        </md-chips>
-    </div>
-    </div>
-    <div>
-        <md-button class="md-raised"> Fall 2016 </md-button>
-    </div>
-    <div layout="row">
-    <div flex="80">
-        <table>
-            <tbody >
-
-            <tr  ng-repeat='course in courses | filter: course.name=search track by course.id' ng-show="(search).length > 0">
-                <td ng-click="collapse=!collapse" width="100%">{{::course.name}}</td>
-                <td><md-button class="md-raised md-primary" ng-click="addCourse(course)"> ADD </md-button></td>
-            </tr>
-            <!--<tr ng-show=collapse>-->
-                <!--<td colspan="2">-->
-                    <!--Prerequisites: {{course.prerequisites}}<br>-->
-                    <!--Corequisites: {{course.corequisites}}<br>-->
-                    <!--Credits: {{course.credits}}<br>-->
-                    <!--Faculty: {{course.faculty}}<br>-->
-                    <!--{{ course.description }}-->
-                <!--</td>-->
-            <!--</tr>-->
-            </tbody>
-        </table>
-    </div>
+                <tr  ng-repeat='course in courses | filter: course.name=search track by course.id' ng-show="(search).length > 0">
+                    <td ng-click="collapse=!collapse" width="100%">{{::course.name}}</td>
+                    <td><md-button class="md-raised md-primary" ng-click="addCourse(course)"> ADD </md-button></td>
+                </tr>
+                <!--<tr ng-show=collapse>-->
+                    <!--<td colspan="2">-->
+                        <!--Prerequisites: {{course.prerequisites}}<br>-->
+                        <!--Corequisites: {{course.corequisites}}<br>-->
+                        <!--Credits: {{course.credits}}<br>-->
+                        <!--Faculty: {{course.faculty}}<br>-->
+                        <!--{{ course.description }}-->
+                    <!--</td>-->
+                <!--</tr>-->
+                </tbody>
+            </table>
+        </div>
+        </div>
     </div>
 </div>
 
