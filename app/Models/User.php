@@ -1,18 +1,30 @@
 <?php
 
-namespace apollo;
+namespace apollo\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'students';
+
+    /*
+	 * Whether or not the table uses timestamps
+	 */
+    public $timestamps = false;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'last_name', 'username', 'password', 'number'
     ];
 
     /**

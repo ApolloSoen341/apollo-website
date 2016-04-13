@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Montreal',
 
     /*
     |--------------------------------------------------------------------------
@@ -146,7 +146,9 @@ return [
         Illuminate\Session\SessionServiceProvider::class,
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
-        Illuminate\View\ViewServiceProvider::class,
+		Illuminate\View\ViewServiceProvider::class,
+
+		Collective\Html\HtmlServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -154,7 +156,7 @@ return [
         apollo\Providers\AppServiceProvider::class,
         apollo\Providers\AuthServiceProvider::class,
         apollo\Providers\EventServiceProvider::class,
-        apollo\Providers\RouteServiceProvider::class,
+		apollo\Providers\RouteServiceProvider::class,
 
     ],
 
@@ -183,6 +185,7 @@ return [
         'Eloquent'  => Illuminate\Database\Eloquent\Model::class,
         'Event'     => Illuminate\Support\Facades\Event::class,
         'File'      => Illuminate\Support\Facades\File::class,
+		'Form'      => Collective\Html\FormFacade::class,
         'Gate'      => Illuminate\Support\Facades\Gate::class,
         'Hash'      => Illuminate\Support\Facades\Hash::class,
         'Lang'      => Illuminate\Support\Facades\Lang::class,

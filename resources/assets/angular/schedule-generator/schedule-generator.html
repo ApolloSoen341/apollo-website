@@ -1,0 +1,67 @@
+<div layout="row">
+    <div flex="20">
+
+    </div>
+    <div flex="60" layout="column">
+        <div flex="5">
+            <h3 style="color:#2196f3;">Select Courses</h3>
+        </div>
+        <div layout="row">
+            <div flex="40">
+                <md-input-container class="md-block">
+                    <md-icon md-svg-src="..\imgs\ic_search_black_24px.svg"></md-icon>
+                    <input ng-model="search" type="search" placeholder="Search">
+                </md-input-container>
+            </div>
+            <div flex="10"></div>
+            <div>
+                <md-button class="md-raised" ng-href="/public/#/generated-schedules"> Generate </md-button>
+            </div>
+        </div>
+        <div layout="column" layout-align="start start" flex>
+            <div flex="5">
+                <h3 style="color:#2196f3;">Selected Courses</h3>
+            </div>
+
+                <md-list flex>
+                    <md-list-item class="secondary-button-padding" ng-repeat="course in courseList">
+                        <h6>{{course.faculty.name}} - {{course.number}}</h6> <br>
+                        <p>{{course.name}}</p>
+                        <md-button class="md-secondary" ng-click="removeCourse(course.id)">Remove</md-button>
+                    </md-list-item>
+                </md-list>
+
+        </div>
+        <div>
+            <md-button class="md-raised"> Fall 2016 </md-button>
+        </div>
+        <div layout="row">
+            <div flex="80">
+                <table>
+                    <tbody >
+
+                    <tr  ng-repeat='course in courses | filter: {name: search} track by course.id' ng-show="(search).length > 0">
+                        <td>{{::course.faculty.name}}  </td>
+                        <td>{{::course.number}}</td>
+                        <td ng-click="collapse=!collapse" width="100%">{{::course.name}}</td>
+                        <td><md-button class="md-raised md-primary" ng-click="addCourse(course)"> ADD </md-button></td>
+                    </tr>
+                    <!--<tr ng-show=collapse>-->
+                    <!--<td colspan="2">-->
+                    <!--Prerequisites: {{course.prerequisites}}<br>-->
+                    <!--Corequisites: {{course.corequisites}}<br>-->
+                    <!--Credits: {{course.credits}}<br>-->
+                    <!--Faculty: {{course.faculty}}<br>-->
+                    <!--{{ course.description }}-->
+                    <!--</td>-->
+                    <!--</tr>-->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--<pre>{{selectedCourses}}</pre>-->
+    </div>
+
+</div>
+
+

@@ -1,7 +1,8 @@
 {
   "private": true,
   "devDependencies": {
-    "gulp": "^3.8.8"
+    "gulp": "^3.8.8",
+    "laravel-elixir-angular": "git+https://github.com/HRcc/laravel-elixir-angular.git"
   },
   "dependencies": {
     "laravel-elixir": "^4.0.0",
