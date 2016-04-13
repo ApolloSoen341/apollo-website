@@ -222,7 +222,7 @@
         </form>
     </md-card-content>
 
-<em>{{prefTest}}</em>
+<!--<em>{{prefTest}}</em>-->
 
     <div layout="column" layout-align="start center" flex>
         <div flex="5">
@@ -241,6 +241,7 @@
     <div flex="5">
         <h3 style="color:#2196f3;">Generated Schedules</h3>
     </div>
+    <h5 ng-if="courseList.length == 0">No Schedules Available</h5>
     <div>
         <div layout="row">
             <div flex="20">
@@ -264,7 +265,10 @@
                             </td>
                         </tr>
                     </table>
-                    <em>{{course}}</em>
+                    <!--<em>{{course}}</em>-->
+                    <p ng-repeat = "section in course">{{section.course}} - {{section.name}}</p>
+                    <div layout="row" style="height:100px"></div>
+
                 </div>
             </div>
         </div>

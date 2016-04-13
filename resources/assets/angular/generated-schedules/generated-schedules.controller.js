@@ -8,9 +8,12 @@
             function ($scope, $http, $state, $stateParams, CourseService, SchedulerService) {
 
                 //PREFERENCES
-                $scope.data = {};
+                $scope.data = SchedulerService.getChosenPrefs();
                 $scope.prefTest = SchedulerService.getPreferences();
+
                 $scope.savePreferences = function(preferences){
+                    SchedulerService.setChosenPrefs(preferences);
+
                     SchedulerService.setPreferences(preferences);
                     $state.reload();
                 }

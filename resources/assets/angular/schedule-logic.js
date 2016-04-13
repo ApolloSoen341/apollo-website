@@ -2,8 +2,8 @@ var app = angular.module('StarterApp');
 
 app.factory('SchedulerService', function() {
     /*Initialized to all day*/
-    var preferences ={};
-
+    var preferences =[{day:"Mo",time:"all"}, {day:"Tu",time:"all"}, {day:"We",time:"all"}, {day:"Th",time:"all"}, {day:"Fr",time:"all"}];
+    var chosenPrefs = {};
     /*
      ****************************************************************
      *
@@ -234,6 +234,7 @@ app.factory('SchedulerService', function() {
             newPrefs.push(newDay);
         }
 
+        return newPrefs;
     }
 
 
@@ -701,7 +702,13 @@ app.factory('SchedulerService', function() {
         },
         setPreferences: function(prefs) {
             console.log(prefs);
-            preferences = prefs;
+            preferences = convertPreferences(prefs);
+        },
+        getChosenPrefs: function() {
+            return chosenPrefs;
+        },
+        setChosenPrefs: function(prefs){
+            chosenPrefs = prefs;
         },
         /**
          * Main function to generate schedules from an array of selected courses
@@ -754,7 +761,7 @@ app.factory('SchedulerService', function() {
                     }
                     schedules.push(timeSlots);
                 }
-            return schedules;
+            return updateSchedules(schedules, preferences);
         }
     }
 
