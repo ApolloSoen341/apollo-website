@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RequisiteTypeSeeder::class);
         $this->call(SessionSeeder::class);
         $this->call(ScrapeSeeder::class);
+
     }
 }
