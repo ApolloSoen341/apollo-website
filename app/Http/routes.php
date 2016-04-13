@@ -11,10 +11,7 @@
 |
 */
 
-Route::any(
-	'{all}',
-	function(){return view('index');}
-)->where('all', '.*');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -45,3 +42,9 @@ Route::group(['prefix' => 'api', 'namespace' => 'REST', 'middleware' => 'cors'],
     Route::resource('time_slot','TimeSlotController', ['except' => ['create', 'edit']]);
     Route::resource('student', 'UserController', ['except' => ['create', 'edit']]);
 });
+
+
+Route::any(
+    '{all}',
+    function(){return view('index');}
+)->where('all', '.*');
