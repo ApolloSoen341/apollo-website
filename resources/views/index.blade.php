@@ -61,18 +61,18 @@
                 <md-list-item ng-href="/public/#/" >
                     <p>Home</p>
                 </md-list-item>
-                <md-list-item ng-href="/public/#/generated-schedules" ng-click="openLeftMenu()">
-                    <p>View Schedule</p>
-                </md-list-item>
+                {{--<md-list-item ng-href="/public/#/generated-schedules" ng-click="openLeftMenu()">--}}
+                    {{--<p>View Schedule</p>--}}
+                {{--</md-list-item>--}}
                 <md-list-item class="secondary-button-padding" ng-href="/public/#/schedule-generator" ng-click="openLeftMenu()">
                     <p>Schedule Generator</p>
                 </md-list-item>
-                <md-list-item ng-href="/public/#/academics" ng-click="openLeftMenu()">
-                    <p>View My Academics</p>
-                </md-list-item>
-                <md-list-item class="secondary-button-padding" ng-href="/public/#/sequence" ng-click="openLeftMenu()">
-                    <p>View Sequences</p>
-                </md-list-item>
+                {{--<md-list-item ng-href="/public/#/academics" ng-click="openLeftMenu()">--}}
+                    {{--<p>View My Academics</p>--}}
+                {{--</md-list-item>--}}
+                {{--<md-list-item class="secondary-button-padding" ng-href="/public/#/sequence" ng-click="openLeftMenu()">--}}
+                    {{--<p>View Sequences</p>--}}
+                {{--</md-list-item>--}}
                 <md-list-item class="secondary-button-padding" ng-href="/public/#/user-settings" ng-click="openLeftMenu()">
                     <p>User Settings</p>
                 </md-list-item>
