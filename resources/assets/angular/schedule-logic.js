@@ -1,6 +1,8 @@
 var app = angular.module('StarterApp');
 
 app.factory('SchedulerService', function() {
+    /*Initialized to all day*/
+    var preferences ={};
 
     /*
      ****************************************************************
@@ -10,6 +12,55 @@ app.factory('SchedulerService', function() {
      *
      ****************************************************************
      */
+
+    function convertPreferences(prefs){
+        // WE NEED / ANNA: [{day:"Mo",time:"all"},{day:"Tu",time:"none"},{day:"We",time:"pmmid"},{day:"Th",time:"am"},{day:"Fr",time:"mid"}];
+        //all
+        //none
+        //pmmid
+        //am
+        //pm
+        // OLD / LIUAI: {"monAll":true,"tuesAm":true,"tuesDay":true,"tuesPm":true,"wedAll":true,"thursAll":true,"friAll":true}
+        //monAll
+        //monAm
+        //monDay
+        //monPm
+        //tues
+        //wed
+        //thurs
+        //fri
+
+        var newPrefs = [];
+
+        if(prefs.monAll || (prefs.monAm && prefs.monDay && prefs.monPm)){
+            var newDay = {};
+            newDay.day = "Mo";
+            newDay.time = "all";
+            newPrefs.push(newDay);
+        } else if(prefs.monAm){
+            var newDay = {};
+            newDay.day = "Mo";
+            newDay.time = "am";
+            newPrefs.push(newDay);
+        } else if(prefs.monDay){
+            var newDay = {};
+            newDay.day = "Mo";
+            newDay.time = "mid";
+            newPrefs.push(newDay);
+        } else if(prefs.monPm){
+            var newDay = {};
+            newDay.day = "Mo";
+            newDay.time = "pm";
+            newPrefs.push(newDay);
+        } else if(prefs.monAm && prefs.monDay){
+            var newDay = {};
+            newDay.day = "Mo";
+            newDay.time = "am";
+            newPrefs.push(newDay);
+        }
+
+    }
+
 
     /**
      * Generate all possible combinations of sections (lectures, labs, tutorials) of a course
@@ -469,6 +520,14 @@ app.factory('SchedulerService', function() {
 
 
     return {
+        getPreferences: function() {
+            console.log(preferences);
+            return preferences;
+        },
+        setPreferences: function(prefs) {
+            console.log(prefs);
+            preferences = prefs;
+        },
         /**
          * Main function to generate schedules from an array of selected courses
          * @param selectedCourses

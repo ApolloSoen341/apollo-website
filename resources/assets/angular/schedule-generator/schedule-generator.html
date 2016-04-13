@@ -1,57 +1,57 @@
-<<<<<<< HEAD
-<div layout="row" layout-align="center start">
-    <div layout="column" layout-align="start start" flex="60">
-        <div>
-            <h3 style="color:#2196f3;">Select Courses</h3>
-        </div>
-        <div layout="row" layout-align="start">
-            <div flex="80">
-                <md-input-container class="md-block">
-                    <md-icon md-svg-src="..\imgs\ic_search_black_24px.svg"></md-icon>
-                    <input ng-model="search" type="search" placeholder="Search">
-                </md-input-container>
-             </div>
-            <div flex="10"></div>
-            <div flex="10">
-                <md-button class="md-raised" ng-href="/public/#/generated-schedules"> Generate </md-button>
-            </div>
-        </div>
-        <div flex="90" layout="row">
-        <div flex="80">
-            <md-chips ng-model="selectedCourses" name="selectedCourses" md-max-chips="6">
-                <md-chip-template>
-                    <strong>{{$chip.code}}</strong>
-                    <em>{{$chip.name}}</em>
-                </md-chip-template>
-            </md-chips>
-        </div>
-        </div>
-        <div>
-            <md-button class="md-raised"> Fall 2016 </md-button>
-        </div>
-        <div layout="row">
-        <div flex="80">
-            <table>
-                <tbody >
+<!--<<<<<<< HEAD-->
+<!--<div layout="row" layout-align="center start">-->
+    <!--<div layout="column" layout-align="start start" flex="60">-->
+        <!--<div>-->
+            <!--<h3 style="color:#2196f3;">Select Courses</h3>-->
+        <!--</div>-->
+        <!--<div layout="row" layout-align="start">-->
+            <!--<div flex="80">-->
+                <!--<md-input-container class="md-block">-->
+                    <!--<md-icon md-svg-src="..\imgs\ic_search_black_24px.svg"></md-icon>-->
+                    <!--<input ng-model="search" type="search" placeholder="Search">-->
+                <!--</md-input-container>-->
+             <!--</div>-->
+            <!--<div flex="10"></div>-->
+            <!--<div flex="10">-->
+                <!--<md-button class="md-raised" ng-href="/public/#/generated-schedules"> Generate </md-button>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div flex="90" layout="row">-->
+        <!--<div flex="80">-->
+            <!--<md-chips ng-model="selectedCourses" name="selectedCourses" md-max-chips="6">-->
+                <!--<md-chip-template>-->
+                    <!--<strong>{{$chip.code}}</strong>-->
+                    <!--<em>{{$chip.name}}</em>-->
+                <!--</md-chip-template>-->
+            <!--</md-chips>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div>-->
+            <!--<md-button class="md-raised"> Fall 2016 </md-button>-->
+        <!--</div>-->
+        <!--<div layout="row">-->
+        <!--<div flex="80">-->
+            <!--<table>-->
+                <!--<tbody >-->
 
-                <tr  ng-repeat='course in courses | filter: course.name=search track by course.id' ng-show="(search).length > 0">
-                    <td ng-click="collapse=!collapse" width="100%">{{::course.name}}</td>
-                    <td><md-button class="md-raised md-primary" ng-click="addCourse(course)"> ADD </md-button></td>
-                </tr>
-                <!--<tr ng-show=collapse>-->
-                    <!--<td colspan="2">-->
-                        <!--Prerequisites: {{course.prerequisites}}<br>-->
-                        <!--Corequisites: {{course.corequisites}}<br>-->
-                        <!--Credits: {{course.credits}}<br>-->
-                        <!--Faculty: {{course.faculty}}<br>-->
-                        <!--{{ course.description }}-->
-                    <!--</td>-->
+                <!--<tr  ng-repeat='course in courses | filter: course.name=search track by course.id' ng-show="(search).length > 0">-->
+                    <!--<td ng-click="collapse=!collapse" width="100%">{{::course.name}}</td>-->
+                    <!--<td><md-button class="md-raised md-primary" ng-click="addCourse(course)"> ADD </md-button></td>-->
                 <!--</tr>-->
-                </tbody>
-            </table>
-        </div>
-        </div>
-=======
+                <!--&lt;!&ndash;<tr ng-show=collapse>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td colspan="2">&ndash;&gt;-->
+                        <!--&lt;!&ndash;Prerequisites: {{course.prerequisites}}<br>&ndash;&gt;-->
+                        <!--&lt;!&ndash;Corequisites: {{course.corequisites}}<br>&ndash;&gt;-->
+                        <!--&lt;!&ndash;Credits: {{course.credits}}<br>&ndash;&gt;-->
+                        <!--&lt;!&ndash;Faculty: {{course.faculty}}<br>&ndash;&gt;-->
+                        <!--&lt;!&ndash;{{ course.description }}&ndash;&gt;-->
+                    <!--&lt;!&ndash;</td>&ndash;&gt;-->
+                <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                <!--</tbody>-->
+            <!--</table>-->
+        <!--</div>-->
+        <!--</div>-->
+<!--=======-->
 <div layout="row">
     <div flex="20">
 
@@ -90,7 +90,7 @@
             <div flex="80">
                 <table>
                     <tbody >
-                    
+
                     <tr  ng-repeat='course in courses | filter: {name: search} track by course.id' ng-show="(search).length > 0">
                         <td>{{::course.faculty.name}}  </td>
                         <td>{{::course.number}}</td>
@@ -129,7 +129,7 @@
 
 
 
->>>>>>> bf344627b68ca7dc4b9961533dfae3c6211df907
+<!--&gt;>>>>>> bf344627b68ca7dc4b9961533dfae3c6211df907-->
     </div>
 </div>
 

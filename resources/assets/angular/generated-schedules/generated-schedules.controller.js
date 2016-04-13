@@ -7,6 +7,14 @@
         app.controller('GeneratedSchedulesController', ['$scope', '$http', '$state', '$stateParams', 'CourseService', 'SchedulerService',
             function ($scope, $http, $state, $stateParams, CourseService, SchedulerService) {
 
+                //PREFERENCES
+                $scope.data = {};
+                $scope.prefTest = SchedulerService.getPreferences();
+                $scope.savePreferences = function(preferences){
+                    SchedulerService.setPreferences(preferences);
+                    $state.reload();
+                }
+
                $scope.courseList = SchedulerService.getSchedules(CourseService.selectedScheduledCourses())
                 $scope.selectedCourseList = CourseService.courses();
 

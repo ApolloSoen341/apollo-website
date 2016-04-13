@@ -1,20 +1,20 @@
 <style>
-    table{
+    table {
         font-size: 10px;
     }
 </style>
-<<<<<<< HEAD
 
 <div layout="column" layout-align="start center" flex>
     <div flex="5">
         <h3 style="color:#2196f3;">Preferences</h3>
     </div>
 
+    <!--PREFERENCES BOX -->
     <md-card-content>
         <form ng-submit="submit()" name="updatePreferencesForm">
-            <div layout = "row">
+            <div layout="row">
                 <div flex="100" flex-gt-sm="50" layout="column">
-                    <div >
+                    <div>
                         <fieldset class="standard">
                             <legend>Time Preferences</legend>
                             <!--Preference checkboxes -->
@@ -64,7 +64,7 @@
                                     </div>
                                 </div>
                                 <!-- TUESDAY -->
-                                <div layout="column"  layout-align="center center" layout-padding>
+                                <div layout="column" layout-align="center center" layout-padding>
                                     <div layout-padding>Tuesday</div>
                                     <div flex-xs flex="50">
                                         <md-checkbox
@@ -208,72 +208,26 @@
                                     </div>
                                 </div>
                             </div>
-                            <div layout-padding>&#42; Morning 8h45 - 11h30 &#124; Afternoon 11h45 - 17h30 &#124; Evening 17h45 - 22h00</div>
+                            <div layout-padding>&#42; Morning 8h45 - 11h30 &#124; Afternoon 11h45 - 17h30 &#124; Evening
+                                17h45 - 22h00
+                            </div>
                         </fieldset>
                     </div>
                 </div>
             </div>
 
             <div layout="row" layout-align="end start">
-                <md-button class="md-raised" ng-href="/public/#/generated-schedules"> Generate </md-button>
+                <md-button class="md-raised" ng-href="/public/#/generated-schedules" ng-click="savePreferences(data)">Generate</md-button>
             </div>
         </form>
     </md-card-content>
 
+<em>{{prefTest}}</em>
 
-    <div flex="5">
-        <h3 style="color:#2196f3;">Generated Schedules</h3>
-    </div>
-    <div style="max-width:60%">
-        <div ng-repeat="course in courseList">
-            <table border="1px"">
-                <th></th>
-                <th ng-repeat="day in days">{{day}}</th>
-                <tr ng-repeat="time in times">
-                    <td>{{time}}</td>
-
-                        {{day}}
-                        <td ng-repeat="day in days" ng-if="(classBeginAt(course, time, day) >= 0) || !classAt(course, time, day)" rowspan="{{duration(course, classBeginAt(course, time, day))}}">
-                            <span ng-if="(classBeginAt(course, time, day) >= 0)">
-                                {{course[classBeginAt(course, time, day)].title}}
-                                <br> {{course[classBeginAt(course, time, day)].time}}
-                            </span>
-                        </td>
-                </tr>
-            </table>
-            <div layout="row" style="height:100px"></div>
+    <div layout="column" layout-align="start center" flex>
+        <div flex="5">
+            <h3 style="color:#2196f3;">Selected Courses</h3>
         </div>
-=======
-<div layout="row">
-    <div flex="20">
-
-    </div>
-    <div flex="60">
-        <div ng-repeat="course in courseList">
-<table border="1px">
-    <th></th>
-    <th ng-repeat="day in days">{{day}}</th>
-    <tr ng-repeat="time in times">
-        <td>{{time}}</td>
-
-            {{day}}
-            <td ng-repeat="day in days" ng-if="(classBeginAt(course, time, day) >= 0) || !classAt(course, time, day)" rowspan="{{duration(course, classBeginAt(course, time, day))}}">
-                <span ng-if="(classBeginAt(course, time, day) >= 0)">
-                    {{course[classBeginAt(course, time, day)].title}}
-                    <br> {{course[classBeginAt(course, time, day)].type}}
-                </span>
-            </td>
-    </tr>
-</table>
-<em>{{course}}</em>
-</div>
-    </div>
-    <div flex="20" layout="column">
-        <md-toolbar layout="row" class="md-accent">
-            <div class="md-toolbar-tools">
-                <span>Selected Courses</span>
-            </div>
-        </md-toolbar>
         <md-list flex>
             <md-list-item class="md-2-line" ng-repeat="course in selectedCourseList">
                 <div class="md-list-item-text" layout="column">
@@ -282,9 +236,37 @@
                 </div>
             </md-list-item>
         </md-list>
+    </div>
 
+    <div flex="5">
+        <h3 style="color:#2196f3;">Generated Schedules</h3>
+    </div>
+    <div>
+        <div layout="row">
+            <div flex="20">
+            </div>
+            <div flex="60">
+                <div ng-repeat="course in courseList">
+                    <table border="1px">
+                        <th></th>
+                        <th ng-repeat="day in days">{{day}}</th>
+                        <tr ng-repeat="time in times">
+                            <td>{{time}}</td>
 
-
->>>>>>> bf344627b68ca7dc4b9961533dfae3c6211df907
+                            {{day}}
+                            <td ng-repeat="day in days"
+                                ng-if="(classBeginAt(course, time, day) >= 0) || !classAt(course, time, day)"
+                                rowspan="{{duration(course, classBeginAt(course, time, day))}}">
+                            <span ng-if="(classBeginAt(course, time, day) >= 0)">
+                                {{course[classBeginAt(course, time, day)].title}}
+                                <br> {{course[classBeginAt(course, time, day)].type}}
+                            </span>
+                            </td>
+                        </tr>
+                    </table>
+                    <em>{{course}}</em>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
