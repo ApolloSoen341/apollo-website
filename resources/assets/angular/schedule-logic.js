@@ -404,6 +404,70 @@ app.factory('SchedulerService', function() {
     }
 
 
+    function updateSchedules(schedules, preferences) {
+        var updatedSchedules = [];
+
+        for (var s=0; s<schedules.length; s++) {
+            for(var t=0; t<schedules[s].length; t++) {
+                var add = true;
+                for (var p=0; p<preferences.length; p++) {
+                    if(schedules[s][t].day.indexOf(preferences[p].day) > -1) {
+                        //console.log(schedules[s][t].day + " " + preferences[p].time);
+                        switch (preferences[p].time) {
+                            case "am":
+                                if (convertTimeFormat(schedules[s][t].timeBegin) >= 1200) {
+                                    add = false;
+                                }
+                                break;
+                            case "mid":
+                                if (convertTimeFormat(schedules[s][t].timeBegin) < 1200 || convertTimeFormat(schedules[s][t].timeBegin) >= 1800) {
+                                    add = false;
+                                }
+                                break;
+                            case "pm":
+                                if (convertTimeFormat(schedules[s][t].timeBegin) < 1800) {
+                                    add = false;
+                                }
+                                break;
+                            case "ammid":
+                                if (convertTimeFormat(schedules[s][t].timeBegin) >= 1800) {
+                                    add = false;
+                                }
+                                break;
+                            case "pmmid":
+                                if (convertTimeFormat(schedules[s][t].timeBegin) < 1200) {
+                                    add = false;
+                                }
+                                break;
+                            case "ampm":
+                                if (convertTimeFormat(schedules[s][t].timeBegin) >= 1200 && convertTimeFormat(schedules[s][t].timeBegin) < 1800) {
+                                    add = false;
+                                }
+                                break;
+                            case "none":
+                                add = false;
+                                break;
+                            case "all":
+                                break; //stays add=true
+                        }
+                        if (!add) {
+                            break;
+                        }
+                    }
+                }
+                if (!add) {
+                    break;
+                }
+            }
+            if (add) {
+                updatedSchedules.push(schedules[s]);
+            }
+        }
+
+        return updatedSchedules;
+    }
+
+
     return {
         /**
          * Main function to generate schedules from an array of selected courses
